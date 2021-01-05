@@ -1,12 +1,14 @@
 require 'rake'
 require 'yaml'
 require 'date'
+require 'pathname'
 
-SOURCE = "."
+SOURCE = Pathname.getwd()
 CONFIG = {
   'posts' => File.join(SOURCE, "content", "posts"),
   'post_ext' => "md",
-  'assets' => "assets/data/cdn/",
+  'static' => "static",
+  'static_image' => File.join("static", "img"),
 }
 
 def ask(message, valid_options)
@@ -23,14 +25,14 @@ def get_stdin(message)
   STDIN.gets.chomp
 end
 
-# Usage: rake post title="A Title"
-desc "Begin a new post in #{CONFIG['posts']}"
-task :post do
+desc "Begin a new posts as: rake post title='A Title' cg='categories'"
+task :posts do
   if not Dir.exists?(CONFIG['posts'])
     abort("can not make #{CONFIG['posts']}, just make it") unless FileUtils.mkdir_p(CONFIG['posts'])
   end
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
   title = ENV["title"] || "new-post"
+  categories = ENV["cg"] || ""
   # slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   slug = title.downcase.strip.gsub(' ', '-')
   foldername = File.join(CONFIG['posts'], "#{Time.now.strftime('%Y')}", "#{Time.now.strftime('%m')}", "#{Time.now.strftime('%d')}")
@@ -52,11 +54,11 @@ task :post do
     post.puts "date: #{DateTime.now.to_s}"
     post.puts "description: \"desc #{title.gsub(/-/,' ')}\""
     post.puts "draft: false"
-    post.puts 'categories: []'
+    post.puts "categories: ['#{categories}']"
     post.puts "tags: []"
     post.puts "toc:"
     post.puts "  enable: true"
-    post.puts "  auto: false"
+    post.puts "  auto: true"
     post.puts "code:"
     post.puts "  copy: true"
     post.puts "math:"
@@ -73,10 +75,11 @@ task :post do
   end
 end # task :post
 
-task :imgNewAssets do
-  foldername = File.join(CONFIG['assets'], 'img', "#{Time.now.strftime('%Y')}", "#{Time.now.strftime('%m')}", "#{Time.now.strftime('%d')}")
+desc "check or init static image path below #{CONFIG['static_image']}"
+task :imgNewStatic do
+  foldername = File.join(CONFIG['static_image'], "#{Time.now.strftime('%Y')}", "#{Time.now.strftime('%m')}", "#{Time.now.strftime('%d')}")
   if not Dir.exists?(foldername)
     abort("can not found #{foldername}, just make it") unless FileUtils.mkdir_p(foldername)
   end
-  puts "now assets image at: {{site.baseurl}}/#{foldername}/"
+  puts "now assets image at: {{baseurl}}/#{foldername}/"
 end

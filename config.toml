@@ -101,8 +101,10 @@ enableEmoji = true
       [languages.zh-cn.params.social]
         GitHub = "sinlov"
         Email = "sinlovgmppt@gmail.com"
-        Bilibili = "474553042"
+        Bilibili = "1542022"
         RSS = true
+        Zhihu = "lov-sin"
+        Douban = "sinlov"
 
 [params]
   # LoveIt 更改 | 0.2.0 LoveIt 主题版本
@@ -122,6 +124,11 @@ enableEmoji = true
   dateFormat = "2006-01-02"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["/logo.png"]
+
+  [params.social]
+    [params.social.zhihu]
+      weight = 0
+
 
   # LoveIt 新增 | 0.2.0 应用图标配置
   [params.app]
@@ -229,7 +236,7 @@ enableEmoji = true
       # LoveIt 更改 | 0.2.7 主页显示的网站标题 (支持 HTML 格式)
       title = ""
       # 主页显示的网站副标题
-      subtitle = "这是我的全新 Hugo 网站"
+      subtitle = "这是我的编程生活日记"
       # 是否为副标题显示打字机动画
       typeit = true
       # 是否显示社交账号
@@ -278,7 +285,7 @@ enableEmoji = true
       # 是否显示代码块的复制按钮
       copy = true
       # 默认展开显示的代码行数
-      maxShownLines = 10
+      maxShownLines = 36
     # LoveIt 更改 | 0.2.0 KaTeX 数学公式
     [params.page.math]
       enable = true

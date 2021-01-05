@@ -14,6 +14,9 @@ init:
 	@echo "=> this project use hugo more info: https://github.com/gohugoio/hugo"
 	@echo "-> if not install just see https://gohugo.io/getting-started/"
 	hugo version
+	# or use git clone --recurse-submodules
+	git submodule init
+	git submodule update
 
 debug:
 	hugo serve --disableFastRender --port ${ENV_HUGO_PORT}
@@ -42,6 +45,6 @@ help: printInfo
 	@echo "make destination    ~> build hugo destination at path: ${ENV_HUGO_DESTINATION_PATH}"
 	@echo ""
 	@echo "=> new file as"
-	@echo "rake post title='article name'"
+	@echo "rake posts title='article name'"
 	@echo "=> new assets for image as:"
 	@echo "rake imgNewAssets"
