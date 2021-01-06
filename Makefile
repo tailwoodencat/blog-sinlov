@@ -31,7 +31,7 @@ cleanDestinationPath:
 	fi
 
 destination: cleanDestinationPath
-	hugo -d ${ENV_HUGO_DESTINATION_PATH}
+	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc
 	cp static/favicon.ico ${ENV_HUGO_DESTINATION_PATH}
 
 uglifyjs:
