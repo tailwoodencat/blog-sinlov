@@ -25,24 +25,38 @@ def get_stdin(message)
   STDIN.gets.chomp
 end
 
-desc "Begin a new posts as: rake post title='A Title' cg='categories'"
+desc "Begin a new posts as: rake posts title='A Title' cg='categories' t='2021-01-01 12:34:59'"
 task :posts do
   if not Dir.exists?(CONFIG['posts'])
     abort("can not make #{CONFIG['posts']}, just make it") unless FileUtils.mkdir_p(CONFIG['posts'])
   end
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
+
   title = ENV["title"] || "new-post"
   categories = ENV["cg"] || ""
+  begin
+    time_parse = DateTime.parse(ENV['t']) || DateTime.now
+  rescue => err
+    puts "error: by t=#{ENV['t']}"
+    time_parse = DateTime.now
+  # ensure
+  #   puts "mark time: #{time_parse.to_s}"
+  end
+  if time_parse.hour.to_s == '0'
+    time_parse = DateTime.parse("#{time_parse.strftime("%Y-%m-%d")} #{DateTime.now.strftime("%H:%M:%S")} +8")
+  end
+  puts "new time: #{time_parse.to_s}"
+
   # slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   slug = title.downcase.strip.gsub(' ', '-')
-  foldername = File.join(CONFIG['posts'], "#{Time.now.strftime('%Y')}", "#{Time.now.strftime('%m')}", "#{Time.now.strftime('%d')}")
+  foldername = File.join(CONFIG['posts'], "#{time_parse.strftime('%Y')}", "#{time_parse.strftime('%m')}", "#{time_parse.strftime('%d')}")
   # foldername = File.join(CONFIG['posts'])
   if not Dir.exists?(foldername)
     abort("can not found #{foldername}, just make it") unless FileUtils.mkdir_p(foldername)
   end
   filename = File.join(foldername, "#{slug}.#{CONFIG['post_ext']}")
   if File.exist?(filename)
-    abort("rake aborted! #{filename} not overwrite") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+    abort("rake aborted! #{filename} not overwrite") if ask("path: #{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
 
   puts "Creating new post: #{filename}"
@@ -50,8 +64,7 @@ task :posts do
   open(filename, 'w') do |post|
     post.puts "---"
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
-    # post.puts "date: #{Time.now.strftime('%Y-%m-%dT%H:%m:%S')}"
-    post.puts "date: #{DateTime.now.to_s}"
+    post.puts "date: #{time_parse.to_s}"
     post.puts "description: \"desc #{title.gsub(/-/,' ')}\""
     post.puts "draft: false"
     post.puts "categories: ['#{categories}']"
@@ -77,7 +90,7 @@ end # task :post
 
 desc "check or init static image path below #{CONFIG['static_image']}"
 task :imgNewStatic do
-  foldername = File.join(CONFIG['static_image'], "#{Time.now.strftime('%Y')}", "#{Time.now.strftime('%m')}", "#{Time.now.strftime('%d')}")
+  foldername = File.join(CONFIG['static_image'], "#{time_parse.strftime('%Y')}", "#{time_parse.strftime('%m')}", "#{time_parse.strftime('%d')}")
   if not Dir.exists?(foldername)
     abort("can not found #{foldername}, just make it") unless FileUtils.mkdir_p(foldername)
   end
