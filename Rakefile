@@ -87,7 +87,7 @@ task :posts do
     post.puts "description: \"desc #{title.gsub(/-/,' ')}\""
     post.puts "draft: true" # 草稿创建属性 true 不会渲染
     post.puts "categories: ['#{categories}']"
-    post.puts "tags: []"
+    post.puts "tags: ['#{categories}']"
     post.puts "toc:"
     post.puts "  enable: true"
     post.puts "  auto: true"
