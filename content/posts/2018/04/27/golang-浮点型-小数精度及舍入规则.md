@@ -2,7 +2,7 @@
 title: "golang 浮点型 小数精度及舍入规则"
 date: 2018-04-27T18:35:07+08:00
 description: "desc golang 浮点型 小数精度及舍入规则"
-draft: true
+draft: false
 categories: ['golang']
 tags: ['golang']
 toc:
