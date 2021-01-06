@@ -462,7 +462,7 @@ Configuration on demand is not supported by the current version of the Android G
 Suggestion: disable configuration on demand by setting org.gradle.configureondemand=false in your gradle.properties file or use a Gradle version less than 4.6.
 ```
 
-## 设定编码
+### 设定编码
 
 ```
 allprojects {
