@@ -56,13 +56,21 @@ enableEmoji = true
         title = ""
         weight = 4
       [[languages.zh-cn.menu.main]]
+        identifier = "Android"
+        pre = ""
+        post = ""
+        name = "Android"
+        url = "/categories/android/"
+        title = ""
+        weight = 5
+      [[languages.zh-cn.menu.main]]
         identifier = "about"
         pre = ""
         post = ""
         name = "关于"
         url = "/about/"
         title = ""
-        weight = 5
+        weight = 6
       [[languages.zh-cn.menu.main]]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
@@ -70,7 +78,7 @@ enableEmoji = true
         name = ""
         url = "https://github.com/sinlov"
         title = "GitHub"
-        weight = 6
+        weight = 7
     [languages.zh-cn.params]
       description = "life is short just do it!"
       keywords = ["Github" ,"Linux","HUGO","Tutorial","Technology"]

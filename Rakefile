@@ -3,6 +3,13 @@ require 'yaml'
 require 'date'
 require 'pathname'
 
+CATEGORIES_CHECK = [
+  'Android',
+  'gradle',
+  'golang',
+  '',
+]
+
 SOURCE = Pathname.getwd()
 CONFIG = {
   'posts' => File.join(SOURCE, "content", "posts"),
@@ -33,9 +40,15 @@ task :posts do
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
 
   title = ENV["title"] || "new-post"
-  categories = ENV["cg"] || ""
+
+  # env t for time mark
   begin
-    time_parse = DateTime.parse(ENV['t']) || DateTime.now
+    t_env = ENV['t'] || ""
+    if t_env == ""
+      time_parse = DateTime.now
+    else
+      time_parse = DateTime.parse(t_env)
+    end
   rescue => err
     puts "error: by t=#{ENV['t']}"
     time_parse = DateTime.now
@@ -45,7 +58,13 @@ task :posts do
   if time_parse.hour.to_s == '0'
     time_parse = DateTime.parse("#{time_parse.strftime("%Y-%m-%d")} #{DateTime.now.strftime("%H:%M:%S")} +8")
   end
-  puts "new time: #{time_parse.to_s}"
+  # puts "new time: #{time_parse.to_s}"
+
+  # check categories
+  categories = ENV["cg"] || ""
+  if not CATEGORIES_CHECK.any?(categories)
+    abort("error: can not set categories as: #{categories}, please check or add CATEGORIES_CHECK setting")
+  end
 
   # slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   slug = title.downcase.strip.gsub(' ', '-')
@@ -66,7 +85,7 @@ task :posts do
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts "date: #{time_parse.to_s}"
     post.puts "description: \"desc #{title.gsub(/-/,' ')}\""
-    post.puts "draft: false"
+    post.puts "draft: true" # 草稿创建属性 true 不会渲染
     post.puts "categories: ['#{categories}']"
     post.puts "tags: []"
     post.puts "toc:"
