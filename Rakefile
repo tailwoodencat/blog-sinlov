@@ -6,7 +6,8 @@ require 'pathname'
 CATEGORIES_CHECK = [
   'Android',
   'gradle',
-  'golang'
+  'golang',
+  'ruby'
 ]
 
 SOURCE = Pathname.getwd()
@@ -90,10 +91,6 @@ task :posts do
     post.puts "toc:"
     post.puts "  enable: true"
     post.puts "  auto: true"
-    post.puts "code:"
-    post.puts "  copy: true"
-    post.puts "math:"
-    post.puts "  enable: true"
     post.puts "mapbox:"
     post.puts '  accessToken: ""'
     post.puts "share:"

@@ -19,7 +19,7 @@ init:
 	git submodule update
 
 debug:
-	hugo serve --disableFastRender --port ${ENV_HUGO_PORT}
+	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT}
 
 build:
 	hugo

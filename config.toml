@@ -24,37 +24,29 @@ enableEmoji = true
     # 菜单配置
     [languages.zh-cn.menu]
       [[languages.zh-cn.menu.main]]
-        identifier = "home"
-        pre = ""
-        post = ""
-        name = "主页"
-        url = "/"
-        title = ""
-        weight = 1
-      [[languages.zh-cn.menu.main]]
         identifier = "posts"
         pre = ""
         post = ""
         name = "所有文章"
         url = "/posts/"
         title = ""
-        weight = 2
+        weight = 1
       [[languages.zh-cn.menu.main]]
         identifier = "tags"
         pre = ""
         post = ""
-        name = "所有标签"
+        name = "全部标签"
         url = "/tags/"
         title = ""
-        weight = 3
+        weight = 2
       [[languages.zh-cn.menu.main]]
         identifier = "categories"
         pre = ""
         post = ""
-        name = "所有分类"
+        name = "全部分类"
         url = "/categories/"
         title = ""
-        weight = 4
+        weight = 3
       [[languages.zh-cn.menu.main]]
         identifier = "Android"
         pre = ""
@@ -62,13 +54,21 @@ enableEmoji = true
         name = "Android"
         url = "/categories/android/"
         title = ""
-        weight = 5
+        weight = 4
       [[languages.zh-cn.menu.main]]
         identifier = "golang"
         pre = ""
         post = ""
         name = "golang"
         url = "/categories/golang/"
+        title = ""
+        weight = 5
+      [[languages.zh-cn.menu.main]]
+        identifier = "ruby"
+        pre = ""
+        post = ""
+        name = "ruby"
+        url = "/categories/ruby/"
         title = ""
         weight = 6
       [[languages.zh-cn.menu.main]]
