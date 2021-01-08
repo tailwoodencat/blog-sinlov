@@ -462,7 +462,7 @@ enableEmoji = true
 
   # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
-    google = ""
+    google = "osW5DEGQZw8eZYk0Eg1Uhn057rQozLNWQI7BQO-JGWY"
     bing = ""
     yandex = ""
     pinterest = ""
