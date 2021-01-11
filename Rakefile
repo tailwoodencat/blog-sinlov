@@ -7,6 +7,7 @@ CATEGORIES_CHECK = [
   'Android',
   'gradle',
   'golang',
+  'python',
   'ruby'
 ]
 

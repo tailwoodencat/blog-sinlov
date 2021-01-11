@@ -64,13 +64,21 @@ enableEmoji = true
         title = ""
         weight = 5
       [[languages.zh-cn.menu.main]]
+        identifier = "python"
+        pre = ""
+        post = ""
+        name = "python"
+        url = "/categories/python/"
+        title = ""
+        weight = 6
+      [[languages.zh-cn.menu.main]]
         identifier = "ruby"
         pre = ""
         post = ""
         name = "ruby"
         url = "/categories/ruby/"
         title = ""
-        weight = 6
+        weight = 7
       [[languages.zh-cn.menu.main]]
         identifier = "about"
         pre = ""
@@ -78,7 +86,7 @@ enableEmoji = true
         name = "关于"
         url = "/about/"
         title = ""
-        weight = 7
+        weight = 8
       [[languages.zh-cn.menu.main]]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
@@ -86,7 +94,7 @@ enableEmoji = true
         name = ""
         url = "https://github.com/sinlov"
         title = "GitHub"
-        weight = 8
+        weight = 9
     [languages.zh-cn.params]
       description = "life is short just do it!"
       keywords = ["Github" ,"Linux","HUGO","Tutorial","Technology"]
