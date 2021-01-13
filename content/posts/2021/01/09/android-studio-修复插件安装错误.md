@@ -7,7 +7,7 @@ categories: ['Android']
 tags: ['Android']
 toc:
   enable: true
-  auto: true
+  auto: false
 mapbox:
   accessToken: ""
 share:

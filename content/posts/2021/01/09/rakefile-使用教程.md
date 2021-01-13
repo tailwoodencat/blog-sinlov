@@ -7,7 +7,7 @@ categories: ['ruby']
 tags: ['ruby']
 toc:
   enable: true
-  auto: true
+  auto: false
 mapbox:
   accessToken: ""
 share:

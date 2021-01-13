@@ -92,7 +92,7 @@ task :posts do
     post.puts "tags: ['#{categories}']"
     post.puts "toc:"
     post.puts "  enable: true"
-    post.puts "  auto: true"
+    post.puts "  auto: false"
     post.puts "math:"
     post.puts "  enable: false"
     post.puts "mapbox:"

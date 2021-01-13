@@ -7,7 +7,7 @@ categories: ['golang']
 tags: ['golang']
 toc:
   enable: true
-  auto: true
+  auto: false
 code:
   copy: true
 math:

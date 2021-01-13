@@ -7,7 +7,7 @@ categories: ['python']
 tags: ['python']
 toc:
   enable: true
-  auto: true
+  auto: false
 mapbox:
   accessToken: ""
 share:
