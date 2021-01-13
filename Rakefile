@@ -8,7 +8,8 @@ CATEGORIES_CHECK = [
   'gradle',
   'golang',
   'python',
-  'ruby'
+  'ruby',
+  'basics'
 ]
 
 SOURCE = Pathname.getwd()
