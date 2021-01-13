@@ -7,6 +7,10 @@
 more use see [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/LoveIt)
 
 
+## CI
+
+ - vercel [https://vercel.com/sinlov](https://vercel.com/sinlov)
+
 ## icon
 
 ```html
