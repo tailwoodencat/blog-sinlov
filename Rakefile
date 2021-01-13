@@ -92,6 +92,8 @@ task :posts do
     post.puts "toc:"
     post.puts "  enable: true"
     post.puts "  auto: true"
+    post.puts "math:"
+    post.puts "  enable: false"
     post.puts "mapbox:"
     post.puts '  accessToken: ""'
     post.puts "share:"
