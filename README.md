@@ -13,6 +13,8 @@ more use see [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/Lo
 
 ## icon
 
+- icon from [https://fontawesome.com/](https://fontawesome.com/)
+
 ```html
     {{- $bUrl := .URL | absLangURL -}}
     <link rel="icon" href="{{ $bUrl }}favicon.ico?v=2">
