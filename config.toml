@@ -112,7 +112,7 @@ enableEmoji = true
         [languages.zh-cn.params.home.profile]
           enable = true
           gravatarEmail = ""
-          avatarURL = "images/avatar.png"
+          avatarURL = "/images/avatar.png"
           title = "" #zhaoqiang's blog
           subtitle = "life is short just do it!"
           typeit = true
@@ -147,7 +147,7 @@ enableEmoji = true
   # LoveIt 新增 | 0.2.0 日期格式
   dateFormat = "2006-01-02"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
-  images = ["images/avatar.png"]
+  images = ["/images/avatar.png"]
 
   [params.social]
     [params.social.zhihu]
@@ -256,7 +256,7 @@ enableEmoji = true
       # Gravatar 邮箱，用于优先在主页显示的头像
       gravatarEmail = ""
       # 主页显示头像的 URL
-      avatarURL = "images/avatar.png"
+      avatarURL = "/images/avatar.png"
       # LoveIt 更改 | 0.2.7 主页显示的网站标题 (支持 HTML 格式)
       title = ""
       # 主页显示的网站副标题
