@@ -18,7 +18,7 @@ comment:
   enable: true
 ---
 
-## 服务内存信息获取
+## 服务运行信息获取
 
 ### 说明
 
@@ -450,3 +450,13 @@ monitor: # monitor
 ```
 
 具体代码见 [https://github.com/bridgewwater/gin-api-swagger-temple/blob/main/router/monitor.go#L30](https://github.com/bridgewwater/gin-api-swagger-temple/blob/main/router/monitor.go#L30)
+
+## 监控服务运行各项指标
+
+go 标准库还有一个更好用的可以监控服务运行各项指标和状态的包 `expvar`
+
+expvar 包为监控变量提供了一个标准化的接口
+它以 JSON 格式通过 `/debug/vars` 接口以 HTTP 的方式公开这些监控变量以及我自定义的变量
+
+- 如果url不是/debug/vars，则用 metricBeat 去获取会出问题
+- 当然还可以使用，ES 和 Kibana，可以很轻松的对服务进行监控
