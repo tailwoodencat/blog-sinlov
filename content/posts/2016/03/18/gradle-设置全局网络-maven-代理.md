@@ -18,8 +18,6 @@ comment:
   enable: true
 ---
 
-[TOC]
-
 ## 针对单个项目设置gradle代理
 
 修改项目中的gradle.properties文件，增加配置项：
