@@ -33,17 +33,27 @@ comment:
 
 ## 针对所有的gradle项目设置代理
 
-可以在 `GRADLE_USER_HOME` 下新建文件 `gradle.properties`，然后设置代理。
+可以在 `GRADLE_USER_HOME` 下, 新建文件 `gradle.properties`，然后设置代理
 
 `GRADLE_USER_HOME` 的路径一般如下:
 
 |系统|路径|
 |:--|:--|
-|Linux|/home/<username>/.gradle/|
-|OS X|/Users/<username>/.gradle/|
-|Windows|C:\Users\<username>\.gradle\|
+|Linux| `/home/<username>/.gradle/` |
+|OS X| `/Users/<username>/.gradle/` |
+|Windows| `C:\Users\<username>\.gradle\` |
 
-## 针对所有 maven 仓库按需配置代理
+### gradle.properties 说明
+
+在每个 gradle 工程中，包含很多固定叫 `gradle.properties` 的文件
+
+> properties 文件本质为 `key=value` 键值对，也支持配置域 `[域名称]`
+
+并且 gradle 支持 module 模式，那么每次编译时，就会按照 `默认 -> 全局 -> 工程 -> 模组` 的顺序加载 `gradle.properties`
+那么同一个 key 的值，按照 `默认 -> 全局 -> 工程 -> 模组` 的顺序依次覆盖
+
+
+## 所有 maven 仓库按需配置代理
 
 ### 使用 kts 插件方式
 
@@ -80,7 +90,7 @@ class AliyunMavenRepositoryPlugin: Plugin<Gradle> {
 - 取消使用这个插件，只需要注释 `apply<AliyunMavenRepositoryPlugin>()` 这句即可
 - 其他仓库的代理，设置方法类似
 
-### 使用 gradle 全局初始化脚本配置代理
+### 使用 gradle 全局初始化脚本
 
 在 `$USER_HOME/.gradle` 目录下，创建文件 `init.gradle`
 
