@@ -59,29 +59,30 @@ comment:
 
 ```kotlin
 apply<AliyunMavenRepositoryPlugin>() // cancel global maven proxy annotation this line
+
 class AliyunMavenRepositoryPlugin: Plugin<Gradle> {
+
     override fun apply(gradle: Gradle) {
         gradle.allprojects {
+            // https://maven.aliyun.com/mvn/guide
             repositories {
-                jcenter {
+                jcenter { // http://jcenter.bintray.com/
                     name = "aliyunJcenter"
-                    url = uri("https://maven.aliyun.com/repository/jcenter")
+                    url = uri("https://maven.aliyun.com/repository/public")
                 }
-
-                google {
+                google { // https://maven.google.com/
                     name = "aliyunGoogle"
                     url = uri("https://maven.aliyun.com/repository/google")
                 }
-
-                mavenCentral {
+                mavenCentral { // https://repo1.maven.org/maven2/
                     name = "aliyunMavenCentral"
-                    url = uri("https://maven.aliyun.com/repository/public")
+                    url = uri("https://maven.aliyun.com/repository/central")
                 }
             }
         }
     }
-}
 
+}
 ```
 
 - 不管是安卓还是其他项目，只要是用到 gradle 的项目，在启动时都会自动加载这个插件，将`对应的 maven 仓库地址`转换到阿里云
