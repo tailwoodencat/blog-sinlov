@@ -4,7 +4,7 @@ date: 2016-03-18T16:37:25+08:00
 description: "gradle 设置全局代理设置，包括 网络代理 maven 本地目录设置"
 draft: false
 categories: ['gradle']
-tags: ['gradle', 'maven']
+tags: ['gradle', 'Android', 'maven']
 toc:
   enable: true
   auto: false

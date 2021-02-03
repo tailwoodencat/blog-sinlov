@@ -113,7 +113,7 @@ go tool vet 命令的作用是检查Go语言源代码并且报告可疑的代码
 
 go tool vet 命令的标记
 
-```sh
+```bash
 -all 进行全部检查。如果有其他检查标记被设置，则命令程序会将此值变为false。默认值为true。
 -asmdecl 对汇编语言的源码文件进行检查。默认值为false。
 -assign 检查赋值语句。默认值为false。
@@ -135,7 +135,7 @@ more info see [go 命令教程](https://www.kancloud.cn/cattong/go_command_tutor
 
 资源竞争检查，并发时遇到的问题，会导致并发能力下降, 长时间运行一般会出现这个错误
 
-```sh
+```bash
 panic: runtime error: invalid memory address or nil pointer dereference
 ```
 
@@ -156,14 +156,14 @@ go build -race
 
 安装方法
 
-```sh
+```bash
 go get -v github.com/golang/lint
 go install github.com/golang/lint
 ```
 
 使用
 
-```sh
+```bash
 golint [dir or file]
 ```
 

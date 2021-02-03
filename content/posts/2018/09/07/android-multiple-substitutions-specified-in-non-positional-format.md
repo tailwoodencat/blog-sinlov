@@ -20,7 +20,7 @@ comment:
 
 # 错误日志
 
-```sh
+```bash
 Multiple substitutions specified in non-positional format; did you mean to add the formatted=”false” attribute?
 ```
 

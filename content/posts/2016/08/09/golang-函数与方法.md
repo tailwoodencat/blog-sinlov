@@ -159,7 +159,7 @@ func main() {
 }
 ```
 输出为
-```sh
+```bash
 panic: runtime error: integer divide by zero
 goroutine 1 [running]:
 ```

@@ -48,7 +48,7 @@ func main() {
 
 ## nil 并不能进行比较操作
 
-```sh
+```bash
 invalid operation: nil == nil (operator == not defined on nil)
 ```
 
@@ -56,7 +56,7 @@ invalid operation: nil == nil (operator == not defined on nil)
 
 报错
 
-```sh
+```bash
 time.Second * connectTimeout (mismatched types time.Duration and int)
 ```
 
@@ -66,7 +66,7 @@ time.Second * connectTimeout (mismatched types time.Duration and int)
 
 Golang 的和时间相关的可以直接用数字，但不能是 float 浮点型，也不能直接是数值型变量.
 
-```sh
+```bash
 time.Sleep(10* time.Second)  //可以
 time.Sleep(time.Duration(yourTime) * time.Second) //可以
 

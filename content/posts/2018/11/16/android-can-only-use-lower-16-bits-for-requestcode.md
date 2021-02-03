@@ -20,7 +20,7 @@ comment:
 
 ## 错误日志
 
-```sh
+```bash
 java.lang.IllegalArgumentException: Can only use lower 16 bits for requestCode
 ...
 ...

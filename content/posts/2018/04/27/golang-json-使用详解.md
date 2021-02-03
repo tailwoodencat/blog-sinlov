@@ -337,7 +337,7 @@ should.Equal(json.Number("123"), obj1)
 golang 默认会把 time.Time 用字符串方式序列化
 如果我们想用其他方式表示 time.Time，需要自定义类型并定义 MarshalJSON
 
-```sh
+```bash
 type timeImplementedMarshaler time.Time
 
 func (obj timeImplementedMarshaler) MarshalJSON() ([]byte, error) {
