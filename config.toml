@@ -388,9 +388,9 @@ enableEmoji = true
         clientSecret = ""
       # Valine 评论系统设置
       [params.page.comment.valine]
-        enable = false
-        appId = ""
-        appKey = ""
+        enable = true
+        appId = "Nzcpc6HDaA1YGkfrAYdyuec5-9Nh9j0Va"
+        appKey = "DIprTMRcPoqhB4EPa8AgzSwQ"
         placeholder = ""
         avatar = "mp"
         meta= ""
@@ -406,7 +406,7 @@ enableEmoji = true
         # 位于 "themes/LoveIt/assets/data/emoji/" 目录
         # 可以在你的项目下相同路径存放你自己的数据文件:
         # "assets/data/emoji/"
-        emoji = ""
+        emoji = "google.yml"
       # Facebook 评论系统设置
       [params.page.comment.facebook]
         enable = false
