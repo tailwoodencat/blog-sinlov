@@ -57,6 +57,49 @@ AspectJ 是 Android 平台上一种比较高效和简单的实现 AOP 技术的�
 
 ### AspectJ 引入配置
 
+#### gradle_plugin_android_aspectjx 插件配置
+
+[https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx)
+
+- 在工程跟目录的 `build.gradle` 中配置
+
+```gradle
+buildscript {
+    dependencies {
+        // AOP 配置插件：https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
+    }
+}
+```
+
+- 在使用的模块 `build.gradle` 中配置
+
+```gradle
+...
+apply plugin: 'com.android.application'
+apply plugin: 'android-aspectjx'
+...
+
+android {
+
+    // AOP 配置（exclude 和 include 二选一）
+    aspectjx {
+        // 排除一些第三方库的包名（Gson、 LeakCanary 和 AOP 有冲突）
+//        exclude 'androidx', 'com.google', 'com.squareup', 'org.apache', 'com.alipay', 'com.taobao'
+        // 只对以下包名做 AOP 处理
+        include 'com.sinlov.android'
+        // 否则就会引发冲突
+        // 具体表现为：
+        // 编译不过，报错：java.util.zip.ZipException：Cause: zip file is empty
+        // 编译能过，但运行时报错：ClassNotFoundException: Didn't find class on path: DexPathList
+    }
+}
+```
+
+> tips: 这里使用注意，一定要规范包名，不然 AOP 切面无法正常注入，且可能导致运行异常
+
+#### AspectJ 官方插件
+
 在 `build.grade` 加入以下配置项
 
 ```gradle
@@ -78,7 +121,7 @@ import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 
 dependencies {
-    implementation 'org.aspectj:aspectjrt:1.8.1'
+    implementation 'org.aspectj:aspectjrt:1.9.6'
 }
 
 final def log = project.logger
