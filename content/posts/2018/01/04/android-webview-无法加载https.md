@@ -61,3 +61,35 @@ webView.setWebViewClient(new WebViewClient(){
   }
 );
 ```
+
+## android 9 以上，http 无法在 webview 加载
+
+> 因为 Android 9.0 以后，默认禁止了 http 请求
+
+创建配置文件 `res/xml/network_security_config.xml`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+     <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
+```
+
+在 `AndroidManifest.xml` 中配置
+
+```xml
+<application
+    android:networkSecurityConfig="@xml/network_security_config"
+    >
+</application>
+```
+
+如果出现 `Manifest merger failed with multiple errors, see logs` 则配置为
+
+```xml
+<application
+    android:networkSecurityConfig="@xml/network_security_config"
+    tools:replace="android:networkSecurityConfig"
+    >
+</application>
+```
