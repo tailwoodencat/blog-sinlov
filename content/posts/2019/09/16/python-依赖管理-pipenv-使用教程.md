@@ -24,21 +24,36 @@ $ pip install --user pipenv --upgrade
 # 如果不知道如何将 shell 找不到的命令添加到系统环境变量则这样寻找
 $ python -m site --user-base
 ```
-> macOS 可以通过 brew 安装
-> 如果是 windows 需要设置环境变量到用户目录，方法是添加用户环境变量到 `%AppData%\Python\Python39\Scripts`，注意，不同版本可能不同
+
+- macOS 安装
+
 
 ```bash
+# 可以通过 brew 安装
 $ brew info pipenv
 $ brew install pipenv
 ```
-### pipenv 自动补全
+
+- pipenv 自动补全
+
 添加到 .bashrc 或者 .zshrc 中即可
 
 ```bash
 eval "$(pipenv --completion)"
 ```
 
+### windows 安装 pipenv
+
+```bash
+$ pip install --user pipenv
+```
+
+windows 需要设置环境变量到用户目录，方法是添加用户环境变量到 `%AppData%\Python\Python39\Scripts`
+
+> 注意，不同版本可能不同，比如 python 3.8 为 `%AppData%\Python\Python38\Scripts`
+
 ## pipenv 命令使用
+
 ```bash
 Usage: pipenv [OPTIONS] COMMAND [ARGS]...
 
@@ -86,11 +101,16 @@ Alternatively, run a command inside the virtualenv with pipenv run.
 $ pipenv install --three --skip-lock
 # 如果使用了 requirements.txt 管理依赖可以这样初始化
 $ pipenv install --three -r requirements.txt
+# 使用代理
+$ pipenv install --skip-lock --pypi-mirror https://mirrors.aliyun.com/pypi/simple/
 ```
 
-> pip install 如果目录中没有Pipfile和Pipfile.lock，会自动生成。如果存在，则会自动安装Pipfile中的所有依赖
+> pip install 如果目录中没有Pipfile和Pipfile.lock，会自动生成。如果存在，则会自动检查 Pipfile 中的所有依赖
 
 ## 虚拟环境使用
+
+- 注意，使用 pipenv 的一切操作都在工程目录执行 `pipenv shell` 进入
+- 不要在非 pipenv shell 环境下执行操作
 
 ```bash
 # 进入环境
@@ -102,6 +122,14 @@ $ exit
 > tips: 注意：千万不要使用 deactivate 命令退出
 
 ### 虚拟环境代理
+
+工程目录新建文件 `.env` 内容为
+
+```
+PIPENV_PYPI_MIRROR=https://mirrors.aliyun.com/pypi/simple/
+PIP_DEFAULT_TIMEOUT=300
+PIPENV_IGNORE_VIRTUALENVS=-1
+```
 
 在虚拟环境目录种执行
 
@@ -119,11 +147,25 @@ function pipenv-mirror-tsinghua() {
 }
 ```
 
+
 ### 虚拟环境常用指令
 
 ```bash
+# 锁定依赖
+$ pipenv lock
+# 安装依赖
+$ pipenv sync
+# 安装 开发工具依赖
+$ pipenv sync --dev
+
+# 如果依赖使用了 带有 dev 或者非发布依赖需要这么安装 否则报错
+$ pipenv lock --pre
+$ pipenv sync --pre
+$ pipenv sync --dev --pre
+
 # 检查当前工程，建议任何时候先使用这个命令防止错误
 $ pipenv check
+
 # 显示项目文件所在地
 $ pipenv --where
 # 显示虚拟环境实际文件路径
