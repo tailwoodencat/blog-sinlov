@@ -19,10 +19,13 @@ comment:
 ## PipEnv 安装
 ```bash
 $ pip install --user pipenv
+# 升级 pipenv
+$ pip install --user pipenv --upgrade
 # 如果不知道如何将 shell 找不到的命令添加到系统环境变量则这样寻找
 $ python -m site --user-base
 ```
 > macOS 可以通过 brew 安装
+> 如果是 windows 需要设置环境变量到用户目录，方法是添加用户环境变量到 `%AppData%\Python\Python39\Scripts`，注意，不同版本可能不同
 
 ```bash
 $ brew info pipenv
@@ -79,6 +82,10 @@ Creating a virtualenv for this project...
 # 安装完成后提示
 To activate this project's virtualenv, run pipenv shell.
 Alternatively, run a command inside the virtualenv with pipenv run.
+# 如果安装报错，可以尝试
+$ pipenv install --three --skip-lock
+# 如果使用了 requirements.txt 管理依赖可以这样初始化
+$ pipenv install --three -r requirements.txt
 ```
 
 > pip install 如果目录中没有Pipfile和Pipfile.lock，会自动生成。如果存在，则会自动安装Pipfile中的所有依赖
