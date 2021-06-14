@@ -120,13 +120,13 @@ allprojects {
 
 ```
 
-- 更优的做法是同时移除被代理的仓库
+- 更优的做法是同时移除被代理的仓库，当然前提是代理仓库可用
 
 ```groovy
 allprojects {
     repositories {
         // proxy repository start doc see: https://maven.aliyun.com/mvn/guide
-        def PROXY_URL_REPO_GRADLE_PLUGIN = "https://maven.aliyun.com/repository/gradle-plugin"
+        // def PROXY_URL_REPO_GRADLE_PLUGIN = "https://maven.aliyun.com/repository/gradle-plugin"
         def PROXY_URL_REPO_CENTRAL= "https://maven.aliyun.com/repository/central"
         def PROXY_URL_REPO_GOOGLE = "https://maven.aliyun.com/repository/google"
         def PROXY_URL_REPO_PUBLIC = "https://maven.aliyun.com/repository/public"
@@ -137,10 +137,10 @@ allprojects {
         all { ArtifactRepository repo ->
             if(repo instanceof MavenArtifactRepository){
                 def url = repo.url.toString()
-                if (url.startsWith("https://plugins.gradle.org/m2/")) {
-                    project.logger.lifecycle "Repository ${repo.url} replaced by $PROXY_URL_REPO_GRADLE_PLUGIN."
-                    remove repo
-                }
+                // if (url.startsWith("https://plugins.gradle.org/m2/")) {
+                //     project.logger.lifecycle "Repository ${repo.url} replaced by $PROXY_URL_REPO_GRADLE_PLUGIN."
+                //     remove repo
+                // }
                 if (url.startsWith("https://repo1.maven.org/maven2/")) {
                     project.logger.lifecycle "Repository ${repo.url} replaced by $PROXY_URL_REPO_CENTRAL."
                     remove repo
@@ -167,9 +167,9 @@ allprojects {
                 }
             }
         }
-        maven {
-            url PROXY_URL_REPO_GRADLE_PLUGIN
-        }
+        // maven {
+        //     url PROXY_URL_REPO_GRADLE_PLUGIN
+        // }
         maven {
             url PROXY_URL_REPO_CENTRAL
         }
