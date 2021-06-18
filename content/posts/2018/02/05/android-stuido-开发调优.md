@@ -124,12 +124,12 @@ verbose 标准参数
 | 参数及其默认值                                 | 描述                                                        |
 | :--------------------------------------------- | :---------------------------------------------------------- |
 | -XX:-CITime                                    | 打印消耗在JIT编译的时间                                     |
-| -XX:ErrorFile=./hs_err_pid<pid>.log            | 保存错误日志或者数据到文件中                                |
+| `-XX:ErrorFile=./hs_err_pid<pid>.log`            | 保存错误日志或者数据到文件中                                |
 | -XX:-ExtendedDTraceProbes                      | 开启solaris特有的dtrace探针                                 |
-| -XX:HeapDumpPath=./java_pid<pid>.hprof         | 指定导出堆信息时的路径或文件名                              |
+| `-XX:HeapDumpPath=./java_pid<pid>.hprof`         | 指定导出堆信息时的路径或文件名                              |
 | -XX:-HeapDumpOnOutOfMemoryError                | 当首次遭遇OOM时导出此时堆中相关信息                         |
 | -XX:                                           | 出现致命ERROR之后运行自定义命令                             |
-| -XX:OnOutOfMemoryError="<cmd args>;<cmd args>" | 当首次遭遇OOM时执行自定义命令                               |
+| `-XX:OnOutOfMemoryError="<cmd args>;<cmd args>"` | 当首次遭遇OOM时执行自定义命令                               |
 | -XX:-PrintClassHistogram                       | 遇到Ctrl-Break后打印类实例的柱状信息，与jmap -histo功能相同 |
 | -XX:-PrintConcurrentLocks                      | 遇到Ctrl-Break后打印并发锁的相关信息，与jstack -l功能相同   |
 | -XX:-PrintCommandLineFlags                     | 打印在命令行中出现过的标记                                  |
