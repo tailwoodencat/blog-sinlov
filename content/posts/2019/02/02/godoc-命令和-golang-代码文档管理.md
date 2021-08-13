@@ -4,7 +4,7 @@ date: 2019-02-02T11:25:13+08:00
 description: "desc godoc 命令和 golang 代码文档管理，私有 go doc 生成部署"
 draft: false
 categories: ['golang']
-tags: ['golang']gst
+tags: ['golang', 'go doc']
 toc:
   enable: true
   auto: false
@@ -54,7 +54,7 @@ godoc -http=:6060 -index
 
 - go doc 这个是golang语言自带的文档查看工具
 
-```sh
+```bash
 # 文档工具使用说明
 go help doc
 # 查看当前包的文档索引
@@ -79,21 +79,23 @@ go doc [targetPackage]/[subpackage]
 
 ### 发布私有文档
 
-```
+```bash
 godoc -http=:9090 -index
 ```
 
 这样就在本机使用 [http://127.0.0.1:9090/pkg/](http://127.0.0.1:9090/pkg/) 查看发布的包
-当然你可以使用 [http://127.0.0.1:9090/pkg/github.com/github.com/sinlov/XXXServer/userbiz/](http://127.0.0.1:9090/pkg/github.com/github.com/sinlov/XXXServer/userbiz/) 来查询自己代码 包 `github.com/sinlov/XXXServer/userbiz` 下面的文档
+当然你可以使用 [http://127.0.0.1:9090/pkg/github.com/github.com/sinlov/XXXServer/userbiz/](http://127.0.0.1:9090/pkg/github.com/github.com/sinlov/XXXServer/userbiz/)
+
+来查询自己代码 包 `github.com/sinlov/XXXServer/userbiz` 下面的文档
 
 ### 查询发布文档
 
 通过 godoc -q 命令查询发布文档服务，一般用于在另一个命令行终端甚至另一台能够与本机联通的计算机中通过如下命令进行查询
 
-```sh
+```bash
 # 在本机用godoc命令启动了Go文档Web服务器，且IP地址为192.168.2.201、端口为9090
 godoc -q -server="192.168.2.201:9090" Listener
-```··
+```
 
 - 标记 `-q` 开启了远程查询的功能
 - 标记 `-server="192.168.2.201:9090"` 则指明了远程文档服务器的IP地址和端口号
@@ -119,6 +121,7 @@ type Biz struct {
 func (b *Biz) Init() {
 }
 ```
+
 > 注意 `//` 后面跟空格，才开始解析文档
 >> 如果需要展示代码需要 `//`后紧跟 `[[:tab]]` tab，那么 go doc 就会把这行当做代码来看
 >> 可惜的是，go没法自行在注释里面添加使用链接，而是解析器跟踪使用来生成链接
