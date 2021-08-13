@@ -73,7 +73,7 @@ go doc [targetPackage]/[subpackage]
 
 > 如果是开源的话，提交到 github 上的开源工程，开源直接在 [https://pkg.go.dev/](https://pkg.go.dev/) 直接搜索或者，按下面的格式找到
 >
-> `https://pkg.go.dev/github.com/[user]/[repo]`
+> `https://pkg.go.dev/github.com/{user}/{repo}`
 >
 > 比如 [https://pkg.go.dev/github.com/bar-counter/monitor](https://pkg.go.dev/github.com/bar-counter/monitor)
 
