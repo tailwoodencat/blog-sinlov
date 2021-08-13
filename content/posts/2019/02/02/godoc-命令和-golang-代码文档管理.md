@@ -25,7 +25,7 @@ comment:
 ```bash
 go get golang.org/x/tools/cmd/godoc
 # 使用代理安装
-GOPROXY='https://goproxy.cn,direct' GO111MODULE=on go get golang.org/x/tools/cmd/godoc
+GOPROXY='https://goproxy.cn,direct' go get -v golang.org/x/tools/cmd/godoc
 godoc
 ```
 - godoc 基础使用
