@@ -1,7 +1,7 @@
 ---
 title: "godoc 命令和 golang 代码文档管理"
 date: 2019-02-02T11:25:13+08:00
-description: "desc godoc 命令和 golang 代码文档管理"
+description: "desc godoc 命令和 golang 代码文档管理，私有 go doc 生成部署"
 draft: false
 categories: ['golang']
 tags: ['golang']gst
@@ -71,8 +71,13 @@ go doc [targetPackage]/[subpackage]
 
 ## golang发布查询代码注释文档
 
+> 如果是开源的话，提交到 github 上的开源工程，开源直接在 [https://pkg.go.dev/](https://pkg.go.dev/) 直接搜索或者，按下面的格式找到
+>
+> `https://pkg.go.dev/github.com/[user]/[repo]`
+>
+> 比如 [https://pkg.go.dev/github.com/bar-counter/monitor](https://pkg.go.dev/github.com/bar-counter/monitor)
 
-### 发布文档
+### 发布私有文档
 
 ```
 godoc -http=:9090 -index
@@ -88,7 +93,7 @@ godoc -http=:9090 -index
 ```sh
 # 在本机用godoc命令启动了Go文档Web服务器，且IP地址为192.168.2.201、端口为9090
 godoc -q -server="192.168.2.201:9090" Listener
-```
+```··
 
 - 标记 `-q` 开启了远程查询的功能
 - 标记 `-server="192.168.2.201:9090"` 则指明了远程文档服务器的IP地址和端口号
