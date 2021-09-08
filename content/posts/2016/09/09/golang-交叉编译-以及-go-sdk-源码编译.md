@@ -1,7 +1,7 @@
 ---
-title: "golang 以及 go SDK 交叉编译"
+title: "golang 交叉编译 以及 go SDK 源码编译"
 date: 2016-09-09T11:13:52+08:00
-description: "golang 交叉编译说明 以及 go SDK 源码交叉编译"
+description: "golang 交叉编译说明 以及 go SDK 源码交叉如何交叉编译成开发 sdk"
 draft: false
 categories: ['golang']
 tags: ['golang']
