@@ -1,8 +1,8 @@
 ---
 title: "docker 镜像瘦身 减小镜像尺寸"
 date: 2017-09-01T11:40:39+08:00
-description: "desc docker 镜像瘦身 减小镜像尺寸"
-draft: true
+description: "docker 镜像瘦身 减小镜像尺寸 docker管理技巧 镜像尺寸变大的原因"
+draft: false
 categories: ['docker']
 tags: ['docker']
 toc:
