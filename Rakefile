@@ -4,12 +4,13 @@ require 'date'
 require 'pathname'
 
 CATEGORIES_CHECK = [
-  'Android',
-  'gradle',
-  'golang',
+  'basics',
+  'docker',
   'python',
-  'ruby',
-  'basics'
+  'gradle',
+  'Android',
+  'golang',
+  'ruby'
 ]
 
 SOURCE = Pathname.getwd()
