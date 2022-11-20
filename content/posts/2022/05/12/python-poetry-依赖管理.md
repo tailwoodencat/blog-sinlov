@@ -2,7 +2,7 @@
 title: "python poetry 依赖管理"
 date: 2022-05-12T10:15:44+08:00
 description: "python poetry 依赖管理使用，和进阶使用，包括 black 风格检查"
-draft: true
+draft: false
 categories: ['python']
 tags: ['python']
 toc:
