@@ -1,7 +1,7 @@
 ---
 title: "python 打包输出执行程序"
 date: 2018-09-05T23:47:00+00:00
-description: "python 打包执行程序 PyInstaller 或者 cpython 的使用"
+description: "python 打包 exe 或者 可执行包, 讲解 PyInstaller 或者 cpython 的使用"
 draft: false
 categories: ['python']
 tags: ['python']
