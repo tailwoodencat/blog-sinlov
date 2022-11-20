@@ -1,7 +1,7 @@
 ---
-title: "python 打包输出无依赖环境程序"
-date: 2000-04-16T10:42:41+08:00
-description: "如何打包 python 并 输出无依赖环境 的执行程序"
+title: "python 打包输出执行程序"
+date: 2018-09-05T23:47:00+00:00
+description: "python 打包执行程序 PyInstaller 或者 cpython 的使用"
 draft: false
 categories: ['python']
 tags: ['python']
