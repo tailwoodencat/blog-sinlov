@@ -18,16 +18,16 @@ comment:
   enable: true
 ---
 
-## Android 缓存清理
+### Android 缓存清理
 
-运行到一定程度， AndroidStudio 无法正常使用，打开新工程卡顿，甚至完全卡死在打开工程上
+开发工程量到一定程度， AndroidStudio 无法正常使用，打开新工程卡顿，甚至完全卡死在打开工程上，这种是因为缓存文件索引太大导致的，当然如果你的 SSD 够快，无视这个
 
 ```sh
 rm -rf ~/Library/Caches/AndroidStudio3.0/caches
 rm -rf ~/Library/Caches/AndroidStudio3.0/index
 ```
 
-> 非 macOS 请找到对应目录，删除后会重新索引
+> 非 macOS 请自行找到对应目录，删除后会重新生成缓存文件和索引
 
 ## Android Studio 调优参数
 
@@ -51,6 +51,7 @@ rm -rf ~/Library/Caches/AndroidStudio3.0/index
 #-Duser.language=us
 #-Dfile.encoding=UTF-8
 ```
+
 > 可以根据当前设备的配置，调整参数，yourname 更换为开发者名即可
 
 ### 标准参数
@@ -59,22 +60,23 @@ verbose 标准参数
 
 ```
 -verbose:class
- 输出jvm载入类的相关信息，当jvm报告说找不到类或者类冲突时可此进行诊断。
+输出jvm载入类的相关信息，当jvm报告说找不到类或者类冲突时可此进行诊断。
 -verbose:gc
- 输出每次GC的相关情况。
+输出每次GC的相关情况。
 -verbose:jni
- 输出native方法调用的相关情况，一般用于诊断jni调用错误信息。
+输出native方法调用的相关情况，一般用于诊断jni调用错误信息。
 ```
 
 - 非标准参数又称为扩展参数
 
 一般用到最多的是
+
 ```
--Xms512m  设置JVM促使内存为512m。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存。
+-Xms512m 设置JVM促使内存为512m。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存。
 
 -Xmx512m ，设置JVM最大可用内存为512M。
 
--Xmn200m：设置年轻代大小为200M。整个堆大小=年轻代大小 + 年老代大小 + 持久代大小。持久代一般固定大小为64m，所以增大年轻代后，将会减小年老代大小。此值对系统性能影响较大，Sun官方推荐配置为整个堆的3/8。
+-Xmn200m：设置年轻代大小为200M。整个堆大小=年轻代大小 + 年老代大小 + 持久代大小。持久代一般固定大小为64m，所以增大年轻代后，将会减小年老代大小。此值对系统性能影响较大，Sun官方推荐配置为整个堆的3/8
 
 -XX:SurvivorRatio=8: 值默认为8, eden区, From 区 , to 区.
 也就是 年轻代大小 + 年老代大小 + 持久代大小 比例为8:1:1
@@ -88,32 +90,32 @@ verbose 标准参数
 
 ### 性能调优参数列表
 
-| 参数及其默认值                | 描述                                  |
+| 参数及其默认值 | 描述 |
 | ----------------------------- | ------------------------------------- |
-| -XX:LargePageSizeInBytes=4m   | 设置用于Java堆的大页面尺寸            |
-| -XX:MaxHeapFreeRatio=70       | GC后java堆中空闲量占的最大比例        |
-| -XX:MaxNewSize=size           | 新生成对象能占用内存的最大值          |
-| -XX:MaxPermSize=64m           | 老生代对象能占用内存的最大值          |
-| -XX:MinHeapFreeRatio=40       | GC后java堆中空闲量占的最小比例        |
-| -XX:NewRatio=2                | 新生代内存容量与老生代内存容量的比例  |
-| -XX:NewSize=2.125m            | 新生代对象生成时占用内存的默认值      |
-| -XX:ReservedCodeCacheSize=32m | 保留代码占用的内存容量                |
-| -XX:ThreadStackSize=512       | 设置线程栈大小，若为0则使用系统默认值 |
-| -XX:+UseLargePages            | 使用大页面内存                        |
+| -XX:LargePageSizeInBytes=4m | 设置用于Java堆的大页面尺寸 |
+| -XX:MaxHeapFreeRatio=70 | GC后java堆中空闲量占的最大比例 |
+| -XX:MaxNewSize=size | 新生成对象能占用内存的最大值 |
+| -XX:MaxPermSize=64m | 老生代对象能占用内存的最大值 |
+| -XX:MinHeapFreeRatio=40 | GC后java堆中空闲量占的最小比例 |
+| -XX:NewRatio=2 | 新生代内存容量与老生代内存容量的比例 |
+| -XX:NewSize=2.125m | 新生代对象生成时占用内存的默认值 |
+| -XX:ReservedCodeCacheSize=32m | 保留代码占用的内存容量 |
+| -XX:ThreadStackSize=512 | 设置线程栈大小，若为0则使用系统默认值 |
+| -XX:+UseLargePages | 使用大页面内存 |
 
 ### 行为参数
 
-| 参数及其默认值            | 描述                                                      |
+| 参数及其默认值 | 描述 |
 | :------------------------ | :-------------------------------------------------------- |
-| -XX:-DisableExplicitGC    | 禁止调用System.gc()；但jvm的gc仍然有效                    |
-| -XX:+MaxFDLimit           | 最大化文件描述符的数量限制                                |
-| -XX:+ScavengeBeforeFullGC | 新生代GC优先于Full GC执行                                 |
-| -XX:+UseGCOverheadLimit   | 在抛出OOM之前限制jvm耗费在GC上的时间比例                  |
-| -XX:-UseConcMarkSweepGC   | 对老生代采用并发标记交换算法进行GC                        |
-| -XX:-UseParallelGC        | 启用并行GC                                                |
-| -XX:-UseParallelOldGC     | 对Full GC启用并行，当-XX:-UseParallelGC启用时该项自动启用 |
-| -XX:-UseSerialGC          | 启用串行GC                                                |
-| -XX:+UseThreadPriorities  | 启用本地线程优先级                                        |
+| -XX:-DisableExplicitGC | 禁止调用System.gc()；但jvm的gc仍然有效 |
+| -XX:+MaxFDLimit | 最大化文件描述符的数量限制 |
+| -XX:+ScavengeBeforeFullGC | 新生代GC优先于Full GC执行 |
+| -XX:+UseGCOverheadLimit | 在抛出OOM之前限制jvm耗费在GC上的时间比例 |
+| -XX:-UseConcMarkSweepGC | 对老生代采用并发标记交换算法进行GC |
+| -XX:-UseParallelGC | 启用并行GC |
+| -XX:-UseParallelOldGC | 对Full GC启用并行，当-XX:-UseParallelGC启用时该项自动启用 |
+| -XX:-UseSerialGC | 启用串行GC |
+| -XX:+UseThreadPriorities | 启用本地线程优先级 |
 
 - 串行（SerialGC）是jvm的默认GC方式，一般适用于小型应用和单处理器，算法比较简单，GC效率也较高，但可能会给应用带来停顿；
 - 并行（ParallelGC）是指GC运行时，对应用程序运行没有影响，GC和app两者的线程在并发执行，这样可以最大限度不影响app的运行；
@@ -121,27 +123,27 @@ verbose 标准参数
 
 ### 调试参数列表
 
-| 参数及其默认值                                 | 描述                                                        |
+| 参数及其默认值 | 描述 |
 | :--------------------------------------------- | :---------------------------------------------------------- |
-| -XX:-CITime                                    | 打印消耗在JIT编译的时间                                     |
-| `-XX:ErrorFile=./hs_err_pid<pid>.log`            | 保存错误日志或者数据到文件中                                |
-| -XX:-ExtendedDTraceProbes                      | 开启solaris特有的dtrace探针                                 |
-| `-XX:HeapDumpPath=./java_pid<pid>.hprof`         | 指定导出堆信息时的路径或文件名                              |
-| -XX:-HeapDumpOnOutOfMemoryError                | 当首次遭遇OOM时导出此时堆中相关信息                         |
-| -XX:                                           | 出现致命ERROR之后运行自定义命令                             |
-| `-XX:OnOutOfMemoryError="<cmd args>;<cmd args>"` | 当首次遭遇OOM时执行自定义命令                               |
-| -XX:-PrintClassHistogram                       | 遇到Ctrl-Break后打印类实例的柱状信息，与jmap -histo功能相同 |
-| -XX:-PrintConcurrentLocks                      | 遇到Ctrl-Break后打印并发锁的相关信息，与jstack -l功能相同   |
-| -XX:-PrintCommandLineFlags                     | 打印在命令行中出现过的标记                                  |
-| -XX:-PrintCompilation                          | 当一个方法被编译时打印相关信息                              |
-| -XX:-PrintGC                                   | 每次GC时打印相关信息                                        |
-| -XX:-PrintGC Details                           | 每次GC时打印详细信息                                        |
-| -XX:-PrintGCTimeStamps                         | 打印每次GC的时间戳                                          |
-| -XX:-TraceClassLoading                         | 跟踪类的加载信息                                            |
-| -XX:-TraceClassLoadingPreorder                 | 跟踪被引用到的所有类的加载信息                              |
-| -XX:-TraceClassResolution                      | 跟踪常量池                                                  |
-| -XX:-TraceClassUnloading                       | 跟踪类的卸载信息                                            |
-| -XX:-TraceLoaderConstraints                    | 跟踪类加载器约束的相关信息                                  |
+| -XX:-CITime | 打印消耗在JIT编译的时间 |
+| `-XX:ErrorFile=./hs_err_pid<pid>.log` | 保存错误日志或者数据到文件中 |
+| -XX:-ExtendedDTraceProbes | 开启solaris特有的dtrace探针 |
+| `-XX:HeapDumpPath=./java_pid<pid>.hprof` | 指定导出堆信息时的路径或文件名 |
+| -XX:-HeapDumpOnOutOfMemoryError | 当首次遭遇OOM时导出此时堆中相关信息 |
+| -XX: | 出现致命ERROR之后运行自定义命令 |
+| `-XX:OnOutOfMemoryError="<cmd args>;<cmd args>"` | 当首次遭遇OOM时执行自定义命令 |
+| -XX:-PrintClassHistogram | 遇到Ctrl-Break后打印类实例的柱状信息，与jmap -histo功能相同 |
+| -XX:-PrintConcurrentLocks | 遇到Ctrl-Break后打印并发锁的相关信息，与jstack -l功能相同 |
+| -XX:-PrintCommandLineFlags | 打印在命令行中出现过的标记 |
+| -XX:-PrintCompilation | 当一个方法被编译时打印相关信息 |
+| -XX:-PrintGC | 每次GC时打印相关信息 |
+| -XX:-PrintGC Details | 每次GC时打印详细信息 |
+| -XX:-PrintGCTimeStamps | 打印每次GC的时间戳 |
+| -XX:-TraceClassLoading | 跟踪类的加载信息 |
+| -XX:-TraceClassLoadingPreorder | 跟踪被引用到的所有类的加载信息 |
+| -XX:-TraceClassResolution | 跟踪常量池 |
+| -XX:-TraceClassUnloading | 跟踪类的卸载信息 |
+| -XX:-TraceLoaderConstraints | 跟踪类加载器约束的相关信息 |
 
 ### 查看设置JVM内存信息
 

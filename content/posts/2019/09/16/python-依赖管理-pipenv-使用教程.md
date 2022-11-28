@@ -216,7 +216,7 @@ pyenv install --patch 3.8.7 <<(curl -sSL https://raw.githubusercontent.com/Homeb
 
 #### checking for the platform triplet based on compiler characteristics... darwin
 
-```
+```bash
 $ pyenv install 3.7.7
 Last 10 log lines:
 checking for --with-cxx-main=<compiler>... no
@@ -328,7 +328,7 @@ should use.
 
 ## 已经存在使用 pipenv 管理的项目通过
 
-```log
+```bash
 # 如果不添加参数 --two 或者 --three ，则通过默认的 python 来安装
 $ pipenv install --three
 Creating a virtualenv for this project...
@@ -390,7 +390,7 @@ function pipenv-mirror-tsinghua() {
 
 - 设置永久代理 到环境变量
 
-```rc
+```bash
 export PIPENV_DEFAULT_PYTHON_VERSION=3.7
 export PIPENV_PYPI_MIRROR=https://pypi.tuna.tsinghua.edu.cn/simple
 ```
@@ -512,6 +512,7 @@ $ pipenv lock
 pipenv shell 运行时会读取默认工程目录下的 `.env` 文件作为环境变量文件
 
 例如：
+
 ```env
 ENV_HTTP_PORT=2880
 ```
