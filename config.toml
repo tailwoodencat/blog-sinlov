@@ -320,7 +320,7 @@ enableEmoji = true
       maxShownLines = 36
     # LoveIt 更改 | 0.2.0 KaTeX 数学公式
     [params.page.math]
-      enable = false
+      enable = true
       # 默认块定界符是 $$ ... $$ 和 \\[ ... \\]
       blockLeftDelimiter = ""
       blockRightDelimiter = ""
