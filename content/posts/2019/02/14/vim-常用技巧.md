@@ -1,7 +1,7 @@
 ---
 title: "vim 常用技巧"
 date: 2019-02-14T20:01:00+00:00
-description: "vim 在各种模式下的技巧"
+description: "vim 在各种模式下的技巧, vim 学习游戏介绍"
 draft: false
 categories: ['basics']
 tags: ['basics']
@@ -22,7 +22,7 @@ comment:
 
 **vim 是对vi的扩展，文中的很多操作是vi通用的**
 
-vi是**区分大小写**的命令的，也就是说 `g`与`G` 是不同的命令
+- vi是**区分大小写**的命令的，也就是说 `g`与`G` 是不同的命令
 
 在不同模式下，快捷键是不一样的 模式
 
@@ -30,7 +30,20 @@ vi是**区分大小写**的命令的，也就是说 `g`与`G` 是不同的命令
 - `编辑模式` 用于输入编写等
 - `指令模式` 用于对文本文件进行操作
 
-- vim 文档 [https://vim.fandom.com/wiki/Vim_Tips_Wiki](https://vim.fandom.com/wiki/Vim_Tips_Wiki)
+vim 帮助文档 [https://vim.fandom.com/wiki/Vim_Tips_Wiki](https://vim.fandom.com/wiki/Vim_Tips_Wiki)
+
+## 光标移动训练
+
+vim 光标不是上下左右而是 `hjkl` 那么有款 [pacvim](https://github.com/jmoon018/PacVim) 游戏可以帮助你
+
+[玩游戏前看一定点击这里看说明书](https://github.com/jmoon018/PacVim#how-to-play)
+
+```bash
+# play with docker
+$ docker run -it freedomben/pacvim
+# install at macOS
+$ brew install pacvim
+```
 
 # 常用操作
 
