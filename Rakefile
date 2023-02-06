@@ -73,7 +73,7 @@ task :posts do
   slug = title.downcase.strip.gsub(' ', '-')
   foldername = File.join(CONFIG['posts'], "#{time_parse.strftime('%Y')}", "#{time_parse.strftime('%m')}", "#{time_parse.strftime('%d')}")
   # foldername = File.join(CONFIG['posts'])
-  if not Dir.exists?(foldername)
+  if not Dir.exist?(foldername)
     abort("can not found #{foldername}, just make it") unless FileUtils.mkdir_p(foldername)
   end
   filename = File.join(foldername, "#{slug}.#{CONFIG['post_ext']}")
@@ -111,7 +111,7 @@ end # task :post
 desc "check or init static image path below #{CONFIG['static_image']}"
 task :imgNewStatic do
   foldername = File.join(CONFIG['static_image'], "#{time_parse.strftime('%Y')}", "#{time_parse.strftime('%m')}", "#{time_parse.strftime('%d')}")
-  if not Dir.exists?(foldername)
+  if not Dir.exist?(foldername)
     abort("can not found #{foldername}, just make it") unless FileUtils.mkdir_p(foldername)
   end
   puts "now assets image at: {{baseurl}}/#{foldername}/"

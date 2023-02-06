@@ -2,14 +2,14 @@
 title: "稀疏文件 Sparse File"
 date: 2021-02-19T15:00:43+08:00
 description: "desc 稀疏文件 Sparse File"
-draft: true
+draft: false
 categories: ['basics']
 tags: ['basics']
 toc:
   enable: true
   auto: false
 math:
-  enable: false
+  enable: true
 mapbox:
   accessToken: ""
 share:
