@@ -18,7 +18,9 @@ comment:
   enable: true
 ---
 
-介绍 Android studio GoLand Clion Rider WebStorm PyCharm 等等 jetbrains IDE 日常使用调优方法，解决开发时卡顿，闪退问题
+解决开发时 jetbrains 系 IDE 日常使用，卡顿，卡读条，闪退问题
+
+适用于 Android studio GoLand Clion Rider WebStorm PyCharm 等产品
 
 ## jetbrains 调优参数
 
