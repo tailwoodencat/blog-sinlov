@@ -37,7 +37,7 @@ end
 
 desc "Begin a new posts as: rake posts cg='categories' title='A Title' t='2021-01-01 12:34:59'"
 task :posts do
-  if not Dir.exists?(CONFIG['posts'])
+  if not Dir.exist?(CONFIG['posts'])
     abort("can not make #{CONFIG['posts']}, just make it") unless FileUtils.mkdir_p(CONFIG['posts'])
   end
   abort("rake aborted: '#{CONFIG['posts']}' directory not found.") unless FileTest.directory?(CONFIG['posts'])
