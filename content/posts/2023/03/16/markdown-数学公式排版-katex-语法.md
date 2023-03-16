@@ -566,17 +566,17 @@ E F \quad Vs \quad E\space F
 $$
 ```
 
-> 注意$AB$在公式中手动输入空格是没用的，需要上述的特殊字符作为空格
-
 显示：
 
 <div>
 $$
-A B \quad Vs \quad A\\,B  \\\\
-C D \quad Vs \quad C\\;D   \\\\
-E F \quad Vs \quad E\\space F
+A B \quad Vs \quad A\,B  \\
+C D \quad Vs \quad C\;D   \\
+E F \quad Vs \quad E\space F
 $$
 </div>
+
+> 注意$AB$在公式中手动输入空格是没用的，需要上述的特殊字符作为空格
 
 一些常见的公式单位可表达如下：
 
@@ -590,11 +590,13 @@ $$ 180^\circ=\pi \ \mathrm{rad} $$
 $$ \mathrm{N_A} = 6.022\times10^{23} \ \mathrm{mol}^{-1}$$
 ```
 
+<div>
 $$ \mu_0=4\pi\times10^{-7} \ \left.\mathrm{\mathrm{T}\!\cdot\!\mathrm{m}}\middle/\mathrm{A}\right.$$
 
 $$ 180^\circ=\pi \ \mathrm{rad} $$
 
 $$ \mathrm{N_A} = 6.022\times10^{23} \ \mathrm{mol}^{-1}$$
+</div>
 
 #### 更改文字颜色
 
