@@ -1048,10 +1048,9 @@ $$
 $$
 f(n) =
     \begin{cases}
-        \frac{n}{2}, & \text{if $n$ is even} \\\\[2ex]
-        3n+1,        & \text{if $n$ is odd} \\\\
+        \frac{n}{2}, & \text{if $n$ is even} \\[2ex]
+        3n+1,        & \text{if $n$ is odd} \\
     \end{cases}
-
 $$
 </div>
 
@@ -1144,31 +1143,31 @@ $$
 \begin{array}{c} % 总表格
     \begin{array}{cc} % 第一行内分成两列
         \begin{array}{c|cccc} % 第一列"最小值"数组
-            \text{min} & 0 & 1 & 2 & 3 \\\\
+            \text{min} & 0 & 1 & 2 & 3 \\
             \hline
-            0 & 0 & 0 & 0 & 0 \\\\
-            1 & 0 & 1 & 1 & 1 \\\\
-            2 & 0 & 1 & 2 & 2 \\\\
-            3 & 0 & 1 & 2 & 3 \\\\
+            0 & 0 & 0 & 0 & 0 \\
+            1 & 0 & 1 & 1 & 1 \\
+            2 & 0 & 1 & 2 & 2 \\
+            3 & 0 & 1 & 2 & 3 \\
         \end{array}
         &
         \begin{array}{c|cccc} % 第二列"最大值"数组
-            \text{max} & 0 & 1 & 2 & 3 \\\\
+            \text{max} & 0 & 1 & 2 & 3 \\
             \hline
-            0 & 0 & 1 & 2 & 3 \\\\
-            1 & 1 & 1 & 2 & 3 \\\\
-            2 & 2 & 2 & 2 & 3 \\\\
-            3 & 3 & 3 & 3 & 3 \\\\
+            0 & 0 & 1 & 2 & 3 \\
+            1 & 1 & 1 & 2 & 3 \\
+            2 & 2 & 2 & 2 & 3 \\
+            3 & 3 & 3 & 3 & 3 \\
         \end{array}
     \end{array} % 第一行表格组结束
-    \\\\
+    \\
     \begin{array}{c|cccc} % 第二行 Delta 值数组
-        \Delta & 0 & 1 & 2 & 3 \\\\
+        \Delta & 0 & 1 & 2 & 3 \\
         \hline
-        0 & 0 & 1 & 2 & 3 \\\\
-        1 & 1 & 0 & 1 & 2 \\\\
-        2 & 2 & 1 & 0 & 1 \\\\
-        3 & 3 & 2 & 1 & 0 \\\\
+        0 & 0 & 1 & 2 & 3 \\
+        1 & 1 & 0 & 1 & 2 \\
+        2 & 2 & 1 & 0 & 1 \\
+        3 & 3 & 2 & 1 & 0 \\
     \end{array} % 第二行表格结束
 \end{array} % 总表格结束
 $$
@@ -1289,10 +1288,10 @@ $$
 <div>
 $$
 \begin{array}{cc}
-\mathrm{Bad} & \mathrm{Better} \\\\
-\hline \\\\
-\large e^{i\frac{\pi}2} \quad e^{\frac{i\pi}2}& \large e^{i\pi/2} \\\\[2ex]
-\int_{-\frac\pi2}^\frac\pi2 \sin x\\,dx & \int_{-\pi/2}^{\pi/2}\sin x\\,dx \\\\
+\mathrm{Bad} & \mathrm{Better} \\
+\hline \\
+\large e^{i\frac{\pi}2} \quad e^{\frac{i\pi}2}& \large e^{i\pi/2} \\[2ex]
+\int_{-\frac\pi2}^\frac\pi2 \sin x\\,dx & \int_{-\pi/2}^{\pi/2}\sin x\\,dx \\
   \end{array}
 $$
 </div>
@@ -1314,9 +1313,9 @@ $$
 <div>
 $$
 \begin{array}{cc}
-  \mathrm{Bad} & \mathrm{Better} \\\\
-  \hline \\\\
-  \{x|x^2\in\Bbb Z\} & \{x\mid x^2\in\Bbb Z\} \\\\
+  \mathrm{Bad} & \mathrm{Better} \\
+  \hline \\
+  \{x|x^2\in\Bbb Z\} & \{x\mid x^2\in\Bbb Z\} \\
 \end{array}
 $$
 </div>
@@ -1342,23 +1341,33 @@ $$
 <div>
 $$
 \begin{array}{cc}
-    \mathrm{Bad} & \mathrm{Better} \\\\
-    \hline \\\\
-    \int\int_S f(x)\\,dy\\,dx & \iint_{\boldsymbol{S}} f(x)\\,{\rm d}y\\,{\rm d}x \\\\
-    \int\int\int_V f(x)\\,dz\\,dy\\,dx & \iiint_{\boldsymbol{V}} f(x)\\,{\rm d}z\\,{\rm d}y\\,{\rm d}x \\\\[3ex]
-    \hline \\\\
+    \mathrm{Bad} & \mathrm{Better} \\
+    \hline \\
+    \int\int_S f(x)\,dy\,dx & \iint_{\boldsymbol{S}} f(x)\,{\rm d}y\,{\rm d}x \\
+    \int\int\int_V f(x)\,dz\,dy\,dx & \iiint_{\boldsymbol{V}} f(x)\,{\rm d}z\,{\rm d}y\,{\rm d}x \\[3ex]
+    \hline \\
 \end{array}
 $$
 </div>
 
 使用多重积分时，在被积变量后加入 `\`, 或 `\space`（或在微分符号 `${\rm d}$` 之前）插入一个小的间距否则各种被积变量将会挤成一团
 
+```tex
+$$
+\begin{array}{cc}
+    \mathrm{Bad} & \mathrm{Better} \\
+    \hline \\
+    \iiint_V f(x){\rm d}z {\rm d}y {\rm d}x & \iiint_{\boldsymbol{V}} f(x)\,{\rm d}z\,{\rm d}y\,{\rm d}x \\
+\end{array}
+$$
+```
+
 <div>
 $$
 \begin{array}{cc}
-    \mathrm{Bad} & \mathrm{Better} \\\\
-    \hline \\\\
-    \iiint_V f(x){\rm d}z {\rm d}y {\rm d}x & \iiint_{\boldsymbol{V}} f(x)\\,{\rm d}z\\,{\rm d}y\\,{\rm d}x \\\\
+    \mathrm{Bad} & \mathrm{Better} \\
+    \hline \\
+    \iiint_V f(x){\rm d}z {\rm d}y {\rm d}x & \iiint_{\boldsymbol{V}} f(x)\,{\rm d}z\,{\rm d}y\,{\rm d}x \\
 \end{array}
 $$
 </div>
