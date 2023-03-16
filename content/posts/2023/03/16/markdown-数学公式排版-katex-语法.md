@@ -450,13 +450,11 @@ $$ \rm {SrO} + V^{''}_{Sr} \overset{H_2}{\underset{1300℃}{\Longleftrightarrow}
 
 显示：
 
-$$
 \begin{array}{cc}
     \mathrm{Bad} & \mathrm{Better} \\\\
     \hline \\\\
     \int_0^1 x^2 dx & \int_0^1 x^2  \\,{\rm d}x
 \end{array}
-$$
 
 > 注意: 比较两个式子间 $dx$ 与 ${\rm d} x$ 的不同
 
@@ -562,11 +560,11 @@ $$
 
 显示：
 
-\$\$
+$$
 A B \quad Vs \quad A\\,B  \\\\
 C D \quad Vs \quad C\\;D   \\\\
 E F \quad Vs \quad E\\space F
-\$\$
+$$
 
 一些常见的公式单位可表达如下：
 
