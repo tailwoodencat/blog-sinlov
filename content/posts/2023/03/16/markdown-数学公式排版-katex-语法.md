@@ -562,11 +562,11 @@ $$
 
 显示：
 
-$$
+\$\$
 A B \quad Vs \quad A\\,B  \\\\
 C D \quad Vs \quad C\\;D   \\\\
 E F \quad Vs \quad E\\space F
-$$
+\$\$
 
 一些常见的公式单位可表达如下：
 
