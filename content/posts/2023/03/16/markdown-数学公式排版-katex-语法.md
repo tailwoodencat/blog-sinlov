@@ -627,29 +627,30 @@ $$ \mathrm{N_A} = 6.022\times10^{23} \ \mathrm{mol}^{-1}$$
 $$
 \begin{array}{|rrrrrrrr|}\hline
     \verb+#000+ & \color{#000}{text} & & &
-    \verb+#00F+ & \color{#00F}{text} & & \\\\
+    \verb+#00F+ & \color{#00F}{text} & & \\
     & & \verb+#0F0+ & \color{#0F0}{text} &
-    & & \verb+#0FF+ & \color{#0FF}{text} \\\\
+    & & \verb+#0FF+ & \color{#0FF}{text} \\
     \verb+#F00+ & \color{#F00}{text} & & &
-    \verb+#F0F+ & \color{#F0F}{text} & & \\\\
+    \verb+#F0F+ & \color{#F0F}{text} & & \\
     & & \verb+#FF0+ & \color{#FF0}{text} &
-    & & \verb+#FFF+ & \color{#FFF}{text} \\\\
+    & & \verb+#FFF+ & \color{#FFF}{text} \\
 \hline\end{array}
 $$
 ```
+
 显示：
 
 <div>
 $$
 \begin{array}{|rrrrrrrr|}\hline
     \verb+#000+ & \color{#000}{text} & & &
-    \verb+#00F+ & \color{#00F}{text} & & \\\\
+    \verb+#00F+ & \color{#00F}{text} & & \\
     & & \verb+#0F0+ & \color{#0F0}{text} &
-    & & \verb+#0FF+ & \color{#0FF}{text} \\\\
+    & & \verb+#0FF+ & \color{#0FF}{text} \\
     \verb+#F00+ & \color{#F00}{text} & & &
-    \verb+#F0F+ & \color{#F0F}{text} & & \\\\
+    \verb+#F0F+ & \color{#F0F}{text} & & \\
     & & \verb+#FF0+ & \color{#FF0}{text} &
-    & & \verb+#FFF+ & \color{#FFF}{text} \\\\
+    & & \verb+#FFF+ & \color{#FFF}{text} \\
 \hline\end{array}
 $$
 </div>
@@ -680,20 +681,20 @@ $$
 <div>
 $$
 \begin{array}{|rrrrrrrr|}\hline
-    \verb+#000+ & \color{#000}{text} & \verb+#005+ & \color{#005}{text} & \verb+#00A+ & \color{#00A}{text} & \verb+#00F+ & \color{#00F}{text}  \\\\
-    \verb+#500+ & \color{#500}{text} & \verb+#505+ & \color{#505}{text} & \verb+#50A+ & \color{#50A}{text} & \verb+#50F+ & \color{#50F}{text}  \\\\
-    \verb+#A00+ & \color{#A00}{text} & \verb+#A05+ & \color{#A05}{text} & \verb+#A0A+ & \color{#A0A}{text} & \verb+#A0F+ & \color{#A0F}{text}  \\\\
-    \verb+#F00+ & \color{#F00}{text} & \verb+#F05+ & \color{#F05}{text} & \verb+#F0A+ & \color{#F0A}{text} & \verb+#F0F+ & \color{#F0F}{text}  \\\\
+    \verb+#000+ & \color{#000}{text} & \verb+#005+ & \color{#005}{text} & \verb+#00A+ & \color{#00A}{text} & \verb+#00F+ & \color{#00F}{text}  \\
+    \verb+#500+ & \color{#500}{text} & \verb+#505+ & \color{#505}{text} & \verb+#50A+ & \color{#50A}{text} & \verb+#50F+ & \color{#50F}{text}  \\
+    \verb+#A00+ & \color{#A00}{text} & \verb+#A05+ & \color{#A05}{text} & \verb+#A0A+ & \color{#A0A}{text} & \verb+#A0F+ & \color{#A0F}{text}  \\
+    \verb+#F00+ & \color{#F00}{text} & \verb+#F05+ & \color{#F05}{text} & \verb+#F0A+ & \color{#F0A}{text} & \verb+#F0F+ & \color{#F0F}{text}  \\
 \hline
-    \verb+#080+ & \color{#080}{text} & \verb+#085+ & \color{#085}{text} & \verb+#08A+ & \color{#08A}{text} & \verb+#08F+ & \color{#08F}{text}  \\\\
-    \verb+#580+ & \color{#580}{text} & \verb+#585+ & \color{#585}{text} & \verb+#58A+ & \color{#58A}{text} & \verb+#58F+ & \color{#58F}{text}  \\\\
-    \verb+#A80+ & \color{#A80}{text} & \verb+#A85+ & \color{#A85}{text} & \verb+#A8A+ & \color{#A8A}{text} & \verb+#A8F+ & \color{#A8F}{text}  \\\\
-    \verb+#F80+ & \color{#F80}{text} & \verb+#F85+ & \color{#F85}{text} & \verb+#F8A+ & \color{#F8A}{text} & \verb+#F8F+ & \color{#F8F}{text}  \\\\
+    \verb+#080+ & \color{#080}{text} & \verb+#085+ & \color{#085}{text} & \verb+#08A+ & \color{#08A}{text} & \verb+#08F+ & \color{#08F}{text}  \\
+    \verb+#580+ & \color{#580}{text} & \verb+#585+ & \color{#585}{text} & \verb+#58A+ & \color{#58A}{text} & \verb+#58F+ & \color{#58F}{text}  \\
+    \verb+#A80+ & \color{#A80}{text} & \verb+#A85+ & \color{#A85}{text} & \verb+#A8A+ & \color{#A8A}{text} & \verb+#A8F+ & \color{#A8F}{text}  \\
+    \verb+#F80+ & \color{#F80}{text} & \verb+#F85+ & \color{#F85}{text} & \verb+#F8A+ & \color{#F8A}{text} & \verb+#F8F+ & \color{#F8F}{text}  \\
 \hline
-    \verb+#0F0+ & \color{#0F0}{text} & \verb+#0F5+ & \color{#0F5}{text} & \verb+#0FA+ & \color{#0FA}{text} & \verb+#0FF+ & \color{#0FF}{text}  \\\\
-    \verb+#5F0+ & \color{#5F0}{text} & \verb+#5F5+ & \color{#5F5}{text} & \verb+#5FA+ & \color{#5FA}{text} & \verb+#5FF+ & \color{#5FF}{text}  \\\\
-    \verb+#AF0+ & \color{#AF0}{text} & \verb+#AF5+ & \color{#AF5}{text} & \verb+#AFA+ & \color{#AFA}{text} & \verb+#AFF+ & \color{#AFF}{text}  \\\\
-    \verb+#FF0+ & \color{#FF0}{text} & \verb+#FF5+ & \color{#FF5}{text} & \verb+#FFA+ & \color{#FFA}{text} & \verb+#FFF+ & \color{#FFF}{text}  \\\\
+    \verb+#0F0+ & \color{#0F0}{text} & \verb+#0F5+ & \color{#0F5}{text} & \verb+#0FA+ & \color{#0FA}{text} & \verb+#0FF+ & \color{#0FF}{text}  \\
+    \verb+#5F0+ & \color{#5F0}{text} & \verb+#5F5+ & \color{#5F5}{text} & \verb+#5FA+ & \color{#5FA}{text} & \verb+#5FF+ & \color{#5FF}{text}  \\
+    \verb+#AF0+ & \color{#AF0}{text} & \verb+#AF5+ & \color{#AF5}{text} & \verb+#AFA+ & \color{#AFA}{text} & \verb+#AFF+ & \color{#AFF}{text}  \\
+    \verb+#FF0+ & \color{#FF0}{text} & \verb+#FF5+ & \color{#FF5}{text} & \verb+#FFA+ & \color{#FFA}{text} & \verb+#FFF+ & \color{#FFF}{text}  \\
 \hline\end{array}
 $$
 </div>
@@ -723,9 +724,9 @@ $$
 <div>
 $$
 \begin{matrix}
-    1 & x & x^2 \\\\
-    1 & y & y^2 \\\\
-    1 & z & z^2 \\\\
+    1 & x & x^2 \\
+    1 & y & y^2 \\
+    1 & z & z^2 \\
 \end{matrix}
 $$
 </div>
@@ -735,12 +736,12 @@ $$
 将 `matrix` 替换为 `pmatrix` `bmatrix` `Bmatrix` `vmatrix` `Vmatrix`
 
 ```tex
-$ \begin{matrix} 1 & 2 \\\\ 3 & 4 \\\\ \end{matrix} $
-$ \begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\\\ \end{pmatrix} $
-$ \begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\\\ \end{bmatrix} $
-$ \begin{Bmatrix} 1 & 2 \\\\ 3 & 4 \\\\ \end{Bmatrix} $
-$ \begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\\\ \end{vmatrix} $
-$ \begin{Vmatrix} 1 & 2 \\\\ 3 & 4 \\\\ \end{Vmatrix} $
+$\begin{matrix} 1 & 2 \\ 3 & 4 \\ \end{matrix}$
+$\begin{pmatrix} 1 & 2 \\ 3 & 4 \\ \end{pmatrix}$
+$\begin{bmatrix} 1 & 2 \\ 3 & 4 \\ \end{bmatrix}$
+$\begin{Bmatrix} 1 & 2 \\ 3 & 4 \\ \end{Bmatrix}$
+$\begin{vmatrix} 1 & 2 \\ 3 & 4 \\ \end{vmatrix}$
+$\begin{Vmatrix} 1 & 2 \\ 3 & 4 \\ \end{Vmatrix}$
 ```
 
 | matrix | pmatrix | bmatrix | Bmatrix | vmatrix | Vmatrix |
@@ -754,10 +755,10 @@ $ \begin{Vmatrix} 1 & 2 \\\\ 3 & 4 \\\\ \end{Vmatrix} $
 ```tex
 $$
 \begin{pmatrix}
-    1 & a_1 & a_1^2 & \cdots & a_1^n \\\\
-    1 & a_2 & a_2^2 & \cdots & a_2^n \\\\
-    \vdots & \vdots & \vdots & \ddots & \vdots \\\\
-    1 & a_m & a_m^2 & \cdots & a_m^n \\\\
+    1 & a_1 & a_1^2 & \cdots & a_1^n \\
+    1 & a_2 & a_2^2 & \cdots & a_2^n \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & a_m & a_m^2 & \cdots & a_m^n \\
 \end{pmatrix}
 $$
 ```
@@ -767,10 +768,10 @@ $$
 <div>
 $$
 \begin{pmatrix}
-    1 & a_1 & a_1^2 & \cdots & a_1^n \\\\
-    1 & a_2 & a_2^2 & \cdots & a_2^n \\\\
-    \vdots & \vdots & \vdots & \ddots & \vdots \\\\
-    1 & a_m & a_m^2 & \cdots & a_m^n \\\\
+    1 & a_1 & a_1^2 & \cdots & a_1^n \\
+    1 & a_2 & a_2^2 & \cdots & a_2^n \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    1 & a_m & a_m^2 & \cdots & a_m^n \\
 \end{pmatrix}
 $$
 </div>
@@ -783,8 +784,8 @@ $$
 $$
 \left[
     \begin{array}{cc|c}
-        1 & 2 & 3 \\\\
-        4 & 5 & 6 \\\\
+        1 & 2 & 3 \\
+        4 & 5 & 6 \\
     \end{array}
 \right]
 $$
@@ -796,8 +797,8 @@ $$
 $$
 \left[
     \begin{array}{cc|c}
-        1 & 2 & 3 \\\\
-        4 & 5 & 6 \\\\
+        1 & 2 & 3 \\
+        4 & 5 & 6 \\
     \end{array}
 \right]
 $$
@@ -841,11 +842,11 @@ $$
 
 <div>
 $$
-\left\\{
+\left\{
     \begin{array}{c}
-        a_1x+b_1y+c_1z &=d_1 \\\\
-        a_2x+b_2y+c_2z &=d_2 \\\\
-        a_3x+b_3y+c_3z &=d_3 \\\\
+        a_1x+b_1y+c_1z &=d_1 \\
+        a_2x+b_2y+c_2z &=d_2 \\
+        a_3x+b_3y+c_3z &=d_3 \\
     \end{array}
 \right.
 $$
@@ -866,9 +867,9 @@ $$
 <div>
 $$
 \begin{cases}
-    a_1x+b_1y+c_1z &=d_1 \\\\
-    a_2x+b_2y+c_2z &=d_2 \\\\
-    a_3x+b_3y+c_3z &=d_3 \\\\
+    a_1x+b_1y+c_1z &=d_1 \\
+    a_2x+b_2y+c_2z &=d_2 \\
+    a_3x+b_3y+c_3z &=d_3 \\
 \end{cases}
 $$
 </div>
@@ -902,11 +903,11 @@ $$
 <div>
 $$
 \begin{aligned}
-    \sqrt{37} & = \sqrt{\frac{73^2-1}{12^2}} \\\\
-              & = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\\\
-              & = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\\\
-              & = \frac{73}{12}\sqrt{1-\frac{1}{73^2}} \\\\
-              & \approx \frac{73}{12}\left(1-\frac{1}{2\cdot73^2}\right) \\\\
+    \sqrt{37} & = \sqrt{\frac{73^2-1}{12^2}} \\
+              & = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\
+              & = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\
+              & = \frac{73}{12}\sqrt{1-\frac{1}{73^2}} \\
+              & \approx \frac{73}{12}\left(1-\frac{1}{2\cdot73^2}\right) \\
 \end{aligned}
 $$
 </div>
@@ -934,9 +935,9 @@ $$
 <div>
 $$
 \begin{aligned}
-    v + w & = 0  & \text{Given}  \\\\
-       -w & = -w + 0 & \text{additive identity}   \\\\
-   -w + 0 & = -w + (v + w) & \text{equations} \\\\
+    v + w & = 0  & \text{Given}  \\
+       -w & = -w + 0 & \text{additive identity}   \\
+   -w + 0 & = -w + (v + w) & \text{equations} \\
 \end{aligned}
 $$
 </div>
@@ -967,8 +968,8 @@ $$
 $$
     f(n) =
         \begin{cases}
-            n/2,  & \text{if $n$ is even} \\\\
-            3n+1, & \text{if $n$ is odd} \\\\
+            n/2,  & \text{if $n$ is even} \\
+            3n+1, & \text{if $n$ is odd} \\
         \end{cases}
 $$
 </div>
@@ -995,10 +996,10 @@ $$
 $$
     \left.
         \begin{array}{l}
-            \text{if $n$ is even:} & n/2 \\\\
-            \text{if $n$ is odd:} & 3n+1 \\\\
+            \text{if $n$ is even:} & n/2 \\
+            \text{if $n$ is odd:} & 3n+1 \\
         \end{array}
-    \right\\}
+    \right\}
     =f(n)
 $$
 </div>
@@ -1088,11 +1089,11 @@ $$
 <div>
 $$
 \begin{array}{c|lcr}
-    n & \text{左对齐} & \text{居中对齐} & \text{右对齐} \\\\
+    n & \text{左对齐} & \text{居中对齐} & \text{右对齐} \\
     \hline
-    1 & 0.24 & 1 & 125 \\\\
-    2 & -1 & 189 & -8 \\\\
-    3 & -20 & 2000 & 1+10i \\\\
+    1 & 0.24 & 1 & 125 \\
+    2 & -1 & 189 & -8 \\
+    3 & -20 & 2000 & 1+10i \\
 \end{array}
 $$
 </div>
