@@ -450,11 +450,15 @@ $$ \rm {SrO} + V^{''}_{Sr} \overset{H_2}{\underset{1300℃}{\Longleftrightarrow}
 
 显示：
 
+<div>
+$$
 \begin{array}{cc}
     \mathrm{Bad} & \mathrm{Better} \\\\
     \hline \\\\
     \int_0^1 x^2 dx & \int_0^1 x^2  \\,{\rm d}x
 \end{array}
+$$
+<div/>
 
 > 注意: 比较两个式子间 $dx$ 与 ${\rm d} x$ 的不同
 
