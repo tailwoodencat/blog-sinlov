@@ -452,9 +452,9 @@ $$ \rm {SrO} + V^{''}_{Sr} \overset{H_2}{\underset{1300℃}{\Longleftrightarrow}
 
 $$
 \begin{array}{cc}
-    \mathrm{Bad} & \mathrm{Better} \\
-    \hline \\
-    \int_0^1 x^2 dx & \int_0^1 x^2  \,{\rm d}x
+    \mathrm{Bad} & \mathrm{Better} \\\\
+    \hline \\\\
+    \int_0^1 x^2 dx & \int_0^1 x^2  \\,{\rm d}x
 \end{array}
 $$
 
