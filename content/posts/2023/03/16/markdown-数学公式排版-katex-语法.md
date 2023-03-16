@@ -460,7 +460,7 @@ $$
     \int_0^1 x^2 dx & \int_0^1 x^2  \,{\rm d}x
 \end{array}
 $$
-<div/>
+</div>
 
 > 注意: 比较两个式子间 $dx$ 与 ${\rm d} x$ 的不同
 
@@ -494,11 +494,12 @@ $$
 
 显示：
 
+<div>
 $$
 f\left(
    \left[
      \frac{
-       1+\left\\{x,y\right\\}
+       1+\left\{x,y\right\}
      }{
        \left(
           \frac xy + \frac yx
@@ -509,6 +510,7 @@ f\left(
 \right)
 \tag {行标}
 $$
+</div>
 
 如果你需要在不同的行显示对应括号，可以在每一行对应处使用 `\left.` 或 `\right.` 来放一个 `不存在的括号`
 
