@@ -587,22 +587,23 @@ enableEmoji = true
   [privacy.youtube]
     privacyEnhanced = true
 
-# 用于输出 Markdown 格式文档的设置
-[mediaTypes]
-  [mediaTypes."text/plain"]
-    suffixes = ["md"]
+# # 用于输出 Markdown 格式文档的设置
+# [mediaTypes]
+#   [mediaTypes."text/plain"]
+#     suffixes = ["md"]
 
-# 用于输出 Markdown 格式文档的设置
-[outputFormats.MarkDown]
-  mediaType = "text/plain"
-  isPlainText = true
-  isHTML = false
+# # 用于输出 Markdown 格式文档的设置
+# [outputFormats.MarkDown]
+#   mediaType = "text/plain"
+#   isPlainText = true
+#   isHTML = false
 
 # 用于 Hugo 输出文档的设置
 [outputs]
   # LoveIt 更改 | 0.2.0
   home = ["HTML", "RSS", "JSON"]
-  page = ["HTML", "MarkDown"]
+  page = ["HTML"]
+  # page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
   taxonomyTerm = ["HTML"]

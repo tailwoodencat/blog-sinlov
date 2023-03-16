@@ -23,11 +23,17 @@ init:
 	git submodule init
 	git submodule update
 
+up:
+	git submodule update
+
 debug:
 	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT}
 
 build:
 	hugo
+
+buildRepo:
+	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
 cleanDestinationPath:
 	@if [ -d ${ENV_HUGO_DESTINATION_PATH} ]; \
