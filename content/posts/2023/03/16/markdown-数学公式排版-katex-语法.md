@@ -1281,7 +1281,7 @@ $$
 \mathrm{Bad} & \mathrm{Better} \\
 \hline \\
 \large e^{i\frac{\pi}2} \quad e^{\frac{i\pi}2}& \large e^{i\pi/2} \\[2ex]
-\int_{-\frac\pi2}^\frac\pi2 \sin x\\,dx & \int_{-\pi/2}^{\pi/2}\sin x\\,dx \\
+\int_{-\frac\pi2}^\frac\pi2 \sin x\,dx & \int_{-\pi/2}^{\pi/2}\sin x\,dx \\
   \end{array}
 $$
 ```
@@ -1292,7 +1292,7 @@ $$
 \mathrm{Bad} & \mathrm{Better} \\
 \hline \\
 \large e^{i\frac{\pi}2} \quad e^{\frac{i\pi}2}& \large e^{i\pi/2} \\[2ex]
-\int_{-\frac\pi2}^\frac\pi2 \sin x\\,dx & \int_{-\pi/2}^{\pi/2}\sin x\\,dx \\
+\int_{-\frac\pi2}^\frac\pi2 \sin x\,dx & \int_{-\pi/2}^{\pi/2}\sin x\,dx \\
   \end{array}
 $$
 </div>
