@@ -525,12 +525,14 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{aligned}
     a=&\left(1+2+3+ \cdots \right. \\\\
       &\cdots+\left. \infty-2+\infty-1+\infty\right)
 \end{aligned}
 $$
+</div>
 
 ### 其它命令
 
@@ -568,11 +570,13 @@ $$
 
 显示：
 
+<div>
 $$
 A B \quad Vs \quad A\\,B  \\\\
 C D \quad Vs \quad C\\;D   \\\\
 E F \quad Vs \quad E\\space F
 $$
+</div>
 
 一些常见的公式单位可表达如下：
 
@@ -635,6 +639,7 @@ $$
 ```
 显示：
 
+<div>
 $$
 \begin{array}{|rrrrrrrr|}\hline
     \verb+#000+ & \color{#000}{text} & & &
@@ -647,6 +652,7 @@ $$
     & & \verb+#FFF+ & \color{#FFF}{text} \\\\
 \hline\end{array}
 $$
+</div>
 
 ```tex
 $$
@@ -671,6 +677,7 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{array}{|rrrrrrrr|}\hline
     \verb+#000+ & \color{#000}{text} & \verb+#005+ & \color{#005}{text} & \verb+#00A+ & \color{#00A}{text} & \verb+#00F+ & \color{#00F}{text}  \\\\
@@ -689,6 +696,7 @@ $$
     \verb+#FF0+ & \color{#FF0}{text} & \verb+#FF5+ & \color{#FF5}{text} & \verb+#FFA+ & \color{#FFA}{text} & \verb+#FFF+ & \color{#FFF}{text}  \\\\
 \hline\end{array}
 $$
+</div>
 
 ## 矩阵使用
 
@@ -712,6 +720,7 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{matrix}
     1 & x & x^2 \\\\
@@ -719,6 +728,7 @@ $$
     1 & z & z^2 \\\\
 \end{matrix}
 $$
+</div>
 
 ### 输入边框矩阵
 
@@ -754,6 +764,7 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{pmatrix}
     1 & a_1 & a_1^2 & \cdots & a_1^n \\\\
@@ -762,6 +773,7 @@ $$
     1 & a_m & a_m^2 & \cdots & a_m^n \\\\
 \end{pmatrix}
 $$
+</div>
 
 ### 输入带分割符号的矩阵
 
@@ -780,6 +792,7 @@ $$
 
 显示：
 
+<div>
 $$
 \left[
     \begin{array}{cc|c}
@@ -788,6 +801,7 @@ $$
     \end{array}
 \right]
 $$
+</div>
 
 > 其中 `cc|c` 代表在一个三列矩阵中的第二和第三列之间插入分割线
 
@@ -825,6 +839,7 @@ $$
 $$
 ```
 
+<div>
 $$
 \left\\{
     \begin{array}{c}
@@ -834,7 +849,7 @@ $$
     \end{array}
 \right.
 $$
-
+</div>
 
 或使用条件表达式组 `\begin{cases} … \end{cases}` 来实现相同效果
 
@@ -848,6 +863,7 @@ $$
 $$
 ```
 
+<div>
 $$
 \begin{cases}
     a_1x+b_1y+c_1z &=d_1 \\\\
@@ -855,6 +871,7 @@ $$
     a_3x+b_3y+c_3z &=d_3 \\\\
 \end{cases}
 $$
+</div>
 
 ### 输入一个方程式序列
 
@@ -882,6 +899,7 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{aligned}
     \sqrt{37} & = \sqrt{\frac{73^2-1}{12^2}} \\\\
@@ -891,6 +909,7 @@ $$
               & \approx \frac{73}{12}\left(1-\frac{1}{2\cdot73^2}\right) \\\\
 \end{aligned}
 $$
+</div>
 
 ### 方程式序列每一行注释
 
@@ -912,6 +931,7 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{aligned}
     v + w & = 0  & \text{Given}  \\\\
@@ -919,6 +939,7 @@ $$
    -w + 0 & = -w + (v + w) & \text{equations} \\\\
 \end{aligned}
 $$
+</div>
 
 ## 条件表达式组的使用
 
@@ -942,6 +963,7 @@ $$
 
 显示：
 
+<div>
 $$
     f(n) =
         \begin{cases}
@@ -949,6 +971,7 @@ $$
             3n+1, & \text{if $n$ is odd} \\\\
         \end{cases}
 $$
+</div>
 
 ### 左侧对齐的条件表达式组
 
@@ -968,6 +991,7 @@ $$
 
 显示：
 
+<div>
 $$
     \left.
         \begin{array}{l}
@@ -977,6 +1001,7 @@ $$
     \right\\}
     =f(n)
 $$
+</div>
 
 
 ### 适配指定行高
@@ -997,6 +1022,7 @@ f(n) =
 $$
 ```
 
+<div>
 $$
 f(n) =
     \begin{cases}
@@ -1004,6 +1030,7 @@ f(n) =
         3n+1,        & \text{if $n$ is odd} \\\\
     \end{cases}
 $$
+</div>
 
 适配2倍行高[2ex]：
 
@@ -1017,13 +1044,16 @@ f(n) =
 $$
 ```
 
+<div>
 $$
 f(n) =
     \begin{cases}
         \frac{n}{2}, & \text{if $n$ is even} \\\\[2ex]
         3n+1,        & \text{if $n$ is odd} \\\\
     \end{cases}
+
 $$
+</div>
 
 其实可以在任意换行处使用 `\\[2ex]` 语句，只要你觉得合适
 
@@ -1056,6 +1086,7 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{array}{c|lcr}
     n & \text{左对齐} & \text{居中对齐} & \text{右对齐} \\\\
@@ -1065,6 +1096,7 @@ $$
     3 & -20 & 2000 & 1+10i \\\\
 \end{array}
 $$
+</div>
 
 ### 输入一个嵌套的数组或表格
 
@@ -1107,6 +1139,7 @@ $$
 
 显示：
 
+<div>
 $$
 \begin{array}{c} % 总表格
     \begin{array}{cc} % 第一行内分成两列
@@ -1139,6 +1172,7 @@ $$
     \end{array} % 第二行表格结束
 \end{array} % 总表格结束
 $$
+</div>
 
 ## 连分数使用
 
@@ -1163,6 +1197,7 @@ $$
 
 显示：
 
+<div>
 $$
 x = a_0 + \cfrac{1^2}{a_1 +
             \cfrac{2^2}{a_2 +
@@ -1174,6 +1209,7 @@ x = a_0 + \cfrac{1^2}{a_1 +
             }
           }
 $$
+</div>
 
 不要使用普通的 `\frac` 或 `\over` 来生成连分数，这样会看起来很奇怪，比如
 
@@ -1191,6 +1227,7 @@ x = a_0 + \frac{1^2}{a_1 +
 $$
 ```
 
+<div>
 $$
 x = a_0 + \frac{1^2}{a_1 +
             \frac{2^2}{a_2 +
@@ -1202,6 +1239,7 @@ x = a_0 + \frac{1^2}{a_1 +
             }
           }
 $$
+</div>
 
 不过，你可以使用 `\frac` 来表达连分数的**紧缩记法**
 
@@ -1215,6 +1253,7 @@ x = a_0 + \frac{1^2}{a_1 +}
 $$
 ```
 
+<div>
 $$
 x = a_0 + \frac{1^2}{a_1 +}
           \frac{2^2}{a_2 +}
@@ -1222,7 +1261,7 @@ x = a_0 + \frac{1^2}{a_1 +}
           \frac{4^4}{a_4 +}
           \cdots
 $$
-
+</div>
 
 ## 其他注意事项
 
@@ -1247,6 +1286,7 @@ $$
 $$
 ```
 
+<div>
 $$
 \begin{array}{cc}
 \mathrm{Bad} & \mathrm{Better} \\\\
@@ -1255,6 +1295,7 @@ $$
 \int_{-\frac\pi2}^\frac\pi2 \sin x\\,dx & \int_{-\pi/2}^{\pi/2}\sin x\\,dx \\\\
   \end{array}
 $$
+</div>
 
 ### 分隔符时会产生错误的间距
 
@@ -1270,6 +1311,7 @@ $$
 $$
 ```
 
+<div>
 $$
 \begin{array}{cc}
   \mathrm{Bad} & \mathrm{Better} \\\\
@@ -1277,6 +1319,7 @@ $$
   \{x|x^2\in\Bbb Z\} & \{x\mid x^2\in\Bbb Z\} \\\\
 \end{array}
 $$
+</div>
 
 ### 多重积分符号
 
@@ -1296,6 +1339,7 @@ $$
 $$
 ```
 
+<div>
 $$
 \begin{array}{cc}
     \mathrm{Bad} & \mathrm{Better} \\\\
@@ -1305,9 +1349,11 @@ $$
     \hline \\\\
 \end{array}
 $$
+</div>
 
 使用多重积分时，在被积变量后加入 `\`, 或 `\space`（或在微分符号 `${\rm d}$` 之前）插入一个小的间距否则各种被积变量将会挤成一团
 
+<div>
 $$
 \begin{array}{cc}
     \mathrm{Bad} & \mathrm{Better} \\\\
@@ -1315,3 +1361,4 @@ $$
     \iiint_V f(x){\rm d}z {\rm d}y {\rm d}x & \iiint_{\boldsymbol{V}} f(x)\\,{\rm d}z\\,{\rm d}y\\,{\rm d}x \\\\
 \end{array}
 $$
+</div>
