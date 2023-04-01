@@ -6,10 +6,13 @@ require 'pathname'
 CATEGORIES_CHECK = [
   'basics',
   'docker',
+  'rust',
+  'unity',
+  'unreal',
   'python',
+  'golang',
   'gradle',
   'Android',
-  'golang',
   'ruby'
 ]
 
