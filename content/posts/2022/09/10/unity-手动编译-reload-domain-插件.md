@@ -32,7 +32,7 @@ Unity工作流中
 
 Unity 有个设置项 Enter Play Mode Setting  [可配置的进入运行模式 - Unity 手册](https://docs.unity.cn/cn/2021.3/Manual/ConfigurableEnterPlayMode.html)
 
-- 禁用`Reload Domain` 可以快速进入播放模式.但是每次修改完脚本还是会重新reload
+- 禁用`Reload Domain` 可以快速进入播放模式.但是每次修改完脚本还是会重新 Reload
 
 > 还有就是对于`静态数据如果没有重新 Reload 还是会保持之前的数据`(**建议不要禁用**) 具体查看: [https://docs.unity.cn/cn/2021.3/Manual/DomainReloading.html](https://docs.unity.cn/cn/2021.3/Manual/DomainReloading.html)
 
@@ -42,13 +42,14 @@ Unity 有个设置项 Enter Play Mode Setting  [可配置的进入运行模式 -
 
 ## 使用方法
 
-- 支持 unity 2019, 2020, 2021, 以及更高版本
+- 支持 unity 2019.3+, 2020.+, 2021.+, 以及更高版本
 
 插件导入后，菜单栏`Tools->Tools/Manual/ScriptCompile/Open Reload Domain` 开启
 
 然后需要 reload 时候按下 `ctrl + t/cmd + t` 即可
 
-注意： `如果开启,新建脚本或者导入插件的时候,都手动 reload 一下`
+注意：`如果开启,新建脚本或者导入插件的时候,都手动 reload 一下`
+注意: `本插件使用了 `
 
 当然如果关闭了 `Auto Refresh`，那么需要手动执行，按下 `ctrl/cmd + r` 再按 `ctrl/cmd + t` 即可
 
@@ -68,9 +69,7 @@ unity 提供了两个API
 - `EditorApplication.LockReloadAssemblies();` 加锁
 - `EditorApplication.UnlockReloadAssemblies();` 解锁
 
-配合` Enter Play Mode Setting` 就可以大大减少等待时间
+配合 [`Edit->Project Settings->Editor->Enter Play Mode Settings`](https://docs.unity3d.com/2019.3/Documentation/Manual/ConfigurableEnterPlayMode.html) 就可以大大减少等待时间
 
-获取 `CanReloadAssemblies` 是通过
-
-[https://github.com/INeatFreak/unity-background-recompiler](https://github.com/INeatFreak/unity-background-recompiler) 来自这个库来反射获取是否锁住
-
+> 注意: 获取 `CanReloadAssemblies` 是通过 [https://github.com/INeatFreak/unity-background-recompiler](https://github.com/INeatFreak/unity-background-recompiler) 这个库来反射获取是否锁住
+> 那么获取不到会默认设置不生效
