@@ -19,7 +19,7 @@ init:
 	@echo "=> this project use hugo more info: https://github.com/gohugoio/hugo"
 	@echo "-> if not install just see https://gohugo.io/getting-started/"
 	hugo version
-	# or use git clone --recurse-submodules
+	$(info or use git clone --recurse-submodules)
 	git submodule init
 	git submodule update
 
