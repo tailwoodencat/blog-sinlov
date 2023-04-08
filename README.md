@@ -22,16 +22,25 @@ more use see [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/Lo
 
 ## usage
 
-- install node.js
+- install [make](https://www.gnu.org/software/make/)
+- install [node.js](https://nodejs.org/)
 
 ```bash
-# windows
+### install hugo
+## windows
+# fix css/style.scss build error
+scoop install hugo-extended
+# with out Sass/SCSS
 scoop install hugo
-
-# macos
+## macos
 brew install hugo
+## linux
+sudo apt install hugo
+sudo dnf install hugo
+sudo pacman install hugo
 
-# init
+
+# init to check once
 make init
 
 # local debug
