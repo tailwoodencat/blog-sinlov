@@ -36,7 +36,7 @@ buildRepo: up
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
 cleanDestinationPath:
-	@RM -r ${ENV_HUGO_DESTINATION_PATH}
+	-@RM -r ${ENV_HUGO_DESTINATION_PATH}
 	$(info has clean ${ENV_HUGO_DESTINATION_PATH})
 
 destination: cleanDestinationPath up
