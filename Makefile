@@ -32,14 +32,14 @@ debug:
 build:
 	hugo
 
-buildRepo:
+buildRepo: up
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
 cleanDestinationPath:
 	@RM -r ${ENV_HUGO_DESTINATION_PATH}
 	$(info has clean ${ENV_HUGO_DESTINATION_PATH})
 
-destination: cleanDestinationPath
+destination: cleanDestinationPath up
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 	cp static/favicon.ico ${ENV_HUGO_DESTINATION_PATH}
 	cd public && generate-manifest --url=${ENV_HUGO_BASE_URL}
