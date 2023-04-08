@@ -1,7 +1,7 @@
 ---
 title: "vim 常用快捷键与技巧"
 date: 2016-02-03T13:53:33+08:00
-description: "desc vim 常用快捷键与技巧"
+description: "vim 常用快捷键与技巧"
 draft: true
 categories: ['basics']
 tags: ['basics', 'vim']

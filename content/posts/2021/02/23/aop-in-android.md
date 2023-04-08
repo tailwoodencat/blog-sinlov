@@ -1,8 +1,8 @@
 ---
 title: "AOP in Android"
 date: 2021-02-23T11:24:21+08:00
-description: "desc AOP in Android"
-draft: true
+description: "Android 使用 AOP 注入"
+draft: false
 categories: ['Android']
 tags: ['Android']
 toc:
@@ -721,7 +721,7 @@ public void camera() {
 @MPermisson(value = "你的权限")
 ```
 
-#### 写在最后
+### 其它用法
 
 剩余的几个用法，比如
 
