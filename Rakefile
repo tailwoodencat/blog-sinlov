@@ -85,6 +85,14 @@ task :posts do
 
   # slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   slug = title.downcase.strip.gsub(' ', '-')
+  slug = slug.strip.gsub(':', ' ')
+  slug = slug.strip.gsub('*', ' ')
+  slug = slug.strip.gsub('?', ' ')
+  slug = slug.strip.gsub('"', ' ')
+  slug = slug.strip.gsub('<', ' ')
+  slug = slug.strip.gsub('>', ' ')
+  # fix windows path
+
   foldername = File.join(CONFIG['posts'], "#{time_parse.strftime('%Y')}", "#{time_parse.strftime('%m')}", "#{time_parse.strftime('%d')}")
   # foldername = File.join(CONFIG['posts'])
   # if not Dir.exists?(foldername) # ruby 2.0
