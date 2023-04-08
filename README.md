@@ -19,3 +19,28 @@ more use see [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/Lo
     {{- $bUrl := .URL | absLangURL -}}
     <link rel="icon" href="{{ $bUrl }}favicon.ico?v=2">
 ```
+
+## usage
+
+- install node.js
+
+```bash
+# windows
+scoop install hugo
+
+# macos
+brew install hugo
+
+# init
+make init
+
+# local debug
+make debug
+
+# build
+make build
+make buildRepo
+
+# if tools error try make utils to install
+make destination
+```

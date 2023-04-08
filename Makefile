@@ -36,13 +36,11 @@ buildRepo:
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
 cleanDestinationPath:
-	@if [ -d ${ENV_HUGO_DESTINATION_PATH} ]; \
-	then rm -rf ${ENV_HUGO_DESTINATION_PATH} && echo "~> cleaned ${ENV_HUGO_DESTINATION_PATH}"; \
-	else echo "~> has cleaned ${ENV_HUGO_DESTINATION_PATH}"; \
-	fi
+	@RM -r ${ENV_HUGO_DESTINATION_PATH}
+	$(info has clean ${ENV_HUGO_DESTINATION_PATH})
 
 destination: cleanDestinationPath
-	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc
+	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 	cp static/favicon.ico ${ENV_HUGO_DESTINATION_PATH}
 	cd public && generate-manifest --url=${ENV_HUGO_BASE_URL}
 
