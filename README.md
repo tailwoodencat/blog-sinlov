@@ -5,6 +5,10 @@
 ## theme
 
 now theme [https://github.com/HEIGE-PCloud/DoIt](https://github.com/HEIGE-PCloud/DoIt)
+config file [https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/#site-configuration](https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/#site-configuration)
+
+### old theme
+
 - LoveIt [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/LoveIt)
 
 
