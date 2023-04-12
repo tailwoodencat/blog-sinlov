@@ -26,6 +26,9 @@ init:
 up:
 	git submodule update
 
+upRemote:
+	git submodule update --remote --merge
+
 debug:
 	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT}
 

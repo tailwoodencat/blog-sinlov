@@ -4,7 +4,8 @@
 
 ## theme
 
-more use see [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/LoveIt)
+now theme [https://github.com/HEIGE-PCloud/DoIt](https://github.com/HEIGE-PCloud/DoIt)
+- LoveIt [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/LoveIt)
 
 
 ## CI

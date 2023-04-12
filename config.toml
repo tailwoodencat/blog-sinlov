@@ -7,7 +7,8 @@ defaultContentLanguage = "zh-cn"
 #languageCode = "en-us"
 
 themesDir = "themes"
-theme = "LoveIt"
+# theme = "LoveIt"
+theme = "DoIt"
 
 enableRobotsTXT = true
 enableGitInfo = true
@@ -147,8 +148,9 @@ enableEmoji = true
         Douban = "sinlov"
 
 [params]
-  # LoveIt 更改 | 0.2.0 LoveIt 主题版本
-  version = "0.2.X"
+  # DoIt 改为 "0.3.x"
+  # LoveIt 更改 | "0.2.x" LoveIt 主题版本
+  version = "0.3.X"
   # 网站描述
   description = "这是我的全新 Hugo 网站"
   # 网站关键词
@@ -173,7 +175,8 @@ enableEmoji = true
   # LoveIt 新增 | 0.2.0 应用图标配置
   [params.app]
     # 当添加到 iOS 主屏幕或者 Android 启动器时的标题, 覆盖默认标题
-    title = "LoveIt"
+    title = "DoIt"
+    # title = "LoveIt"
     # 是否隐藏网站图标资源链接
     noFavicon = false
     # 更现代的 SVG 网站图标, 可替代旧的 .png 和 .ico 文件
@@ -188,8 +191,8 @@ enableEmoji = true
   # LoveIt 新增 | 0.2.0 搜索配置
   [params.search]
     enable = true
-    # 搜索引擎的类型 ("lunr", "algolia")
-    type = "lunr"
+    # 搜索引擎的类型 ("lunr", "algolia", "fuse")
+    type = "fuse"
     # 文章内容最长索引长度
     contentLength = 4000
     # 搜索框的占位提示语
@@ -213,6 +216,9 @@ enableEmoji = true
     desktopMode = "fixed"
     # 移动端导航栏模式 ("fixed", "normal", "auto")
     mobileMode = "auto"
+    # DoIt 新增 | 0.2.11 主题切换模式
+    # 主题切换模式 ("switch", "select")
+    themeChangeMode = "select"
     # LoveIt 新增 | 0.2.0 页面头部导航栏标题配置
     [params.header.title]
       # LOGO 的 URL
