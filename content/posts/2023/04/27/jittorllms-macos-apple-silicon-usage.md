@@ -32,10 +32,9 @@ comment:
 
 ## 运行要求
 
-内存要求：至少2G，推荐32G
-磁盘空间：至少 40GB 空闲磁盘空间，用于下载参数和存储交换文件
-
-Python版本要求至少3.8
+- 内存要求：至少2G，推荐32G
+- 磁盘空间：至少 40GB 空闲磁盘空间，用于下载参数和存储交换文件
+- Python 版本要求 3.8
 
 ### 安装 conda
 
@@ -68,6 +67,9 @@ $ conda --version
 conda 23.1.0
 ```
 
+> 配置 [Anaconda 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)，因为后面安装会用到
+> 配置 [PyPI 镜像加速](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+
 ## 运行方法
 
 - 需要单独隔离 conda 来执行
@@ -80,8 +82,10 @@ $ git clone https://github.com/Jittor/JittorLLMs.git --depth 1
 
 $ cd JittorLLMs
 # create new env
-$ conda create -n JittorLLMs python=3.8
+$ conda create -y -n JittorLLMs python=3.8
 $ conda activate JittorLLMs
+# 配置加速
+$ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # isntall
 # -i 指定用jittor的源， -I 强制重装Jittor版torch
 $ pip install -r requirements.txt -i https://pypi.jittor.org/simple -I

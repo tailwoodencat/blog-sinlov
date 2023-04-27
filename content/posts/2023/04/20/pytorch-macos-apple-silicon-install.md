@@ -49,6 +49,7 @@ $ conda --version
 
 ### 配置代理
 
+- 配置 [PyPI 镜像加速](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
 - [Anaconda 镜像使用帮助 https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
 
 直接修改 `~/.condarc` 配置文件

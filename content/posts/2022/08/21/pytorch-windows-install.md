@@ -34,6 +34,9 @@ comment:
 - 去站点 [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads) 查找 cuda 的下载
 - 根据上面的系统选择 比如 [https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=runfile_local](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=runfile_local)
 
+> 配置 [Anaconda 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)，因为后面安装会用到
+> 配置 [PyPI 镜像加速](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+
 ### CUDA Toolkit 历史版本收集
 
 - [cuda-toolkit-archive 发布地址](https://developer.nvidia.com/cuda-toolkit-archive)
