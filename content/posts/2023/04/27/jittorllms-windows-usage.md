@@ -1,7 +1,7 @@
 ---
 title: "JittorLLMs windows 使用"
 date: 2023-04-27T19:05:54+08:00
-description: "desc JittorLLMs windows 使用"
+description: "JittorLLMs windows 下的安装和使用"
 draft: false
 categories: ['AI']
 tags: ['AI']
@@ -28,6 +28,8 @@ comment:
 2.  支持广：目前支持了4种大模型：[ChatGLM大模型](https://github.com/THUDM/ChatGLM-6B)；鹏程[盘古大模型](https://openi.org.cn/pangu/)；BlinkDL的[ChatRWKV](https://github.com/BlinkDL/ChatRWKV)；国外Meta的[LLaMA大模型](https://github.com/facebookresearch/llama)
 
 [Jittor 官方文档](https://cg.cs.tsinghua.edu.cn/jittor/assets/docs/index.html)
+
+> 建议使用 CUDA 运行，比 CPU 模式快 10倍
 
 ## 运行要求
 
