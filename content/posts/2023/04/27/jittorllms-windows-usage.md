@@ -18,8 +18,6 @@ comment:
   enable: true
 ---
 
-[TOC]
-
 ## 介绍
 
 [JittorLLL](https://github.com/Jittor/JittorLLMs) 计图大模型推理库
@@ -29,7 +27,8 @@ comment:
 
 [Jittor 官方文档](https://cg.cs.tsinghua.edu.cn/jittor/assets/docs/index.html)
 
-> 建议使用 CUDA 运行，比 CPU 模式快 10倍
+> 建议使用 CUDA 运行，比 CPU 模式快 10倍，使用 1070 8G 显存，开启交换
+> api 回答根据问题答案会等很久（实现原因导致，会完全等问题结束才返回），如果是 命令行模式，则有交互效果
 
 ## 运行要求
 

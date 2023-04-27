@@ -28,6 +28,7 @@ comment:
 [Jittor 官方文档](https://cg.cs.tsinghua.edu.cn/jittor/assets/docs/index.html)
 
 > 本文已经在 macOS M1 Max 64G 上以原生 arm64 跑起来了，理论上 32G 也行，不过因为是 CPU 模式回答会比较慢
+> api 回答根据问题答案会等很久（实现原因导致，会完全等问题结束才返回），如果是 命令行模式，则有交互效果
 
 ## 运行要求
 
