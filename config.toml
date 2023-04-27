@@ -49,13 +49,21 @@ enableEmoji = true
         title = ""
         weight = 3
       [[languages.zh-cn.menu.main]]
+        identifier = "AI"
+        pre = ""
+        post = ""
+        name = "AI"
+        url = "/categories/AI/"
+        title = ""
+        weight = 4
+      [[languages.zh-cn.menu.main]]
         identifier = "docker"
         pre = ""
         post = ""
         name = "docker"
         url = "/categories/docker/"
         title = ""
-        weight = 4
+        weight = 5
       [[languages.zh-cn.menu.main]]
         identifier = "unity"
         pre = ""
@@ -63,7 +71,7 @@ enableEmoji = true
         name = "unity"
         url = "/categories/unity/"
         title = ""
-        weight = 5
+        weight = 6
       [[languages.zh-cn.menu.main]]
         identifier = "Android"
         pre = ""
@@ -71,7 +79,7 @@ enableEmoji = true
         name = "Android"
         url = "/categories/android/"
         title = ""
-        weight = 6
+        weight = 7
       [[languages.zh-cn.menu.main]]
         identifier = "python"
         pre = ""
@@ -79,21 +87,21 @@ enableEmoji = true
         name = "python"
         url = "/categories/python/"
         title = ""
-        weight = 7
+        weight = 8
+      [[languages.zh-cn.menu.main]]
+        identifier = "rust"
+        pre = ""
+        post = ""
+        name = "rust"
+        url = "/categories/rust/"
+        title = ""
+        weight = 9
       [[languages.zh-cn.menu.main]]
         identifier = "golang"
         pre = ""
         post = ""
         name = "golang"
         url = "/categories/golang/"
-        title = ""
-        weight = 8
-      [[languages.zh-cn.menu.main]]
-        identifier = "ruby"
-        pre = ""
-        post = ""
-        name = "ruby"
-        url = "/categories/ruby/"
         title = ""
         weight = 9
       [[languages.zh-cn.menu.main]]
