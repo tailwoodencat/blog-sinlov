@@ -38,7 +38,7 @@ Python版本要求至少3.8
 CUDA: 1.11 以上
 
 - [https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/)
-- [Miniconda3-py39_4.10.3-Windows-x86_64.exe](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py39_4.10.3-Windows-x86_64.exe)
+- 本文使用 [Miniconda3-py39_4.10.3-Windows-x86_64.exe](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py39_4.10.3-Windows-x86_64.exe)
 
 - 安装后 通过 `Anaconda Powershell Promot` 使用
 
