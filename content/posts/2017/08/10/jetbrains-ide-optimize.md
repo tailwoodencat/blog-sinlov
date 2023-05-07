@@ -24,6 +24,8 @@ comment:
 
 ## jetbrains 调优参数
 
+- 查看当前的内存占用，`action` 输入 `Show Memor Indicator` 查看内存占用，这个功能本身有不少消耗，建议在调优完毕后建议关闭
+
 `在 help 菜单` 中选择 `Edit Custom VM Options`，如果没有建立，点击确认建立，内容为
 
 - 8G 总内存的 PC 开发调优参数
@@ -49,19 +51,9 @@ comment:
 
 - 如果是 16G 或者 以上，建议只对 `Xmx` `MaxPermSize` 按对应倍率调整，比如 16G 总内存可以这么写
 - 调优是一个平衡过程，不建议贪多，把某些参数配置过高，导致影响到其他应用的资源，最终导致整个 PC 卡顿
+- 其它 jvm 常用参数
 
 ```properties
--Xms256m
--Xmx4096m
--XX:SurvivorRatio=8
--XX:PermSize=512m
--XX:MaxPermSize=1024m
--XX:ReservedCodeCacheSize=512m
--XX:SoftRefLRUPolicyMSPerMB=0
--XX:+UseCompressedOops
--XX:+UseG1GC
--ea
--Duser.name=yourname
 #-Duser.country=EN
 #-Duser.language=us
 #-Dfile.encoding=UTF-8
@@ -88,7 +80,13 @@ comment:
 -Duser.name=yourname
 ```
 
-### 标准参数
+### jetbrains 缓存调优
+
+建议使用 `File -> Invalidate Caches` 清理无效缓存来让出资源
+
+可以勾选清理历史或者 CVS 日志索引等
+
+## jvm 标准参数
 
 verbose 标准参数
 
@@ -197,7 +195,7 @@ totalMemory()为当前JVM占用的内存总数，其值相当于当前JVM已使�
 freeMemory()为当前JVM空闲内存，因为JVM只有在需要内存时才占用物理内存使用，所以freeMemory()的值一般情况下都很小，而 JVM实际可用内存并不等于freeMemory()，而应该等于maxMemory()-totalMemory()+freeMemory()。及其 设置JVM内存分配。
 ```
 
-## 调优参数说明
+### 调优参数说明
 
 > 参数是`-X`开头的，表示非标准的参数。什么叫非标准的呢？
 > 因为JVM有很多个实现，Oracle的，OpenJDK等等
@@ -205,13 +203,13 @@ freeMemory()为当前JVM空闲内存，因为JVM只有在需要内存时才占�
 
 > 参数是 -XX 开头，为标准参数，见说明 http://www.oracle.com/technetwork/systems/vmoptions-jsp-140102.html
 
-### -Xms
+#### -Xms
 
 The -Xms option sets the initial and minimum Java heap size. The Java heap (the “heap”) is the part of the memory where blocks of memory are allocated to objects and freed during garbage collection.
 
 JVM启动的起始堆内存，堆内存是分配给对象的内存,`影响打开 android studio 速度`, 默认 128m
 
-### -Xmx
+#### -Xmx
 
 AndroidStudio能使用的最大heap内存, 默认 750m
 其`影响 Android Stuido 执行的可用总内存大小，根本的执行效率，GC出现的频率`等等
@@ -224,7 +222,7 @@ AndroidStudio能使用的最大heap内存, 默认 750m
 
 > 量力调整，毕竟其他进程也需要资源
 
-### -XX:MaxPermSize
+#### -XX:MaxPermSize
 
 指定最大的Permanent generation大小, 默认 350m
 这个参数`影响编译速度`
@@ -239,7 +237,7 @@ Permanent Generation也是一块内存区域，跟heap不同
 可以通过 `-XX:PermSize` 指定初始分配大小
 详细介绍见 https://blogs.oracle.com/jonthecollector/entry/presenting_the_permanent_generation
 
-### -XX:ReservedCodeCacheSize
+#### -XX:ReservedCodeCacheSize
 
 > ReservedCodeCacheSize (and InitialCodeCacheSize) is an option for the (just-in-time) compiler of the Java Hotspot VM. Basically it sets the maximum size for the compiler's code cache.
 
@@ -260,7 +258,7 @@ Permanent Generation也是一块内存区域，跟heap不同
 而编译型的语言则可以进行优化。Java的JIT技术，就是在bytecode解释执行的时候，它不一定是一条条解释执行的
 二是取一段代码，编译成机器代码，然后执行，这样的话就有了上下文，可以对代码进行优化了，所以执行速度也会更快
 
-### -XX:+UseCompressedOops
+#### -XX:+UseCompressedOops
 
 允许系统将代码里面的引用(reference)类型用32位存储，同时却能够让引用能够使用64位的内存大小，默认不一定开启，设置即开启
 `影响执行效率，能开开启一下`
@@ -271,6 +269,6 @@ Permanent Generation也是一块内存区域，跟heap不同
 2. 相对于内存，CPU的cache就小的可怜了，当reference从32bit变成64bit时，cache里面能存放的reference数量就顿时少了很多。所以64bit的reference对cache是个大问题，于是就有了这个选项，可以允许系统用32bit来存储reference，让cache里面能存放更多的reference，同时又不影响reference的取址范围
 
 
-### -XX:+UseG1GC G1回收器
+#### -XX:+UseG1GC G1回收器
 
 G1回收器，关注延迟为目标的垃圾收集器，设备好可以开启
