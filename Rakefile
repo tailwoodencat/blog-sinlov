@@ -14,6 +14,7 @@ CATEGORIES_CHECK = [
   'gradle',
   'Android',
   'rust',
+  'c',
   'ruby'
 ]
 
