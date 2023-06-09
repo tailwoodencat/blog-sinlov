@@ -52,7 +52,9 @@ qcachegrind 查看 valgrind 性能检测结果的工具
 
 安装 kdewin-installer-gui 时选择全部安装（为了省事，其中也包括了kcachegrind）
 
-另外在windows下 kcachegrind 需要dot (linux下的画图工具，有windows版的,在graphviz工具集中的，[http://www.graphviz.org/](http://www.graphviz.org/) 的支持
+- 另外在windows下 kcachegrind 需要dot (linux下的画图工具，有windows版的
+- 在graphviz工具集中的，[http://www.graphviz.org/](http://www.graphviz.org/) 的支持
+
 安装: wincachegrind
 
 下载地址：[http://sourceforge.net/projects/wincachegrind/](http://sourceforge.net/projects/wincachegrind/)
