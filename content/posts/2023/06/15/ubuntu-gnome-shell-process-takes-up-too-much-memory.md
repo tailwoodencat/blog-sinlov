@@ -18,6 +18,10 @@ comment:
   enable: true
 ---
 
+## 问题表现
+
+设备运行一段时间后， gnome-shell 会占用系统中大量的内存，甚至导致设备假死，只能强行断电源，强制关机后启动
+
 ## 检查内存占用
 
 ```bash
@@ -35,9 +39,7 @@ $ ps -e -o 'pid,comm,pcpu,rsz,vsz,stime,user,uid,args' | sort -k4nr | head -n 2
 $ ps -e -o 'pid,comm,rsz,vsz,stime,user,uid,args' | grep gnome-shell
 ```
 
-发现为 gnome 内存回收机制存在 bug 导致内存泄露
-
-一段时间后 gnome-shell 会占用系统中大量的内存，甚至导致设备假死，只能强行断电源解决
+发现为 gnome 内存回收机制存在 bug 导致内存泄露，固定吃掉物理内存，吃满也不会被释放，甚至导致 ssh 都无非登陆
 
 ## 临时解决方法
 
@@ -147,7 +149,7 @@ $ sudo systemctl status gdm.service
 $ sudo systemctl set-default graphical.target
 ```
 
-## 扩展
+## 扩展阅读
 
 ### 查找有问题的 gnome-shell-extension
 
@@ -172,7 +174,7 @@ $ apt list --installed | grep gnome-shell
 $ ps -e -o 'pid,comm,rsz,vsz,stime,user,uid,args' | grep gnome-shell
 ```
 
-###  Ubuntu 22.04 LTS 高内存占用自动清理
+### Ubuntu 22.04 LTS 高内存占用自动清理
 
 > Ubuntu 22.04 LTS 版本带来一项新功能：默认启用 systemd-oomd 作为内存不足时的守护进程，它可以在内存高压的情况下干掉一部分进程
 
