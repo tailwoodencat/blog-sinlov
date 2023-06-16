@@ -9,7 +9,7 @@ toc:
   enable: true
   auto: false
 math:
-  enable: false
+  enable: true
 mapbox:
   accessToken: ""
 share:

@@ -1,15 +1,15 @@
 ---
-title: "Web Frameworks Benchmark 指标说明"
+title: "Web Frameworks Benchmark 常见指标说明"
 date: 2018-07-12T11:05:00+00:00
-description: "desc Web Frameworks Benchmark 指标说明"
+description: "列举的是 Web Frameworks Benchmark 常见指标"
 draft: false
 categories: ['basics']
-tags: ['basics']
+tags: ['basics', 'benchmark']
 toc:
   enable: true
   auto: false
 math:
-  enable: false
+  enable: true
 mapbox:
   accessToken: ""
 share:
@@ -17,6 +17,10 @@ share:
 comment:
   enable: true
 ---
+
+## 介绍
+
+下面列举的是 Web Frameworks Benchmark 常见指标
 
 ## Requests per second 吞吐率
 
@@ -26,67 +30,76 @@ comment:
 
 某个并发用户数下单位时间内能处理的最大请求数，称之为最大吞吐率
 
-计算公式：总请求数 / 处理完成这些请求数所花费的时间
+计算公式：
 
-## The number of concurrent connections 并发连接数
+$$ QPS = \quad { 总请求数 \over 处理完成这些请求数所花费的时间 }  $$
 
-某个时刻服务器所接受的请求数目，简单的讲，就是一个会话
+## The number of concurrent 并发
 
-## The number of concurrent users，Concurrency Level 并发用户数
+### The number of concurrent connections 并发连接数
 
-要注意区分这个概念和并发连接数之间的区别，一个用户可能同时会产生多个会话，也即连接数
+某个时刻服务器所接受的请求数目，简单的讲，就是`一个会话`
 
-## Time per request 用户平均请求等待时间
+### The number of concurrent users，Concurrency Level 并发用户数
 
-计算公式：处理完成所有请求数所花费的时间 / （总请求数 / 并发用户数）
+要注意区分这个概念和并发连接数之间的区别，`一个用户可能同时会产生多个会话，也即连接数`
 
-## Time per request: across all concurrent requests 服务器平均请求等待时间
+## request
 
-计算公式：处理完成所有请求数所花费的时间 / 总请求数
+### Time per request 用户平均请求等待时间
 
-`是吞吐率的倒数`
+计算公式：
+
+$$ TPR = \quad { 处理完成所有请求数所花费的时间 \over  (总请求数 / 并发用户数) }  $$
+
+### Time per request: across all concurrent requests 服务器平均请求等待时间
+
+计算公式：
+
+$$ TPR = \quad { 处理完成所有请求数所花费的时间 \over  总请求数 }  $$
+
+`该值是吞吐率的倒数`
 
 也可以这么计算
 
-用户平均请求等待时间/并发用户数
+$$ TPR = \quad { 用户平均请求等待时间 \over  并发用户数 }  $$
 
-## P50 Latency
+## Latency 延时
 
-过去的10秒内最慢的 50% 请求的平均延时
+### P50 Latency
 
-## P90 Latency
+`过去的10秒内 最慢的 50%` 请求的平均延时
 
-过去的10秒内最慢的 10% 请求的平均延时
+### P90 Latency
 
-## P95 Latency
+`过去的10秒内最慢的 10%` 请求的平均延时
 
-过去的10秒内最慢的 5% 请求的平均延时
+### P95 Latency
 
-## P99 Latency
+`过去的10秒内最慢的 5%` 请求的平均延时
 
-过去的10秒内最慢的 1% 请求的平均延时
+### P99 Latency
 
-p99 1.103 表示过去的10秒内最慢的 1% 请求的平均延时为1.103秒
+`过去的10秒内最慢的 1% `请求的平均延时
 
-## P99.9 Latency
+> e.g. p99 1.103 表示过去的10秒内最慢的 1% 请求的平均延时为1.103秒
 
-过去的10秒内最慢的 0.1% 请求的平均延时
+### P99.9 Latency
 
-p99.9 1.503 表示过去的10秒内最慢的 0.1% 请求的平均延时为1.503秒
+`过去的10秒内最慢的 0.1%` 请求的平均延时
 
+> e.g. p99.9 1.503 表示过去的10秒内最慢的 0.1% 请求的平均延时为1.503秒
 
-## Average Latency
+### Average Latency
 
 平均延时
 
-Average Latency (64) 64 个并发下的平均延时
+> e.g. Average Latency (64) 64 个并发下的平均延时
 
-## Minimum Latency
+### Minimum Latency
 
-最小延时
+最小延时，这个是一个测试过程的最值
 
-## Maximum Latency
+### Maximum Latency
 
-最大延时
-
-
+最大延时，这个是一个测试过程的最值
