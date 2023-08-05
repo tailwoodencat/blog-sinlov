@@ -48,7 +48,9 @@ comment:
 ### source-han-sans 思源黑体
 
 - [https://github.com/adobe-fonts/source-han-sans](https://github.com/adobe-fonts/source-han-sans)
-- License [SIL Open Font License, Version 1.1](http://scripts.sil.org/OFL) [![GitHub license](https://img.shields.io/github/license/adobe-fonts/source-han-sans)](https://github.com/adobe-fonts/source-han-sans)
+- License [SIL Open Font License, Version 1.1](http://scripts.sil.org/OFL)
+
+[![GitHub license](https://img.shields.io/github/license/adobe-fonts/source-han-sans)](https://github.com/adobe-fonts/source-han-sans)
 
 ![](http://www.zifh.com/wp-content/uploads/2020/06/Source-Han-Sans.png)
 
