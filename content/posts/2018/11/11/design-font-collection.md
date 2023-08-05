@@ -52,7 +52,7 @@ comment:
 
 [![GitHub license](https://img.shields.io/github/license/adobe-fonts/source-han-sans)](https://github.com/adobe-fonts/source-han-sans)
 
-![](http://www.zifh.com/wp-content/uploads/2020/06/Source-Han-Sans.png)
+![source-han-sans-S2UUKM](https://cdn.jsdelivr.net/gh/tailwoodencat/CDN@main/uPic/2023/08/05/source-han-sans-S2UUKM.png)
 
 由Google和Adobe在2014年7月正式推出的开源字体不仅可以免费商用而且全面支持中文简体、中文繁体（香港）、中文繁体（台湾）、日文和韩文，还有七种字体粗细，整个字形个数接近50万
 
