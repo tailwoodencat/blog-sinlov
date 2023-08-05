@@ -45,6 +45,21 @@ comment:
 
 ## 开源免费字体
 
+### source-han-sans 思源黑体
+
+- [https://github.com/adobe-fonts/source-han-sans](https://github.com/adobe-fonts/source-han-sans)
+- License [SIL Open Font License, Version 1.1](http://scripts.sil.org/OFL) [![GitHub license](https://img.shields.io/github/license/adobe-fonts/source-han-sans)](https://github.com/adobe-fonts/source-han-sans)
+
+![](http://www.zifh.com/wp-content/uploads/2020/06/Source-Han-Sans.png)
+
+由Google和Adobe在2014年7月正式推出的开源字体不仅可以免费商用而且全面支持中文简体、中文繁体（香港）、中文繁体（台湾）、日文和韩文，还有七种字体粗细，整个字形个数接近50万
+
+- 思源黑体VF可以在250—900以内选取粗细值进行控制变化精确度可以到0.5
+- 除可变字体之外，思源黑体VF笔画还可以拆分
+
+> 注意: 字宽、字高、倾角、倒角、衬线等维度目前还无法实现自由变换
+> 可变字体无法直接安装于windows系统
+
 ### mononoki
 
 - [https://github.com/madmalik/mononoki](https://github.com/madmalik/mononoki)
