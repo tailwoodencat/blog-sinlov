@@ -5,6 +5,7 @@ require 'pathname'
 
 CATEGORIES_CHECK = [
   'basics',
+  'database',
   'AI',
   'docker',
   'unity',
