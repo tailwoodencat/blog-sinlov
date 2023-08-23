@@ -182,6 +182,7 @@ $ docker-compose down
 ```
 
 - 这里启动了 memgraph-platform 管理服务地址 http://ip:port:13000
+- 点击 左侧 `New connection`  菜单，使用 `Connect Manually to Memgraph` 模式连接私有部署数据库
 - memgraph-mage 数据库 连接配置
   - Host `ip`
   - Port `17687`
