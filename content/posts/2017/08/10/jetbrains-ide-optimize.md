@@ -59,6 +59,14 @@ comment:
 #-Dfile.encoding=UTF-8
 ```
 
+- 如果使用 JDK11 以上可以开启 ZGC，2023 后的版本就支持
+
+```properties
+# 如果旧版 可能需要开启实验室功能
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseZGC
+```
+
 - 完整调试参数
 
 ```
@@ -70,7 +78,7 @@ comment:
 -XX:ReservedCodeCacheSize=512m
 -XX:SoftRefLRUPolicyMSPerMB=0
 -XX:+UseCompressedOops
--XX:+UseG1GC
+-XX:+UseZGC
 -XX:CICompilerCount=2
 -XX:HeapDumpPath=$USER_HOME/java_error_in_studio.hprof
 -XX:+HeapDumpOnOutOfMemoryError
@@ -268,7 +276,37 @@ Permanent Generation也是一块内存区域，跟heap不同
 1. 64位比32为更大，占的内存更多，这是显然的，当然这个问题在整个程序看来根本不显然，因为哪怕系统同时有1000个引用存在，那多出来的内存也就4M
 2. 相对于内存，CPU的cache就小的可怜了，当reference从32bit变成64bit时，cache里面能存放的reference数量就顿时少了很多。所以64bit的reference对cache是个大问题，于是就有了这个选项，可以允许系统用32bit来存储reference，让cache里面能存放更多的reference，同时又不影响reference的取址范围
 
+#### -XX:CICompilerCount
+
+设置的相对较大可以一定程度提升JIT编译的速度，默认为 2
 
 #### -XX:+UseG1GC G1回收器
 
 G1回收器，关注延迟为目标的垃圾收集器，设备好可以开启
+
+
+#### -XX:+UseZGC ZGC回收器
+
+ZGC 需要 JDK11 以上才支持
+
+```properties
+# 如果旧版 可能需要开启实验室功能，新版本就注释 UnlockExperimentalVMOptions
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseZGC
+```
+
+### jetbrains 自有参数
+
+- 注意: 自有参数不同版本支持不一样，其实得看 当前 IDE 的内核版本是否支持
+- 如果没特殊需求，请根据自己的情况添加
+
+#### IDEA 2023.7+
+
+```properties
+-Dsun.java2d.opengl=true
+-Djbr.catch.SIGABRT=true
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-Djdk.attach.allowAttachSelf=true
+-Djdk.module.illegalAccess.silent=true
+-Dkotlinx.coroutines.debug=off
+```
