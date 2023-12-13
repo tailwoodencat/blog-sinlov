@@ -2,7 +2,7 @@
 title: "k3s containerd cilium hubble 集群快速上手"
 date: 2023-12-13T22:50:14+08:00
 description: "使用 cilium 在 k3s 环境下，部署实验环境"
-draft: true
+draft: false
 categories: ['container']
 tags: ['container', 'k3s', 'k8s', 'cilium']
 toc:
