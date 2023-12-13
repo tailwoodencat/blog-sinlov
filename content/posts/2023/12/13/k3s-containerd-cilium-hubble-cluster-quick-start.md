@@ -4,7 +4,7 @@ date: 2023-12-13T22:50:14+08:00
 description: "使用 cilium 在 k3s 环境下，部署实验环境"
 draft: true
 categories: ['container']
-tags: ['container']
+tags: ['container', 'k3s', 'k8s', 'cilium']
 toc:
   enable: true
   auto: false
