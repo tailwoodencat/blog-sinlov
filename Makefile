@@ -32,6 +32,9 @@ upRemote:
 debug:
 	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT}
 
+ci:
+	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT} -e production
+
 build:
 	hugo
 

@@ -418,7 +418,7 @@ enableEmoji = true
         clientSecret = ""
       # Valine 评论系统设置
       [params.page.comment.valine]
-        enable = true
+        enable = false
         appId = "Nzcpc6HDaA1YGkfrAYdyuec5-9Nh9j0Va"
         appKey = "DIprTMRcPoqhB4EPa8AgzSwQ"
         placeholder = ""
