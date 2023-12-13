@@ -7,6 +7,7 @@ CATEGORIES_CHECK = [
   'basics',
   'database',
   'AI',
+  'container',
   'docker',
   'unity',
   'unreal',

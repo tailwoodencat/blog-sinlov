@@ -401,7 +401,7 @@ enableEmoji = true
       Mix = false
     # LoveIt 更改 | 0.2.0 评论系统设置
     [params.page.comment]
-      enable = true
+      enable = false
       # Disqus 评论系统设置 https://disqus.com/
       [params.page.comment.disqus]
         # LoveIt 新增 | 0.1.1
