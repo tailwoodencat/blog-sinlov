@@ -57,9 +57,9 @@ cilium 主要缺点就在于对[内核的要求高](https://docs.cilium.io/en/st
 |-------------|--------------|-------------|----------|------------|
 |       v1.14 |   >= 4.19.57 |     >= 4.18 | >= 3.1.0 |    >= 10.0 |
 
-## 配置
+## 配置前准备
 
-### 配置前准备
+### 基础准备
 
 - `不感人的网络`，这个做技术都懂
 - server 节点需要较高配置 2C 8G 以上，agent 节点要求非常低，树莓派都可以运行
@@ -171,7 +171,7 @@ $ helm search repo nginx
 
 ### 安装 Cilium CLI
 
-CLI 工具能让你轻松上手 Cilium，`每一台涉及 k8s 集群的设备都需要安装`
+CLI 工具能让你轻松上手 Cilium，`每一台涉及 kubectl 集群的设备都需要安装`
 
 它直接使用 Kubernetes API 来检查与现有 kubectl 上下文相对应的集群，并为检测到的 Kubernetes 实施选择合适的安装选项
 
@@ -555,11 +555,11 @@ $ sudo iptables-save | grep KUBE-SVC
 
 ## test
 $ cilium connectivity test
-# test with args
-$ cilium connectivity test --request-timeout 30s --connect-timeout 10s
+# test with args external to https://www.baidu.com
+$ cilium connectivity test --request-timeout 30s --connect-timeout 10s --external-target www.baidu.com --external-ip 183.2.172.42
 ```
 
-> 在中国安装时，由于网络环境所限，可能部分测试会失败（如访问 1.1.1.1:443 1.0.0.1:443 one.one.one.one:443 ). 测速报告这部分可以忽略
+> 在中国安装时，由于网络环境所限，可能部分测试会失败（如访问 1.1.1.1:443 1.0.0.1:443 one.one.one.one:443 ). 测速报告这部分可以忽略，或者设置好测试目标
 > 连接性测试需要至少两个 worker node 才能在群集中成功部署
 > 如果您没有为群集配置两个 worker node，连接性测试命令可能会在等待测试环境部署完成时卡住
 > 连接性测试 pod 不会在以控制面角色运行的节点上调度，所以测速过程中，部分 pod 会调度异常
@@ -619,7 +619,7 @@ $ cilium status
 # Hubble Relay:       OK
 ```
 
-### 安装 Hubble Client
+### 安装 hubble Client
 
 ```bash
 $ HUBBLE_ARCH=amd64
@@ -691,10 +691,55 @@ $ kubectl get pods -n kube-system -l k8s-app=hubble-ui --show-labels
 # 查看网络映射
 $ kubectl get pods -n kube-system -o wide -l 'k8s-app=hubble-ui'
 # 查看 svc 状态
-$ kubectl get svc -A | grep hubble-ui
+$ kubectl get svc -n kube-system -o wide -l 'k8s-app=hubble-ui'
 ```
 
-> 这种部署模式 hubble ui 只能本地访问，当然你可以自己建立映射修改
+默认的 Hubble UI 只提供了 ClusterIP 类似的 service，无法通过外部访问
+
+```bash
+# 例如暴露 Hubble UI 前端 到 192.168.50.56 端口 39997
+$ kubectl port-forward -n kube-system deployment/hubble-ui 39997:8081 --address=192.168.50.56
+```
+
+或者创建一个 `NodePort` 类型的 service `hubble-ui-nodeport-svc.yml`
+
+```yml
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: kube-system
+  name: hubble-ui-np
+  labels:
+    k8s-app: hubble-ui-np
+spec:
+  selector:
+    k8s-app: hubble-ui
+  ports:
+    - name: http
+      port: 8081
+      targetPort: 8081
+      nodePort: 39998
+  type: NodePort
+```
+
+执行 `kubectl apply -f hubble-ui-nodeport-svc.yml`
+
+通过任意集群节点 IP 地址加上 39998 端口访问 Hubble UI 的 web 服务
+
+创建 svc `hubble-ui-np` 后查看
+
+```bash
+# 查看映射
+$ kubectl get svc -n kube-system -o wide -l 'k8s-app=hubble-ui-np'
+```
+
+### 使用 hubble UI
+
+打开 hubble UI 前端页面，选择到 `cilium-test` 的 namespace，执行测试
+
+```bash
+$ cilium connectivity test --request-timeout 30s --connect-timeout 10s
+```
 
 ## cilium 重要概念
 
