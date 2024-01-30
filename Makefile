@@ -24,6 +24,8 @@ init:
 	git submodule update
 
 up:
+	git status
+	git pull
 	git submodule update
 
 upRemote:
