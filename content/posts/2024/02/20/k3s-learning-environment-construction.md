@@ -18,6 +18,8 @@ comment:
   enable: true
 ---
 
+[TOC]
+
 ## 阅读前说明
 
 - 使用本文前，`必须熟悉 linux 操作系统基础操作`，`知道容器技术`，或者 `熟练使用 docker-ce`，否则很多基础操作问题，本文不会讲解
@@ -100,7 +102,7 @@ $ uname -a
 $ docker version
 ```
 
-配置部署后的结构如下
+### 配置部署计划
 
 |  主机名 |   类型 |           IP地址 |         系统 |   配置 |      网络 |
 |---------|--------|------------------|--------------|--------|-----------|
@@ -108,6 +110,29 @@ $ docker version
 | server2 | server | 192.168.50.56/24 |  Debian 11 | 4C16G | inner:NAT |
 | server3 | server | 192.168.50.60.24 |  Debian 11 | 4C16G | inner:NAT |
 |  agent1 |  agent | 192.168.50.54/24 | Debian 11  |  2C8G | inner:NAT |
+
+### 安装 k3s server
+
+- 安装官方文档 [https://docs.k3s.io/quick-start](https://docs.k3s.io/quick-start)
+
+只执行了一个命令即部署了一套 all in one k3s 单节点环境，相对 k8s 无需额外安装如下组件
+
+- kubelet
+- kube-proxy
+- containerd
+- etcd
+- ingress
+
+#### 嵌入式 etcd 的 HA K3s 集群
+
+启动一个带有 cluster-init 标志的 Server 节点来启用集群和一个令牌，该令牌将作为共享 secret，用于将其他 Server 加入集群
+这个令牌设置到环境变量 `K3S_TOKEN`
+
+```bash
+# 生成 K3S_TOKEN 后面会用到
+$ ENV_GEN_K3S_TOKEN=$(openssl rand -hex 32)
+$ echo "ENV_GEN_K3S_TOKEN=${ENV_GEN_K3S_TOKEN}"
+```
 
 有几个配置标志在所有 Server 节点中必须是相同的:
 
@@ -117,7 +142,7 @@ $ docker version
 - 功能相关标志：`--secrets-encryption`
 
 - 私有 docker 仓库相关 `--tls-san` 设置 加其他主机名或 IPv4/IPv6 地址作为 Subject Alternative Name
-	-  需要预先将 `harbor-domain.crt` 复制到  `/etc/rancher/k3s/` 下 具体见 [private-registry](https://docs.k3s.io/installation/private-registry)
+	-  需要预先将 `harbor-domain.crt` 复制到  `/etc/rancher/k3s/` 下 具体见 [private-registry](https://docs.k3s.io/installation/private-registry) 如果没有可以去掉这个配置
 
 注意使用内网 ip 或者 公网 ip 这里以 `192.168.50.56` 为 k3s server  第一个节点
 
