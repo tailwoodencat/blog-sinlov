@@ -23,7 +23,7 @@ comment:
 - 使用本文前，必须清楚熟悉  [k8s](https://kubernetes.io/) ，熟练使用 k8s，清楚  CNI (Container Network Interface) 概念和原理
 - 本文是针对集群部署，目标是使用 cilium ，用以提升网络工作负载 ，服务的可见性，可维护性的实验，作为 k8s 使用  [eBPF](https://ebpf.io/) 的验证环境使用，不能作为生产环境配置
 - 集群中，从网络上是全部等效可见的，因为集群内 cilium-agent  ( 简写 cilium-ag) 可以不需要 管理平面或操作运维平面 Cilium Operator 导致
-- 但是在理平面或操作运维平面上还是分 server ( 管理服务节点) 和  agent（工作负载节点）
+- 但是在物理平面或操作运维平面上还是分 server ( 管理服务节点) 和  agent（工作负载节点）
 
 ## 介绍
 
