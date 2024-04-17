@@ -4,7 +4,7 @@ date: 2024-04-17T22:32:43+08:00
 description: "可以无缝切换的开源 redis 实现"
 draft: false
 categories: ['tips']
-tags: ['tips']
+tags: ['tips', 'redis']
 toc:
   enable: true
   auto: false
