@@ -34,6 +34,7 @@ comment:
 
 它与当下最流行的两款内存数据库 Redis 和 Memcached 的 API 完全兼容，无需修改代码即可完成迁移
 
+
 ## garnet
 
 [https://github.com/microsoft/garnet](https://github.com/microsoft/garnet)
@@ -65,3 +66,17 @@ comment:
 主语言：C++
 
 支持多线程的 Redis，它具有高性能、更高的吞吐量、完全兼容 Redis 协议等特点。有了多线程就可以放心大胆地执行 KEYS 和 SCAN 命令，不用再担心阻塞 Redis
+
+## valkey
+
+[https://github.com/valkey-io/valkey](https://github.com/valkey-io/valkey)
+
+[![GitHub Repo stars](https://img.shields.io/github/stars/valkey-io/valkey)](https://github.com/valkey-io/valkey)
+
+官网 [https://valkey.io/](https://valkey.io/)
+
+使用协议:  BSD-3-Clause ![GitHub License](https://img.shields.io/github/license/valkey-io/valkey)
+
+底层操作和接口设计上与 Redis 保持了高度兼容的实现
+
+允许现有Redis用户无缝过渡，无需担心API的向后不兼容问题
