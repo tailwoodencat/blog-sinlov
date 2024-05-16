@@ -82,22 +82,32 @@ $ curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry
 ### poetry 使用镜像源
 
 - see [https://python-poetry.org/docs/repositories/#disabling-the-pypi-repository](https://python-poetry.org/docs/repositories/#disabling-the-pypi-repository)
+
+- support poetry 1.7.1+
+
+```bash
+poetry source add --default aliyun https://mirrors.aliyun.com/pypi/simple
+poetry source add --default tuna https://pypi.tuna.tsinghua.edu.cn/simple/
+# 设置私有源
+poetry source add --priority=PRIORITY [name] [url]
+```
+
 - 在 `pyproject.toml` 文件末尾追加下面的内容来设置自定义镜像源加速
+
+```toml
+## 设置poetry包管理工具的自定义pypi镜像源配置
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"
+priority = "default"
+```
+
+- 老版本配置
 
 ```toml
 [[tool.poetry.source]]
 name = "tsinghua"
 url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
-default = true
-```
-
-or
-
-```toml
-# 设置poetry包管理工具的自定义pypi镜像源配置
-[[tool.poetry.source]]
-name = "aliyun"
-url = "http://mirrors.aliyun.com/pypi/simple"
 default = true
 ```
 
@@ -222,6 +232,8 @@ $ poetry build
 
 ### export
 
+poetry 导出 requirements.txt
+
 ```bash
 $ poetry export -f requirements.txt --output requirements.txt
 ```
@@ -261,7 +273,121 @@ default = true
 
 ## 进阶
 
+### 从 requirements.txt 生成 pyproject.toml
+
+- [https://stackoverflow.com/questions/62764148/how-to-import-requirements-txt-from-an-existing-project-using-poetry](https://stackoverflow.com/questions/62764148/how-to-import-requirements-txt-from-an-existing-project-using-poetry)
+
+```bash
+poetry init --no-interaction
+
+cat requirements.txt | xargs poetry add
+poetry add -D "$(cat requirements.txt)"
+```
+
+第一条命令会初始化一个新的 poetry 项目
+
+第二条命令会从requirements.txt文件中读取依赖项，并添加到 poetry 的项目依赖中
+
+### ruff 风格检查
+
+- [https://github.com/astral-sh/ruff](https://github.com/astral-sh/ruff)
+
+用Rust编写极快的 Python linter和代码格式化工具
+
+在  `pyproject.toml` 中加入
+
+```toml
+[tool.poetry.dev-dependencies]
+# https://github.com/astral-sh/ruff
+ruff = "^0.3.4"
+```
+
+> 不要把 ruff 安装到全局，不同版本的 ruff 规则不一样，应该把 ruff 安装到 工程隔离的 虚拟环境中
+> 推荐不要把 ruff 写到 pyproject.toml 中，会导致维护麻烦，全部写到 ruff.toml 中隔离 工程管理 和 工程辅助的职责
+
+配置 ruff 风格检查文件 `ruff.toml` 具体配置文档见 [https://docs.astral.sh/ruff/configuration/](https://docs.astral.sh/ruff/configuration/)
+
+```toml
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.8
+target-version = "py38"
+
+[lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "single"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+```
+
+- 支持风格检查命令为
+
+```bash
+# 格式化
+poetry run ruff format [dirs]
+
+# 检查风格
+poetry run ruff check [dirs]
+
+# 对 poetry 目录下的 工程文件全部进行检查
+poetry run ruff format src/ tests/
+poetry run ruff check src/ tests/
+```
+
 ### black 风格检查
+
+> 如果已经使用了 ruff 风格检查，就不需要配置这个
 
 在  `pyproject.toml` 中加入
 
@@ -288,4 +414,82 @@ $ poetry run black --check ${ENV_BLACK_OPTS} ${ENV_CHECK_FILES}
 # 自动修复代码风格
 $ poetry run isort -src ${ENV_CHECK_FILES}
 $ poetry run black ${ENV_CHECK_FILES}
+```
+
+
+## error
+
+### Poetry was unable to find a compatible version
+
+```
+The currently activated Python version 3.9.7 is not supported by the project (3.10.7).
+Trying to find and use a compatible version.
+
+Poetry was unable to find a compatible version. If you have one, you can explicitly use it via the "env use" command
+```
+
+- 修复方法
+
+```bash
+pyenv shell 3.10.7
+```
+
+### Failed to unlock the collection!
+
+```bash
+  • Updating pip (23.2.1 -> 23.3.2): Failed
+
+  KeyringLocked
+
+  Failed to unlock the collection!
+
+  at ~/.local/share/pypoetry/venv/lib/python3.10/site-packages/keyring/backends/SecretService.py:67 in get_preferred_collection
+       63│             raise InitError("Failed to create the collection: %s." % e)
+       64│         if collection.is_locked():
+       65│             collection.unlock()
+       66│             if collection.is_locked():  # User dismissed the prompt
+    →  67│                 raise KeyringLocked("Failed to unlock the collection!")
+       68│         return collection
+       69│
+       70│     def unlock(self, item):
+       71│         if hasattr(item, 'unlock'):
+```
+
+当您没有运行初始化的密钥环/密钥服务时会导致这种情况，本来是为了给应用程序提供了一个安全的地方来存储凭据等。
+
+This issue typically occurs when connecting over SSH as it may not even be spawning it.
+
+修复方法是简单地禁用密钥环，以便 poetry 不会尝试使用使用
+
+```bash
+keyring --disable
+```
+
+### Failed to create the collection: Prompt dismissed
+
+```
+$ poetry lock --no-update
+Failed to create the collection: Prompt dismissed..
+```
+
+same as `Failed to unlock the collection!`
+
+### Configuration file exists
+
+```log
+Configuration file exists at ~/Library/Application Support/pypoetry,
+reusing this directory.
+
+Consider moving configuration to ~/Library/Preferences/pypoetry,
+as support for the legacy directory will be removed in an upcoming release.
+```
+
+- doc [https://python-poetry.org/docs/configuration/](https://python-poetry.org/docs/configuration/)
+
+- check
+
+```bash
+$ poetry config --list
+# fix
+$ mv ~/Library/Preferences/pypoetry ~/Library/Preferences/pypoetry_bak
 ```
