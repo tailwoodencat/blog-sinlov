@@ -191,7 +191,7 @@ make 的退出码有以下3种
 - `1` make命令出现了错误，或者使用了参数 `-q` 选项
 - `2` make命令出现了错误，并且使用了 `-q` 选项, 并且make使得一些目标不需要更新
 
-e.g. [https://github.com/sinlov/makefile-playground/01-command/00-args](https://github.com/sinlov/makefile-playground/01-command/00-args)
+e.g. [https://github.com/sinlov/makefile-playground/blob/main/01-command/00-args/Makefile](https://github.com/sinlov/makefile-playground/blob/main/01-command/00-args/Makefile)
 
 ```mk
 all:
