@@ -360,12 +360,12 @@ $$ \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad 
 例子：
 
 ```tex
-$$ \verb+\overset{above}{level}+ \qquad \overset{xx}{ABC} \\;\\; \mid \quad \overset{x^2}{\longmapsto}\ \, \mid \quad \overset{\bullet\circ\circ\bullet}{T} $$
+$$ \overset{above}{level}+ \qquad \overset{xx}{ABC} \\;\\; \mid \quad \overset{x^2}{\longmapsto}\ \, \mid \quad \overset{\bullet\circ\circ\bullet}{T} $$
 ```
 
 显示：
 
-$$ \verb+\overset{above}{level}+ \qquad \overset{xx}{ABC} \\;\\; \mid \quad \overset{x^2}{\longmapsto}\ \, \mid \quad \overset{\bullet\circ\circ\bullet}{T} $$
+$$ \overset{above}{level}+ \qquad \overset{xx}{ABC} \\;\\; \mid \quad \overset{x^2}{\longmapsto}\ \, \mid \quad \overset{\bullet\circ\circ\bullet}{T} $$
 
 此命令可叠加嵌套使用，生成类似化学反应式的多重条件符号， 例子：
 
