@@ -18,7 +18,8 @@ CATEGORIES_CHECK = [
   'Android',
   'rust',
   'c',
-  'ruby'
+  'ruby',
+  'hardware'
 ]
 
 SOURCE = Pathname.getwd()
