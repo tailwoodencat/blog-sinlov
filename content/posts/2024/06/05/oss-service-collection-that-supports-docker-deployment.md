@@ -1,7 +1,7 @@
 ---
-title: "OSS service collection that supports docker deployment"
+title: "支持 docker 部署的 OSS 服务收集"
 date: 2024-06-05T09:59:12+08:00
-description: "desc OSS service collection that supports docker deployment"
+description: "OSS service collection that supports docker deployment"
 draft: false
 categories: ['container']
 tags: ['container', 'docker', 'oss']
