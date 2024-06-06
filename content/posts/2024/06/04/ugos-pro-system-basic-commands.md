@@ -74,6 +74,25 @@ sudo apt install -y htop btop
 
 [btop](https://github.com/aristocratos/btop) 对温度的监控已经给了，直接使用即可
 
+### 硬盘检测
+
+```bash
+## 系统已经自带 smartctl，如果没有使用下面命令安装
+$ sudo apt install -y smartmontools
+# 列出当前硬盘
+$ sudo fdisk -l
+# 比如 /dev/sdd 为一个 企业机械盘
+Disk /dev/sdd: 7.28 TiB, 8001563222016 bytes, 15628053168 sectors
+Disk model: ST8000NM017B-2TJ
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disklabel type: gpt
+# 检查 /dev/sdd 健康
+sudo smartctl -a /dev/sdd
+# 健康报告，自行翻译即可阅读
+```
+
 ## 硬件信息
 
 ### CPU信息
@@ -136,4 +155,13 @@ lspci -v | grep "Network" -A 10
 lsusb
 ```
 
+## 各种服务信息
 
+### nfs-server
+
+```bash
+sudo cat /proc/fs/nfsd/versions
+## NFS server configuration is defined in
+# /etc/default/nfs-kernel-server
+# /etc/default/nfs-common
+```
