@@ -26,8 +26,9 @@ comment:
 - 重则导致`数据丢失`
 
 NAS (network attached storage) 翻译成中文 `网络附属存储`，那么任何时候都需要一个稳定网络作为基础
-	- 不要使用无线网络（无线网络本身不稳定易被干扰）
-	- 保证 点对点 设备的网络本身不存在问题，一般使用 [iperf3](https://github.com/esnet/iperf) 进行验证
+
+- 不要使用无线网络（无线网络本身不稳定易被干扰）
+- 保证 点对点 设备的网络本身不存在问题，一般使用 [iperf3](https://github.com/esnet/iperf) 进行验证
 
 NAS 调优前需要准备的
 
