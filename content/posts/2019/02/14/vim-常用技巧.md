@@ -4,7 +4,7 @@ date: 2019-02-14T20:01:00+00:00
 description: "vim 在各种模式下的技巧, vim 学习游戏介绍"
 draft: false
 categories: ['basics']
-tags: ['basics']
+tags: ['basics', 'vim']
 toc:
   enable: true
   auto: false
