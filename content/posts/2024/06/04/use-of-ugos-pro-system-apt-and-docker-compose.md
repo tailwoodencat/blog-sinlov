@@ -94,8 +94,20 @@ EOF
 
 ## 安装 docker-compose
 
-> 这里直接跳过 docker 安装，因为 UGOS Pro 应用市场有一个 docker 安装
+### 使用已经安装的 docker-compose
 
+- UGOS Pro 系统版本`1.0.0.1281` 版本后，是以 docker-compose-plugin 模式安装好了
+- 不能在 ssh 内直接使用，安装到路径 /usr/libexec/docker/cli-plugins/docker-compose
+- 如果希望在 ssh 使用的，把 /usr/libexec/docker/cli-plugins  加入环境变量即可
+
+```bash
+# docker-compose by cli-plugins
+export PATH=$PATH:/usr/libexec/docker/cli-plugins
+```
+
+### 手动安装某个版本的 docker-compose
+
+> 这里直接跳过 docker 安装，因为 UGOS Pro 应用市场有一个 docker 安装
 
 - 配置 docker 国内镜像 配置在 `/etc/docker/daemon.json`
 
