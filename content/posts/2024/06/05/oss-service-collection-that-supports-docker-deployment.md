@@ -22,14 +22,18 @@ comment:
 
 - [https://github.com/minio/minio](https://github.com/minio/minio)
 
-[![GitHub license](https://img.shields.io/github/license/minio/minio)](https://github.com/minio/minio)
+[<img src="https://img.shields.io/github/license/minio/minio" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub license" title="GitHub license">](https://github.com/minio/minio)
+[<img src="https://img.shields.io/github/v/tag/minio/minio" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub latest SemVer tag" title="GitHub latest SemVer tag">](https://github.com/minio/minio/tags)
+[<img src="https://img.shields.io/github/v/release/minio/minio" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub release" title="GitHub release">](https://github.com/minio/minio/releases)
 
 - MinIO中国加速站[https://dl.minio.org.cn/](https://dl.minio.org.cn/)
 - 官方 中文文档 [https://www.minio.org.cn/docs/minio/container/index.html](https://www.minio.org.cn/docs/minio/container/index.html)
 
-[![docker hub version semver](https://img.shields.io/docker/v/minio/minio?sort=semver)](https://hub.docker.com/r/minio/minio/tags?page=1&ordering=last_updated)
-[![docker hub image size](https://img.shields.io/docker/image-size/minio/minio)](https://hub.docker.com/r/minio/minio)
-[![docker hub image pulls](https://img.shields.io/docker/pulls/minio/minio)](https://hub.docker.com/r/minio/minio/tags?page=1&ordering=last_updated)
+MinIO docker 相关信息
+
+[<img src="https://img.shields.io/docker/v/minio/minio?sort=semver" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="docker hub version semver" title="docker hub version semver">](https://hub.docker.com/r/minio/minio/tags?page=1&ordering=last_updated)
+[<img src="https://img.shields.io/docker/image-size/minio/minio" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="docker hub image size" title="docker hub image size">](https://hub.docker.com/r/minio/minio)
+[<img src="https://img.shields.io/docker/pulls/minio/minio" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="docker hub image pulls" title="docker hub image pulls">](https://hub.docker.com/r/minio/minio/tags?page=1&ordering=last_updated)
 
 - k8s
 	- [helm/bitnami/minio](https://artifacthub.io/packages/helm/bitnami/minio)
@@ -50,7 +54,9 @@ minio的SDK程序的许可证是Apache License 2.0，你拿去随便用都行
 
 GPL-2.0 license
 
-[![GitHub license](https://img.shields.io/github/license/moosefs/moosefs)](https://github.com/moosefs/moosefs)
+[<img src="https://img.shields.io/github/license/moosefs/moosefs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub license" title="GitHub license">](https://github.com/moosefs/moosefs)
+[<img src="https://img.shields.io/github/v/tag/moosefs/moosefs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub latest SemVer tag" title="GitHub latest SemVer tag">](https://github.com/moosefs/moosefs/tags)
+[<img src="https://img.shields.io/github/v/release/moosefs/moosefs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub release" title="GitHub release">](https://github.com/moosefs/moosefs/releases)
 
 MooseFS – 开源、PB级别、耐故障、高性能、可扩展的网络分布式文件系统（软件定义存储）
 
@@ -60,7 +66,9 @@ SDK 支持较少，需要手动编写
 
 [https://github.com/opencurve/curve](https://github.com/opencurve/curve)
 
-[![GitHub license](https://img.shields.io/github/license/opencurve/curve)](https://github.com/opencurve/curve)
+[<img src="https://img.shields.io/github/license/opencurve/curve" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub license" title="GitHub license">](https://github.com/opencurve/curve)
+[<img src="https://img.shields.io/github/v/tag/opencurve/curve" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub latest SemVer tag" title="GitHub latest SemVer tag">](https://github.com/opencurve/curve/tags)
+[<img src="https://img.shields.io/github/v/release/opencurve/curve" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub release" title="GitHub release">](https://github.com/opencurve/curve/releases)
 
 Curve是一个由CNCF基金会托管的沙盒项目。它是云原生、高性能且易于操作。Curve是一个用于块和共享文件存储的开源分布式存储系统。
 
@@ -73,7 +81,9 @@ SDK 支持较少，冷门语言需要自己对接
 
 GPL-2.0, LGPL-3.0 licenses found
 
-[![GitHub license](https://img.shields.io/github/license/gluster/gogfapi)](https://github.com/gluster/gogfapi)
+[<img src="https://img.shields.io/github/license/gluster/glusterfs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub license" title="GitHub license">](https://github.com/gluster/glusterfs)
+[<img src="https://img.shields.io/github/v/tag/gluster/glusterfs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub latest SemVer tag" title="GitHub latest SemVer tag">](https://github.com/gluster/glusterfs/tags)
+[<img src="https://img.shields.io/github/v/release/gluster/glusterfs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub release" title="GitHub release">](https://github.com/gluster/glusterfs/releases)
 
 Gluster文件系统：在几分钟内构建您的分布式存储
 
@@ -83,7 +93,9 @@ SDK 支持较少，冷门语言需要自己对接
 
 - [https://github.com/happyfish100/fastdfs](https://github.com/happyfish100/fastdfs)
 
-[![GitHub license](https://img.shields.io/github/license/happyfish100/fastdfs)](https://github.com/happyfish100/fastdfs)
+[<img src="https://img.shields.io/github/license/happyfish100/fastdfs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub license" title="GitHub license">](https://github.com/happyfish100/fastdfs)
+[<img src="https://img.shields.io/github/v/tag/happyfish100/fastdfs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub latest SemVer tag" title="GitHub latest SemVer tag">](https://github.com/happyfish100/fastdfs/tags)
+[<img src="https://img.shields.io/github/v/release/happyfish100/fastdfs" align=center sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw" alt="GitHub release" title="GitHub release">](https://github.com/happyfish100/fastdfs/releases)
 
 FastDFS是一个开源的高性能分布式文件系统（DFS）。它的主要功能包括：文件存储、文件同步和文件访问，以及高容量和负载平衡设计。
 

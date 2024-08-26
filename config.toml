@@ -373,33 +373,34 @@ enableEmoji = true
     # LoveIt 更改 | 0.2.0 文章页面的分享信息设置
     [params.page.share]
       enable = true
-      Twitter = false
-      Facebook = false
+      Twitter = true
+      Facebook = true
       Linkedin = true
-      Whatsapp = false
+      Whatsapp = true
       Pinterest = false
       Tumblr = false
       HackerNews = false
-      Reddit = false
+      Reddit = true
       VK = false
       Buffer = false
       Xing = false
-      Line = false
+      Line = true
       Instapaper = false
       Pocket = false
       Digg = false
       Stumbleupon = false
       Flipboard = false
       Weibo = true
-      Renren = true
+      Renren = false
       Myspace = true
-      Blogger = false
-      Baidu = false
+      Blogger = true
+      Baidu = true
       Odnoklassniki = false
       Evernote = true
       Skype = true
       Trello = false
       Mix = false
+      Mastodon = false
     # LoveIt 更改 | 0.2.0 评论系统设置
     [params.page.comment]
       enable = false
