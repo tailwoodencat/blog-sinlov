@@ -3,8 +3,8 @@ title: "drone 插件收集"
 date: 2022-11-07T11:11:28+08:00
 description: "drone 插件收集"
 draft: true
-categories: ['basics']
-tags: ['basics', 'drone']
+categories: ['CI']
+tags: ['CI', 'basics', 'drone']
 toc:
   enable: true
   auto: false

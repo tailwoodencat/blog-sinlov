@@ -3,8 +3,8 @@ title: "drone fatal: could not read Username for ‘xxxx‘: terminal prompts"
 date: 2023-05-08T11:17:28+08:00
 description: "drone fatal: could not read Username for ‘xxxx‘: terminal prompts"
 draft: false
-categories: ['basics']
-tags: ['basics', 'drone']
+categories: ['CI']
+tags: ['basics', 'CI','drone']
 toc:
   enable: true
   auto: false

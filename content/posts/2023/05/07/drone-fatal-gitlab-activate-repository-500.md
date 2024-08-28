@@ -3,8 +3,8 @@ title: "drone fatal gitlab ACTIVATE REPOSITORY 500"
 date: 2023-05-07T22:03:00+00:00
 description: "drone fatal gitlab ACTIVATE REPOSITORY 500 导致无法激活"
 draft: false
-categories: ['basics']
-tags: ['basics', 'drone']
+categories: ['CI']
+tags: ['basics', 'CI', 'drone']
 toc:
   enable: true
   auto: false

@@ -3,7 +3,7 @@ title: "docker 镜像 tag 特殊字符解释"
 date: 2023-08-07T14:11:30+08:00
 description: "解释 docker 镜像 tag 标签中出现的特殊字符"
 draft: false
-categories: ['docker']
+categories: ['container']
 tags: ['docker']
 toc:
   enable: true

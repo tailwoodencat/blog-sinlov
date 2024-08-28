@@ -3,7 +3,7 @@ title: "docker init 进程工具 tini"
 date: 2022-11-28T15:51:00+00:00
 description: "docker init 进程工具 tini"
 draft: false
-categories: ['docker']
+categories: ['container']
 tags: ['docker']
 toc:
   enable: true

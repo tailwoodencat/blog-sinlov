@@ -3,8 +3,8 @@ title: "drone feishu notify plugin"
 date: 2022-11-07T11:09:51+08:00
 description: "drone feishu notify 飞书群组机器人通知"
 draft: false
-categories: ['basics']
-tags: ['basics', 'drone']
+categories: ['CI']
+tags: ['CI', 'basics', 'drone']
 toc:
   enable: true
   auto: false

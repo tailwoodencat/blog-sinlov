@@ -3,8 +3,8 @@ title: "drone-server 配置使用"
 date: 2022-10-22T11:58:00+00:00
 description: "drone-server 配置使用"
 draft: false
-categories: ['basics']
-tags: ['basics', 'drone']
+categories: ['CI']
+tags: ['CI', 'basics', 'drone']
 toc:
   enable: true
   auto: false

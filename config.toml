@@ -57,13 +57,21 @@ enableEmoji = true
         title = ""
         weight = 4
       [[languages.zh-cn.menu.main]]
-        identifier = "docker"
+        identifier = "CI"
         pre = ""
         post = ""
-        name = "docker"
-        url = "/categories/docker/"
+        name = "CI"
+        url = "/categories/CI/"
         title = ""
         weight = 5
+      [[languages.zh-cn.menu.main]]
+        identifier = "container"
+        pre = ""
+        post = ""
+        name = "container"
+        url = "/categories/container/"
+        title = ""
+        weight = 6
       [[languages.zh-cn.menu.main]]
         identifier = "unity"
         pre = ""
@@ -71,31 +79,7 @@ enableEmoji = true
         name = "unity"
         url = "/categories/unity/"
         title = ""
-        weight = 6
-      [[languages.zh-cn.menu.main]]
-        identifier = "Android"
-        pre = ""
-        post = ""
-        name = "Android"
-        url = "/categories/android/"
-        title = ""
         weight = 7
-      [[languages.zh-cn.menu.main]]
-        identifier = "python"
-        pre = ""
-        post = ""
-        name = "python"
-        url = "/categories/python/"
-        title = ""
-        weight = 8
-      [[languages.zh-cn.menu.main]]
-        identifier = "rust"
-        pre = ""
-        post = ""
-        name = "rust"
-        url = "/categories/rust/"
-        title = ""
-        weight = 9
       [[languages.zh-cn.menu.main]]
         identifier = "golang"
         pre = ""
@@ -103,7 +87,31 @@ enableEmoji = true
         name = "golang"
         url = "/categories/golang/"
         title = ""
+        weight = 8
+      [[languages.zh-cn.menu.main]]
+        identifier = "python"
+        pre = ""
+        post = ""
+        name = "python"
+        url = "/categories/python/"
+        title = ""
         weight = 9
+      [[languages.zh-cn.menu.main]]
+        identifier = "Android"
+        pre = ""
+        post = ""
+        name = "Android"
+        url = "/categories/android/"
+        title = ""
+        weight = 10
+      [[languages.zh-cn.menu.main]]
+        identifier = "basics"
+        pre = ""
+        post = ""
+        name = "basics"
+        url = "/categories/basics/"
+        title = ""
+        weight = 11
       [[languages.zh-cn.menu.main]]
         identifier = "about"
         pre = ""
@@ -111,7 +119,7 @@ enableEmoji = true
         name = "关于"
         url = "/about/"
         title = ""
-        weight = 10
+        weight = 20
       [[languages.zh-cn.menu.main]]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
@@ -119,7 +127,7 @@ enableEmoji = true
         name = ""
         url = "https://github.com/sinlov"
         title = "GitHub"
-        weight = 11
+        weight = 21
     [languages.zh-cn.params]
       description = "life is short just do it!"
       keywords = ["Github" ,"Linux","HUGO","Tutorial","Technology"]

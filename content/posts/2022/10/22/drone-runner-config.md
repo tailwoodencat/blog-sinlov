@@ -3,8 +3,8 @@ title: "drone-runner 配置"
 date: 2022-10-22T14:58:00+00:00
 description: "drone-runner 配置"
 draft: false
-categories: ['basics']
-tags: ['basics', 'drone']
+categories: ['CI']
+tags: ['CI', 'basics', 'drone']
 toc:
   enable: true
   auto: false

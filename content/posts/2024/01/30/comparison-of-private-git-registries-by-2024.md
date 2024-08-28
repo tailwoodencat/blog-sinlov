@@ -4,7 +4,7 @@ date: 2024-01-30T14:54:10+08:00
 description: "比较 开源的私有 git 仓库 工具"
 draft: false
 categories: ['basics']
-tags: ['basics']
+tags: ['basics', 'git']
 toc:
   enable: true
   auto: false

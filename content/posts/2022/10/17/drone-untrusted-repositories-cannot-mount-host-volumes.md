@@ -3,8 +3,8 @@ title: "drone untrusted repositories cannot mount host volumes"
 date: 2022-10-17T15:51:00+00:00
 description: "drone untrusted repositories cannot mount host volumes"
 draft: false
-categories: ['basics']
-tags: ['basics', 'drone']
+categories: ['CI']
+tags: ['CI', 'basics', 'drone']
 toc:
   enable: true
   auto: false

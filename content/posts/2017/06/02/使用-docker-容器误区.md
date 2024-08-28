@@ -3,7 +3,7 @@ title: "使用 docker 容器误区"
 date: 2017-06-02T11:38:53+08:00
 description: "使用 docker 容器误区, 和防止错误使用 docker的各种注意事项"
 draft: false
-categories: ['docker']
+categories: ['container']
 tags: ['docker']
 toc:
   enable: true

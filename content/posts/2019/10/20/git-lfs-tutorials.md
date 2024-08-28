@@ -4,7 +4,7 @@ date: 2019-10-20T19:30:01+49:13
 description: "git-lfs 使用详细说明，以及使用技巧"
 draft: false
 categories: ['basics']
-tags: ['basics']
+tags: ['basics', 'git']
 toc:
   enable: true
   auto: false

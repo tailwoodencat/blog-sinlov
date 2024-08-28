@@ -3,8 +3,8 @@ title: "ubuntu gnome-shell 进程占用内存过多的问题"
 date: 2023-06-15T09:57:57+08:00
 description: "gnome 桌面内存泄露 导致设备假死 "
 draft: false
-categories: ['basics']
-tags: ['basics', 'ubuntu', 'gnome']
+categories: ['OS']
+tags: ['OS', 'basics', 'ubuntu', 'gnome']
 toc:
   enable: true
   auto: false
