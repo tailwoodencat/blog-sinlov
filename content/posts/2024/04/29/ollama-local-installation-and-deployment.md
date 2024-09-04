@@ -117,7 +117,7 @@ ollama serve
 
 ### 本地 open-webui 使用ollama 服务
 
-> **注意**： ollama 是一组后台服务， 使用 大模型 的交互行前端，需要另外的部署，这里演示的是 open-webui
+> **注意**： ollama 是一组后台服务， 使用 `大模型` 的 `交互前端` 需要另外的部署，这里演示的是 open-webui
 
 - docker-compose
 	- environment
