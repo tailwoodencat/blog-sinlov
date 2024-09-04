@@ -110,7 +110,7 @@ ollama serve
 
 > 这里说明一下，不同的 环境变量可以部署多套 ollama
 
-- [OLLAMA 支持的环境变量和用途见](https://github.com/ollama/ollama/blob/main/envconfig/config.go)
+- [OLLAMA 支持的环境变量和用途见 源码](https://github.com/ollama/ollama/blob/main/envconfig/config.go)
 - `OLLAMA_HOST` 定义当前运行 服务 host
 - `OLLAMA_MODELS` 模型文件存储位置，这个选项可以告别 windows 爆掉 C 盘的问题
 - `OLLAMA_ORIGINS` 跨域配置，这个需要点跨域知识，实在不会问生成式AI，大不了错几次
