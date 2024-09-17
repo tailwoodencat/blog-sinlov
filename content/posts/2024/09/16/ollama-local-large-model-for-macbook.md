@@ -103,8 +103,11 @@ ollama pull starcoder2:7b
 # 修改模型载入保留时间
 launchctl setenv OLLAMA_KEEP_ALIVE "30m"
 
+# 设置跨域主要是允许 容器使用
+launchctl setenv OLLAMA_ORIGINS "http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*"
+
 # 可选项设置跨域
-launchctl setenv OLLAMA_ORIGINS "http://127.0.0.1:*,http://localhost:*,http://192.168.50.0:*"
+launchctl setenv OLLAMA_ORIGINS "http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.50.0:*"
 ```
 
 修改后，重启 ollama 服务，方法是 在状态栏点击退出，重新打开即可
@@ -118,7 +121,7 @@ launchctl setenv OLLAMA_ORIGINS "http://127.0.0.1:*,http://localhost:*,http://19
 ```bash
 OLLAMA_HOST="0.0.0.0:11433"
 OLLAMA_KEEP_ALIVE="30m"
-OLLAMA_ORIGINS="http://127.0.0.1:*,http://localhost:*,http://192.168.50.0:*"
+OLLAMA_ORIGINS="http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.50.0:*"
 
 # 这里修改了启动端口 11433
 # ollama 启动！！！
@@ -158,7 +161,7 @@ services:
     image: ghcr.io/open-webui/open-webui:v0.3.21
     pull_policy: if_not_present
     environment: # https://docs.openwebui.com/getting-started/env-configuration/
-      OLLAMA_BASE_URL: 'http://127.0.0.1:11434' # 这里需要注意，这个地址连不上，使用完整 IP address 即可
+      OLLAMA_BASE_URL: 'http://host.docker.internal:11434' # 这里需要注意，这个地址连不上，也就是支持 extra_hosts 有问题，使用完整 IP address 即可
       HF_ENDPOINT: 'https://hf-mirror.com' # 从 https://hf-mirror.com 镜像，而不是https://huggfacing.co 官网下载所需的模型
       WEBUI_SECRET_KEY: 'e2ac9c8f3462a9831b238601b8546807' # webui secret key
       # PORT: '11435'
@@ -175,6 +178,29 @@ services:
       options:
         max-size: 2m
 ```
+
+#### 使用 本地 open-webui
+
+第一次需要注册账号
+
+- 设置，进入设置 `Settings`
+	- 修改语言 `General` -> `Language` 修改为你需要的语言
+
+- 设置，进入 `设置` -> `管理员设置`
+	- `外部链接`  确认本地 ollama 链接 `http://host.docker.internal:11434` 可以正常使用
+	-  也可以添加远程 ollama 链接
+
+![](https://cdn.jsdelivr.net/gh/tailwoodencat/CDN@main/uPic/2024/09/17/9y9Idp-IGa5Ua.png)
+
+#### 模型拉取
+
+- 可用模型 [https://ollama.com/library](https://ollama.com/library)
+
+- 设置，进入 `设置` -> `管理员设置` -> `模型`
+
+输入需要拉的模型
+
+![](https://cdn.jsdelivr.net/gh/tailwoodencat/CDN@main/uPic/2024/09/17/TOdc0X-KAdbKD.png)
 
 ### 代码补全
 
@@ -208,6 +234,96 @@ ollama pull codeqwen:7b
     {
       "title": "codellama:7b",
       "model": "codellama:7b",
+      "provider": "ollama",
+      "apiBase": "http://127.0.0.1:11434"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "StarCoder2:7b",
+    "model": "starcoder2:7b",
+     "contextLength": 16384,
+    "provider": "ollama",
+    "apiBase": "http://127.0.0.1:11434"
+  },
+  "embeddingsProvider": {
+    "title": "qwen2:7b",
+    "model": "qwen2:7b",
+	  "contextLength": 2048,
+    "provider": "ollama",
+    "apiBase": "http://127.0.0.1:11434"
+  },
+  "customCommands": [
+    {
+      "name": "test",
+      "prompt": "{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don't edit any file.",
+      "description": "Write unit tests for highlighted code"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    },
+    {
+      "name": "terminal"
+    },
+    {
+      "name": "docs"
+    },
+    { "name": "search" },
+    { "name": "tree" },
+    { "name": "os" },
+    {
+      "name": "locals",
+      "params": {
+        "stackDepth": 3
+      }
+    },
+    {
+      "name": "open",
+      "params": {
+        "onlyPinned": true
+      }
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit selected code"
+    },
+    {
+      "name": "comment",
+      "description": "Write comments for the selected code"
+    },
+    {
+      "name": "share",
+      "description": "Export the current chat session to markdown"
+    },
+    {
+      "name": "commit",
+      "description": "Generate a git commit message"
+    }
+  ]
+}
+```
+
+- 如果内存小可以使用这个配置
+
+```json
+{
+  "cody.autocomplete.advanced.provider": "experimental-ollama",
+  "models": [
+    {
+      "title": "qwen2:7b",
+      "model": "qwen2:7b",
       "provider": "ollama",
       "apiBase": "http://127.0.0.1:11434"
     }
