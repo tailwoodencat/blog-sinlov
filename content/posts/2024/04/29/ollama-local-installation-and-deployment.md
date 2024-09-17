@@ -91,6 +91,14 @@ Windows上的Ollama将文件存储在几个不同的位置。你可以查看它�
 
 需要不小的 C 盘空间就是
 
+windows 建议配置 环境变量
+
+- `OLLAMA_KEEP_ALIVE` 改为 30m 或者 60m 这样不用频繁载入模型
+- `OLLAMA_MODELS` 改为一个 大号的 SSD 固态盘
+- `OLLAMA_ORIGINS`  改为 `http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.50.0:*` 这样可以远程访问
+
+- `OLLAMA_HOST`  可选，可以修改为 `0.0.0.0:11434`
+
 ### 自定义启动 ollama 服务
 
 这里在 windows powershell 环境下部署的， 因为好显卡在 windows，换其他环境请自己转换脚本
@@ -101,8 +109,9 @@ $env:OLLAMA_MODELS="$((pwd).Path)\ollama" ;
 $env:OLLAMA_KEEP_ALIVE="30m"
 # 这里留空即可
 $env:OLLAMA_ORIGINS=""
-# https://github.com/ollama/ollama/issues/300  说这样可以其实不一定
-$env:OLLAMA_ORIGINS="http://192.168.50.0:*"
+## 如果需要远程访问，需要配置跨域
+# https://github.com/ollama/ollama/issues/300 有详细讨论
+$env:OLLAMA_ORIGINS="http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.50.0:*"
 
 # ollama 启动！！！
 ollama serve
@@ -111,6 +120,7 @@ ollama serve
 > 这里说明一下，不同的 环境变量可以部署多套 ollama
 
 - [OLLAMA 支持的环境变量和用途见 源码](https://github.com/ollama/ollama/blob/main/envconfig/config.go)
+- `OLLAMA_KEEP_ALIVE` 修改这个时间，可以防止重复挂载模型，缺点是更占用资源
 - `OLLAMA_HOST` 定义当前运行 服务 host
 - `OLLAMA_MODELS` 模型文件存储位置，这个选项可以告别 windows 爆掉 C 盘的问题
 - `OLLAMA_ORIGINS` 跨域配置，这个需要点跨域知识，实在不会问生成式AI，大不了错几次
@@ -128,28 +138,21 @@ ollama serve
 		- `./open-webui/data:/app/backend/data` 这个为 当前 `docker-compose.yml` 文件相对目录存储数据
 	- ports
 		- `11435:8080` 这个是 webUI 对外服务的 端口 设置 映射到 `11435`，如果端口占用可以跟换
-		- `network_mode: host` 如果开启，就是 8080
+		- `network_mode: host` 如果开启，就是 8080，并且修改  OLLAMA_BASE_URL
 
 ```yml
-# copy right by sinlov at https://github.com/sinlov
-# Licenses http://www.apache.org/licenses/LICENSE-2.0
-# more info see https://docs.docker.com/compose/compose-file/ or https://docker.github.io/compose/compose-file/
-#version: '3.8' # https://docs.docker.com/compose/compose-file/compose-versioning/
 services:
   ollama-local-open-ui:
     container_name: "ollama-local-open-ui"
-    # image: dyrnq/open-webui:git-e9ba8d7-cuda # https://hub.docker.com/r/dyrnq/open-webui/tags
-    image: ghcr.io/open-webui/open-webui:main
+    image: ghcr.io/open-webui/open-webui:v0.3.21-ollama
+    # image: ghcr.io/open-webui/open-webui:v0.3.21-cuda
+    # image: ghcr.io/open-webui/open-webui:v0.3.21
     pull_policy: if_not_present
     environment: # https://docs.openwebui.com/getting-started/env-configuration/
-      - 'OLLAMA_BASE_URL=http://127.0.0.1:11433' # 这里需要注意，这个地址连不上，使用完整 IP address 即可
-      - 'HF_ENDPOINT=https://hf-mirror.com' # 从 https://hf-mirror.com 镜像，而不是https://huggfacing.co 官网下载所需的模型
-      - 'WEBUI_SECRET_KEY=e2ac9c8f3462a9831b238601b8546807' # webui secret key
-      # - 'PORT=11435'
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    ports:
-      - "11435:8080"
+      OLLAMA_BASE_URL: 'http://host.docker.internal:11434' # 这里需要注意，这个地址连不上，使用完整 IP address 即可
+      HF_ENDPOINT: 'https://hf-mirror.com' # 从 https://hf-mirror.com 镜像，而不是https://huggfacing.co 官网下载所需的模型
+      WEBUI_SECRET_KEY: 'e2ac9c8f3462a9831b238601b8546807' # webui secret key
+      # PORT: '11435'
     # network_mode: host
     volumes:
       - "./open-webui/data:/app/backend/data"
@@ -160,17 +163,44 @@ services:
         max-size: 2m
 ```
 
+#### 使用 本地 open-webui
+
+第一次需要注册账号
+
+- 设置，进入设置 `Settings`
+	- 修改语言 `General` -> `Language` 修改为你需要的语言
+
+- 设置，进入 `设置` -> `管理员设置`
+	- `外部链接`  确认本地 ollama 链接 `http://host.docker.internal:11434` 可以正常使用
+	-  也可以添加远程 ollama 链接
+
+![](https://cdn.jsdelivr.net/gh/tailwoodencat/CDN@main/uPic/2024/09/17/9y9Idp-IGa5Ua.png)
+
+#### 模型拉取
+
+- 可用模型 [https://ollama.com/library](https://ollama.com/library)
+
+- 设置，进入 `设置` -> `管理员设置` -> `模型`
+
+输入需要拉的模型
+
+![](https://cdn.jsdelivr.net/gh/tailwoodencat/CDN@main/uPic/2024/09/17/TOdc0X-KAdbKD.png)
+
 ## 使用 ollama 命令
 
 ollame 本身是一个 管理大模型的工具
 
 ### ollama cli 基本使用
 
-- `list` List models on your computer
+- `list`列出已经安装的模型
 - `pull` 拉取模型
 - `run`  run 除了拉取模型，还同时将模型对应的交互式控制台运行了起来，不建议这么做，限定死了启动方式
 - `rm` 移除本地下载的模型
+- `ps`查看当前硬件资源占用
 - `serve` 启动 大模型后台服务
+
+额外说明
+- [How can I allow additional web origins to access Ollama?](https://github.com/ollama/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama)
 
 ###  常用模型
 
@@ -191,10 +221,21 @@ ollama pull bakllava:7b
 ## 文本大模型，只针对文本处理
 ollama pull qwen:14b
 ollama pull qwen:32b
+ollama pull qwen2:7b
 ollama pull codeqwen:7b
 ollama pull llama3:8b
+ollama pull llama3.1:8b
 # 70b 4090 24G 显存会不够必须集群跑
 ollama pull llama3:70b
+
+## 编码大模型
+ollama pull codeqwen:7b
+ollama pull codellama:7b
+ollama pull codellama:13b
+ollama pull codellama:34b
+ollama pull starcoder2:3b
+ollama pull starcoder2:7b
+ollama pull starcoder2:15b
 ```
 
 ### Modelfile 自定义模型
@@ -209,3 +250,11 @@ ollama pull llama3:8b
 
 ollama show --modelfile llama3:8b
 ```
+
+## 应用
+
+### ollama 扩展
+
+查询扩展 [https://github.com/ollama/ollama?tab=readme-ov-file#extensions--plugins](https://github.com/ollama/ollama?tab=readme-ov-file#extensions--plugins)，其中推荐试用
+
+- [Continue](https://docs.continue.dev) 代码助手，支持 vscode 和 JetBrains
