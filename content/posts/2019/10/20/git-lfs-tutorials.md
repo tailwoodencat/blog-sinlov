@@ -110,20 +110,49 @@ $ sudo scoop install git-lfs
 为了使用方便，建议添加 git 全局别名来做日常维护
 
 ```bash
+## basic
 # git lfss
-git config --global alias.lfss "\!git lfs status"
+git config --global alias.lfss "lfs status"
 
 # git lfsls
-git config --global alias.lfsls "\!git lfs ls-files"
+git config --global alias.lfsls "lfs ls-files"
+
+# git lfsfh
+git config --global alias.lfsfh "lfs fetch"
 
 # git lfsp
-git config --global alias.lfsp "\!git -c filter.lfs.smudge= -c filter.lfs.required=false pull && git lfs pull"
+git config --global alias.lfsp "-c filter.lfs.smudge= -c filter.lfs.required=false pull ; git lfs pull"
+
+# git lfstd
+git config --global alias.lfstd "lfs track --dry-run"
+
+# git lfstk
+git config --global alias.lfstk "lfs track"
+
+# git lfsuk
+git config --global alias.lfsuk "lfs track"
+
+# git lfsph
+git config --global alias.lfsph "lfs push"
+
+## lock / unlock
+
+# git lfstl
+git config --global alias.lfstl "lfs track --lockable"
+
+# git lfslk
+git config --global alias.lfslk "lfs lock"
+
+# git lfsuk
+git config --global alias.lfsuk "lfs unlock"
+
+## prune
 
 # git lfsdryprune
-git config --global alias.lfsdryprune "\!git lfs prune --dry-run --verbose"
+git config --global alias.lfsdryprune "lfs prune --dry-run --verbose"
 
 # git lfsprunesafe
-git config --global alias.lfsprunesafe "\!git lfs prune --verify-remote"
+git config --global alias.lfsprunesafe "lfs prune --verify-remote"
 ```
 
 ## 使用
@@ -184,10 +213,10 @@ $ git lfs track --filename '**/png'
 # 移除也是类似方法
 
 # 包含文件夹本身的
-$ git lfs untrack track model/**
+$ git lfs untrack model/**
 
 # 不包含文件夹本身的
-$ git lfs untrack track model/*
+$ git lfs untrack model/*
 ```
 
 ### 查看 lfs 追踪文件
@@ -228,14 +257,14 @@ $ git lfs pull
 不妨显式使用 git lfs pull 命令来批量下载 git-lfs 内容，而禁用在检出期间自动下载 git-lfs
 
 ```bash
-$ git -c filter.lfs.smudge= -c filter.lfs.required=false pull && git lfs pull
+$ git -c filter.lfs.smudge= -c filter.lfs.required=false pull ; git lfs pull
 ```
 
 由于输入的内容很多，你可能希望创建一个简单的 git 别名来为你执行批处理的 git 和 git lfs 拉取
 
 ```bash
 # 设置别名 git lfsp
-$ git config --global alias.lfsp "\!git -c filter.lfs.smudge= -c filter.lfs.required=false pull && git lfs pull"
+$ git config --global alias.lfsp "-c filter.lfs.smudge= -c filter.lfs.required=false pull ; git lfs pull"
 
 # 使用
 $ git lfsp
@@ -434,9 +463,11 @@ $ git config lfs.fetchexclude "*.gif"
 
 ### 锁定 git-lfs 文件
 
-不幸的是，没有解决二进制合并冲突的简便方法
+官方文档 [https://github.com/git-lfs/git-lfs/wiki/File-Locking](https://github.com/git-lfs/git-lfs/wiki/File-Locking)
 
-使用 git-lfs 文件锁定，你可以按扩展名或文件名锁定文件，并防止二进制文件在合并期间被覆盖
+> tips: 不幸的是，`没有解决二进制合并冲突的简便方法`，请一定仔细阅读并测试后使用 lock 功能
+
+使用 git-lfs 文件锁定，你可以`按扩展名或文件名锁定文件，并防止二进制文件在合并期间被覆盖`
 
 用 LFS 的文件锁定功能，你首先需要告诉 git 哪些类型的文件是可锁定的
 

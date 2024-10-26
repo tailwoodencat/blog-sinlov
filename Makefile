@@ -72,6 +72,8 @@ help: printInfo
 	@echo "Help of task"
 	@echo "make init           ~> init check"
 	@echo "make utils          ~> install utils of this"
+	@echo "make up             ~> update this project submodule"
+	@echo "make upRemote       ~>	update this project submodule from remote"
 	@echo "make debug          ~> run at http://0.0.0.0:${ENV_HUGO_PORT}/"
 	@echo "make destination    ~> build hugo destination at path: ${ENV_HUGO_DESTINATION_PATH}"
 	@echo ""
