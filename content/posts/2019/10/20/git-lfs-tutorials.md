@@ -121,7 +121,10 @@ git config --global alias.lfsls "lfs ls-files"
 git config --global alias.lfsfh "lfs fetch"
 
 # git lfsp
-git config --global alias.lfsp "-c filter.lfs.smudge= -c filter.lfs.required=false pull ; git lfs pull"
+git config --global alias.lfsp "lfs pull"
+
+# git lfspc
+git config --global alias.lfspc "-c filter.lfs.smudge= -c filter.lfs.required=false pull"
 
 # git lfstd
 git config --global alias.lfstd "lfs track --dry-run"
@@ -257,14 +260,19 @@ $ git lfs pull
 不妨显式使用 git lfs pull 命令来批量下载 git-lfs 内容，而禁用在检出期间自动下载 git-lfs
 
 ```bash
-$ git -c filter.lfs.smudge= -c filter.lfs.required=false pull ; git lfs pull
+$ git -c filter.lfs.smudge= -c filter.lfs.required=false pull
+$ git lfs pull
 ```
 
 由于输入的内容很多，你可能希望创建一个简单的 git 别名来为你执行批处理的 git 和 git lfs 拉取
 
 ```bash
 # 设置别名 git lfsp
-$ git config --global alias.lfsp "-c filter.lfs.smudge= -c filter.lfs.required=false pull ; git lfs pull"
+# git lfsp
+git config --global alias.lfsp "lfs pull"
+
+# git lfspc
+git config --global alias.lfspc "-c filter.lfs.smudge= -c filter.lfs.required=false pull"
 
 # 使用
 $ git lfsp
