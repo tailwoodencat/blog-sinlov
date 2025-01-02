@@ -4,6 +4,8 @@
 
 ## theme
 
+> WARN: DoIt 支持的最老的 Hugo 版本为 0.134.0
+
 now theme [https://github.com/HEIGE-PCloud/DoIt](https://github.com/HEIGE-PCloud/DoIt)
 config file [https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/#site-configuration](https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/#site-configuration)
 
