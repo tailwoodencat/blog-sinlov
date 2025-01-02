@@ -182,6 +182,14 @@ enableEmoji = true
   dateFormat = "2006-01-02"
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["/images/avatar.png"]
+  # DoIt 更改 | 0.3.0 DoIt 作者配置
+  # 作者配置 .Site.Author was deprecated in Hugo v0.124.0 and will be removed in Hugo 0.141.0
+  [params.author]
+    name = "sinlov"
+    email = "sinlvogmppt@gmail.com"
+    link = ""
+    avatar = ""
+    gravatarEmail = ""
 
   [params.social]
     [params.social.zhihu]
@@ -590,12 +598,6 @@ enableEmoji = true
   [markup.tableOfContents]
     startLevel = 1
     endLevel = 6
-
-# 作者配置
-[author]
-  name = "sinlov"
-  email = ""
-  link = ""
 
 # 网站地图配置
 [sitemap]
