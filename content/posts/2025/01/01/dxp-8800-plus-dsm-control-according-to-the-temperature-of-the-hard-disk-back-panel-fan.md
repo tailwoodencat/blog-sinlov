@@ -490,7 +490,7 @@ LOG_COLOR_ENABLE=0
 
 在 `任务计划` 中 `新增`  `触发的任务` -> `用户定义的脚本`
 
-- 任务名称 `Fan-control`
+- 任务名称 `Fan-control-by-HDD`
 - 用户帐号 `root`
 - 先行任务：留空
 - 事件 `开机`
@@ -501,4 +501,3 @@ LOG_COLOR_ENABLE=0
 cd ${改为脚本存放位置}
 bash ./fan_control.sh
 ```
-

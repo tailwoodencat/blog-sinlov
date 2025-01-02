@@ -1,8 +1,23 @@
 .PHONY: dist test build
-ENV_VERSION = 1.0.0
+ENV_VERSION =1.0.0
 ENV_HUGO_BASE_URL ?= https://blog.sinlov.cn/
-ENV_HUGO_PORT ?= 51310
-ENV_HUGO_DESTINATION_PATH ?= public
+ENV_HUGO_PORT     ?= 51310
+ENV_HUGO_DESTINATION_PATH ?=public
+ENV_HUGO_GEN_RESOURCES    ?=resources
+
+.PHONY: clean.hugo.dest
+clean.hugo.dest:
+	-@RM -r ${ENV_HUGO_DESTINATION_PATH}
+
+.PHONY: clean.hugo.gen
+clean.hugo.gen:
+	-@RM -r ${ENV_HUGO_GEN_RESOURCES}
+
+.PHONY: clean.hugo
+clean.hugo: clean.hugo.dest clean.hugo.gen
+
+.PHONY: clean.all
+clean.all: clean.hugo
 
 .PHONY: utils
 utils:
@@ -45,12 +60,12 @@ ci:
 	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT} -e production
 
 .PHONY: build
-build:
-	hugo
+build: clean.hugo
+	hugo -d ${ENV_HUGO_DESTINATION_PATH} -b ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
 .PHONY: buildRepo
-buildRepo: up
-	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
+buildRepo: clean.hugo up
+	hugo -d ${ENV_HUGO_DESTINATION_PATH} -b ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
 .PHONY: cleanDestinationPath
 cleanDestinationPath:
