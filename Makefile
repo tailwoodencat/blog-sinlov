@@ -64,17 +64,12 @@ build: clean.hugo
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} -b ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
 .PHONY: buildRepo
-buildRepo: clean.hugo up
+buildRepo: up
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} -b ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 
-.PHONY: cleanDestinationPath
-cleanDestinationPath:
-	-@RM -r ${ENV_HUGO_DESTINATION_PATH}
-	$(info has clean ${ENV_HUGO_DESTINATION_PATH})
-
 .PHONY: destination
-destination: cleanDestinationPath up
-	hugo -d ${ENV_HUGO_DESTINATION_PATH} --baseUrl ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
+destination: clean.hugo up
+	hugo -d ${ENV_HUGO_DESTINATION_PATH} -b ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 	cp static/favicon.ico ${ENV_HUGO_DESTINATION_PATH}
 	cd public && generate-manifest --url=${ENV_HUGO_BASE_URL}
 
