@@ -77,6 +77,8 @@ macOS 上的 Ollama 将文件存储在几个不同的位置
 	- 参数越多，所需 显存 越大，30b 左右差不多需要 20G 专有显存推理
 	- 参数多不代表准确，不过太小参数的 LLM 容易出现幻觉(瞎扯给结果)
 
+> tips: 7b 左右的专业模型，就可以勉强使用了，显卡不好的 20b 开始就明显表现为缓慢
+
 下面演示常用模型
 
 ```bash
@@ -277,8 +279,8 @@ ollama pull qwen2.5:7b
 ollama pull qwen2.5:14b
 
 ## 翻译
+
 ollama pull llama3.2:3b
-ollama pull llama3.1:8b
 ollama pull llama3:8b
 ```
 
