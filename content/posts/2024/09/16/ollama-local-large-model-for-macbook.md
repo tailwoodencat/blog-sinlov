@@ -284,6 +284,8 @@ ollama pull llama3:8b
 
 ### opencommit
 
+AI 总结代码，生成提交信息，支持本地模型
+
 ```bash
 npm install -g opencommit
 
