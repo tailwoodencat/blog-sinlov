@@ -219,23 +219,49 @@ ollama pull llava:34b
 ollama pull bakllava:7b
 
 ## 文本大模型，只针对文本处理
+ollama pull deepseek-r1:8b
+ollama pull deepseek-r1:14b
+ollama pull deepseek-r1:32b
+ollama pull qwen2.5:7b
+ollama pull qwen2.5:14b
+ollama pull qwen2:7b
 ollama pull qwen:14b
 ollama pull qwen:32b
-ollama pull qwen2:7b
-ollama pull codeqwen:7b
-ollama pull llama3:8b
+# 翻译常用模型
+ollama pull llama3.2:3b
 ollama pull llama3.1:8b
+ollama pull llama3:8b
 # 70b 4090 24G 显存会不够必须集群跑
 ollama pull llama3:70b
 
 ## 编码大模型
+# 总结 commit
+ollama pull mistral:7b
+# 代码提示
 ollama pull codeqwen:7b
 ollama pull codellama:7b
 ollama pull codellama:13b
 ollama pull codellama:34b
+ollama pull deepseek-coder-v2:16b
+ollama pull deepseek-coder:6.7b
+ollama pull deepseek-coder:33b
 ollama pull starcoder2:3b
 ollama pull starcoder2:7b
 ollama pull starcoder2:15b
+```
+
+### ollama 拉取模型使用镜像
+
+- [https://hf-mirror.com/](https://hf-mirror.com/)
+
+```bash
+# ps
+$env:HTTP_PROXY="http://"
+$env:HTTPS_PROXY="http://"
+$env:NO_PROXY="localhost,127.0.0.1,192.168.,localaddress,.localdomain.com"
+
+
+ollama pull --insecure "https://hf-mirror.com"
 ```
 
 ### Modelfile 自定义模型
@@ -253,8 +279,145 @@ ollama show --modelfile llama3:8b
 
 ## 应用
 
-### ollama 扩展
+### IDE ollama 扩展
 
 查询扩展 [https://github.com/ollama/ollama?tab=readme-ov-file#extensions--plugins](https://github.com/ollama/ollama?tab=readme-ov-file#extensions--plugins)，其中推荐试用
 
+#### Continue
+
 - [Continue](https://docs.continue.dev) 代码助手，支持 vscode 和 JetBrains
+
+### opencommit
+
+```bash
+npm install -g opencommit
+
+# pull model at local
+ollama pull qwen2.5:14b
+ollama pull mistral:7b
+ollama pull llama3.2:3b
+ollama pull llama3:8b
+
+# 报错  Ollama provider error: Invalid URL
+oco config set OCO_API_URL='http://127.0.0.1:11434/api/chat'
+# 如果您在 docker/另一台具有GPU（非本地）的机器上设置了 ollama
+oco config set OCO_API_URL='http://192.168.50.10:11434/api/chat'
+
+## config
+# set language
+oco config set OCO_LANGUAGE=en
+# set model
+oco config set OCO_AI_PROVIDER='ollama'
+oco config set OCO_MODEL='qwen2.5:14b'
+oco config set OCO_MODEL='qwen2.5:7b'
+oco config set OCO_MODEL='mistral:7b'
+oco config set OCO_MODEL='llama3.2:3b'
+# 推理模型会把推理过程加到提交中，不建议使用
+oco config set OCO_MODEL='deepseek-r1:14b'
+
+# usage
+git add <files...>
+oco
+
+# 跳过提交确认
+oco --yes
+```
+
+- 配置文件并使用oco config set命令进行设置 到 文件 `~/.opencommit`
+
+```
+OCO_AI_PROVIDER=<openai (default), anthropic, azure, ollama, gemini, flowise, deepseek>
+OCO_API_KEY=<your OpenAI API token> // or other LLM provider API token
+OCO_API_URL=<may be used to set proxy path to OpenAI api>
+OCO_TOKENS_MAX_INPUT=<max model token limit (default: 4096)>
+OCO_TOKENS_MAX_OUTPUT=<max response tokens (default: 500)>
+OCO_DESCRIPTION=<postface a message with ~3 sentences description of the changes>
+OCO_EMOJI=<boolean, add GitMoji>
+OCO_MODEL=<either 'gpt-4o', 'gpt-4', 'gpt-4-turbo', 'gpt-3.5-turbo' (default), 'gpt-3.5-turbo-0125', 'gpt-4-1106-preview', 'gpt-4-turbo-preview' or 'gpt-4-0125-preview' or any Anthropic or Ollama model or any string basically, but it should be a valid model name>
+OCO_LANGUAGE=<locale, scroll to the bottom to see options>
+OCO_MESSAGE_TEMPLATE_PLACEHOLDER=<message template placeholder, default: '$msg'>
+OCO_PROMPT_MODULE=<either conventional-commit or @commitlint, default: conventional-commit>
+OCO_ONE_LINE_COMMIT=<one line commit message, default: false>
+```
+
+支持 本地 `.env` 文件导入
+
+### jetbrains AI Git Commit
+
+- [https://plugins.jetbrains.com/plugin/24851-ai-git-commit](https://plugins.jetbrains.com/plugin/24851-ai-git-commit)
+
+- Support for OpenAI API.
+- Support for Gemini.
+- Support for DeepSeek.
+- Support for Ollama.
+- Support for Cloudflare Workers AI.
+- Support for 阿里云百炼(Model Hub).
+- Support for SiliconFlow(Model Hub).
+
+本地使用 ollama 需要提前拉以下的模型
+
+```bash
+# pull model at local
+ollama pull qwen2.5:14b
+ollama pull llama3.2:3b
+```
+
+### ai-commit
+
+使用ChatGPT、Gitmoji和常规提交使提交变得更容易
+
+> 该工具维护有问题，建议测试后使用
+
+ - [https://github.com/insulineru/ai-commit](https://github.com/insulineru/ai-commit)
+
+```
+# npm install -g ai-commit
+# https://github.com/insulineru/ai-commit
+# https://www.npmjs.com/package/ai-commit
+# Set PROVIDER in your environment to ollam
+ollama pull mistral:7b
+
+# usage
+ai-commit --PROVIDER=ollama --MODEL=mistral
+```
+
+### Chatbox
+
+AI 对话客户端  [Chatbox](https://chatboxai.app/)
+
+- 本地模型支持
+- 一次使用一种模型
+
+```bash
+brew install chatbox
+```
+
+### Cherry Studio
+
+AI 对话客户端  [Cherry Studio](https://cherry-ai.com/)
+
+- 本地模型支持
+- 支持 助手 话题 翻译  ，不同业态使用
+- 支持 三 模型同时使用
+
+```bash
+brew install cherry-studio
+```
+
+- 该工具常用模型
+
+```bash
+## 助手
+ollama pull deepseek-r1:8b
+ollama pull deepseek-r1:14b
+ollama pull deepseek-r1:32b
+
+## 话题
+ollama pull qwen2.5:7b
+ollama pull qwen2.5:14b
+
+## 翻译
+ollama pull llama3.2:3b
+ollama pull llama3.1:8b
+ollama pull llama3:8b
+```
