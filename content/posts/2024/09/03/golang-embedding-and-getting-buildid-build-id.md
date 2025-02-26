@@ -23,9 +23,9 @@ comment:
 通常情况下，你可能希望在编译时就 预埋 buildID ，在运行时直接读取 构建 id ，这通常在构建流程进行改造
 
 例如在 Dockerfile 中或者 CI/CD 流水线中，你可以在构建命令中添加 `-ldflags` 参数来设置或访问
-buildID
 
 ```bash
+# 添加 buildID
 go build -ldflags "-X main.buildID=your-build-id"
 ```
 
