@@ -292,11 +292,14 @@ ollama show --modelfile llama3:8b
 ```bash
 npm install -g opencommit
 
-# pull model at local
+## pull model at local
+# 高配设备推荐这个
 ollama pull qwen2.5:14b
-ollama pull mistral:7b
+# 低配设备推荐这个模型
 ollama pull llama3.2:3b
+# 也可以拉其他模型
 ollama pull llama3:8b
+ollama pull mistral:7b
 
 # 报错  Ollama provider error: Invalid URL
 oco config set OCO_API_URL='http://127.0.0.1:11434/api/chat'
@@ -306,6 +309,8 @@ oco config set OCO_API_URL='http://192.168.50.10:11434/api/chat'
 ## config
 # set language
 oco config set OCO_LANGUAGE=en
+# set description
+oco config set OCO_DESCRIPTION=true
 # set model
 oco config set OCO_AI_PROVIDER='ollama'
 oco config set OCO_MODEL='qwen2.5:14b'
@@ -354,11 +359,13 @@ OCO_ONE_LINE_COMMIT=<one line commit message, default: false>
 - Support for 阿里云百炼(Model Hub).
 - Support for SiliconFlow(Model Hub).
 
-本地使用 ollama 需要提前拉以下的模型
+本地使用 ollama 需要提前拉模型
 
 ```bash
-# pull model at local
+## pull model at local
+# 高配设备推荐这个
 ollama pull qwen2.5:14b
+# 低配设备推荐这个模型
 ollama pull llama3.2:3b
 ```
 
