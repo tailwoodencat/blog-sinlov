@@ -80,12 +80,41 @@ macOS 上的 Ollama 将文件存储在几个不同的位置
 下面演示常用模型
 
 ```bash
-# 文本大模型
-ollama pull qwen2:7b
+## 多模态模型，可以混和图文处理
+ollama pull llava:13b
+ollama pull llava:34b
+ollama pull bakllava:7b
 
-# 代码方面
+## 文本大模型，只针对文本处理
+ollama pull deepseek-r1:8b
+ollama pull deepseek-r1:14b
+ollama pull deepseek-r1:32b
+ollama pull qwen2.5:7b
+ollama pull qwen2.5:14b
+ollama pull qwen2:7b
+ollama pull qwen:14b
+ollama pull qwen:32b
+# 翻译常用模型
+ollama pull llama3.2:3b
+ollama pull llama3.1:8b
+ollama pull llama3:8b
+# 70b 4090 24G 显存会不够必须集群跑
+ollama pull llama3:70b
+
+## 编码大模型
+# 总结 commit
+ollama pull mistral:7b
+# 代码提示
+ollama pull codeqwen:7b
 ollama pull codellama:7b
+ollama pull codellama:13b
+ollama pull codellama:34b
+ollama pull deepseek-coder-v2:16b
+ollama pull deepseek-coder:6.7b
+ollama pull deepseek-coder:33b
+ollama pull starcoder2:3b
 ollama pull starcoder2:7b
+ollama pull starcoder2:15b
 ```
 
 ## 设置 ollama 服务
