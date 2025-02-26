@@ -4,7 +4,7 @@ date: 2024-09-16T12:24:13+08:00
 description: "Ollama local large model for macbook"
 draft: false
 categories: ['AI']
-tags: ['AI']
+tags: ['AI', 'ollama']
 toc:
   enable: true
   auto: false
@@ -201,6 +201,139 @@ services:
 输入需要拉的模型
 
 ![](https://cdn.jsdelivr.net/gh/tailwoodencat/CDN@main/uPic/2024/09/17/TOdc0X-KAdbKD.png)
+
+## 应用
+
+### IDE ollama 扩展
+
+查询扩展 [https://github.com/ollama/ollama?tab=readme-ov-file#extensions--plugins](https://github.com/ollama/ollama?tab=readme-ov-file#extensions--plugins)，其中推荐试用
+
+#### Continue
+
+- [Continue](https://docs.continue.dev) 代码助手，支持 vscode 和 JetBrains
+
+### Chatbox
+
+AI 对话客户端  [Chatbox](https://chatboxai.app/)
+
+- 本地模型支持
+- 一次使用一种模型
+
+```bash
+brew install chatbox
+```
+
+### Cherry Studio
+
+AI 对话客户端  [Cherry Studio](https://cherry-ai.com/)
+
+- 本地模型支持
+- 支持 助手 话题 翻译  ，不同业态使用
+- 支持 三 模型同时使用
+
+```bash
+brew install cherry-studio
+```
+
+- 该工具常用模型
+
+```bash
+## 助手
+ollama pull deepseek-r1:8b
+ollama pull deepseek-r1:14b
+ollama pull deepseek-r1:32b
+
+## 话题
+ollama pull qwen2.5:7b
+ollama pull qwen2.5:14b
+
+## 翻译
+ollama pull llama3.2:3b
+ollama pull llama3.1:8b
+ollama pull llama3:8b
+```
+
+### opencommit
+
+```bash
+npm install -g opencommit
+
+## pull model at local
+# 高配设备推荐这个
+ollama pull qwen2.5:14b
+# 低配设备推荐这个模型
+ollama pull llama3.2:3b
+# 也可以拉其他模型
+ollama pull llama3:8b
+ollama pull mistral:7b
+
+# 报错  Ollama provider error: Invalid URL
+oco config set OCO_API_URL='http://127.0.0.1:11434/api/chat'
+# 如果您在 docker/另一台具有GPU（非本地）的机器上设置了 ollama
+oco config set OCO_API_URL='http://192.168.50.10:11434/api/chat'
+
+## config
+# set language
+oco config set OCO_LANGUAGE=en
+# set description
+oco config set OCO_DESCRIPTION=true
+# set model
+oco config set OCO_AI_PROVIDER='ollama'
+oco config set OCO_MODEL='qwen2.5:14b'
+oco config set OCO_MODEL='qwen2.5:7b'
+oco config set OCO_MODEL='mistral:7b'
+oco config set OCO_MODEL='llama3.2:3b'
+# 推理模型会把推理过程加到提交中，不建议使用
+oco config set OCO_MODEL='deepseek-r1:14b'
+
+# usage
+git add <files...>
+oco
+
+# 跳过提交确认
+oco --yes
+```
+
+- 配置文件并使用oco config set命令进行设置 到 文件 `~/.opencommit`
+
+```
+OCO_AI_PROVIDER=<openai (default), anthropic, azure, ollama, gemini, flowise, deepseek>
+OCO_API_KEY=<your OpenAI API token> // or other LLM provider API token
+OCO_API_URL=<may be used to set proxy path to OpenAI api>
+OCO_TOKENS_MAX_INPUT=<max model token limit (default: 4096)>
+OCO_TOKENS_MAX_OUTPUT=<max response tokens (default: 500)>
+OCO_DESCRIPTION=<postface a message with ~3 sentences description of the changes>
+OCO_EMOJI=<boolean, add GitMoji>
+OCO_MODEL=<either 'gpt-4o', 'gpt-4', 'gpt-4-turbo', 'gpt-3.5-turbo' (default), 'gpt-3.5-turbo-0125', 'gpt-4-1106-preview', 'gpt-4-turbo-preview' or 'gpt-4-0125-preview' or any Anthropic or Ollama model or any string basically, but it should be a valid model name>
+OCO_LANGUAGE=<locale, scroll to the bottom to see options>
+OCO_MESSAGE_TEMPLATE_PLACEHOLDER=<message template placeholder, default: '$msg'>
+OCO_PROMPT_MODULE=<either conventional-commit or @commitlint, default: conventional-commit>
+OCO_ONE_LINE_COMMIT=<one line commit message, default: false>
+```
+
+支持 本地 `.env` 文件导入
+
+### jetbrains AI Git Commit
+
+- [https://plugins.jetbrains.com/plugin/24851-ai-git-commit](https://plugins.jetbrains.com/plugin/24851-ai-git-commit)
+
+- Support for OpenAI API.
+- Support for Gemini.
+- Support for DeepSeek.
+- Support for Ollama.
+- Support for Cloudflare Workers AI.
+- Support for 阿里云百炼(Model Hub).
+- Support for SiliconFlow(Model Hub).
+
+本地使用 ollama 需要提前拉模型
+
+```bash
+## pull model at local
+# 高配设备推荐这个
+ollama pull qwen2.5:14b
+# 低配设备推荐这个模型
+ollama pull llama3.2:3b
+```
 
 ### 代码补全
 
