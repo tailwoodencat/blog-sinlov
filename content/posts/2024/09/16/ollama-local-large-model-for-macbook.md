@@ -286,6 +286,8 @@ ollama pull llama3:8b
 
 ### opencommit
 
+[https://github.com/di-sukharev/opencommit](https://github.com/di-sukharev/opencommit)
+
 AI 总结代码，生成提交信息，支持本地模型
 
 ```bash
