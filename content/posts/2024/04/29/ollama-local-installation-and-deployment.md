@@ -106,7 +106,7 @@ mkdir ollama
 ```yml
 # copy right by sinlov at https://github.com/sinlov
 # Licenses http://www.apache.org/licenses/LICENSE-2.0
-# more info see https://docs.docker.com/compose/compose-file/ or https://docker.github.io/compose/compose-file/
+# more info see https://docs.docker.com/compose/compose-file/
 networks:
   default:
     # Use a custom driver
