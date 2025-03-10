@@ -196,6 +196,10 @@ ollama serve
 
 ### 本地 open-webui 使用ollama 服务
 
+- open-webui 文档
+	- open-webui 快速安装文档[https://docs.openwebui.com/getting-started/quick-start/](https://docs.openwebui.com/getting-started/quick-start/)
+	- open-webui 环境变量配置[https://docs.openwebui.com/getting-started/env-configuration/](https://docs.openwebui.com/getting-started/env-configuration/)
+
 > **注意**： ollama 是一组后台服务， 使用 `大模型` 的 `交互前端` 需要另外的部署，这里演示的是 open-webui
 
 创建目录，新增 docker-compose.yml 文件
@@ -241,6 +245,15 @@ services:
       driver: json-file
       options:
         max-size: 2m
+```
+
+- 运行执行编排
+
+```bash
+# 启动编排，并常驻后台并
+docker-compose up -d --remove-orphans
+# 移除编排内所有容器
+docker-compose down
 ```
 
 #### 使用 本地 open-webui

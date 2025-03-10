@@ -32,8 +32,6 @@ comment:
 
 ## 安装 ollama
 
-**注意**：这个模式下，ollama 和 外部编排容器运行的是冲突的， 建议 ollama 自己管理自己的容器，不要外部掺和编排，所以请移除上面的容器安装运行方式，就是这么设定的，阿门
-
 ### windows 下安装需要注意
 
 windows 建议配置 环境变量
@@ -97,8 +95,6 @@ macOS 上的 Ollama 将文件存储在几个不同的位置
 
 ### 容器安装 ollama
 
-- [https://docs.openwebui.com/getting-started/env-configuration/](https://docs.openwebui.com/getting-started/env-configuration/)
-
 创建一个目录 ollama ， 用来保存下载模型，以及运行日志等文件
 
 ```bash
@@ -131,6 +127,15 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+```
+
+- 运行执行编排
+
+```bash
+# 启动编排，并常驻后台并
+docker-compose up -d --remove-orphans
+# 移除编排内所有容器
+docker-compose down
 ```
 
 ### 自定义启动 ollama 服务
@@ -276,6 +281,12 @@ ollama show --modelfile llama3:8b
 
 ### 本地 open-webui 使用ollama 服务
 
+> **注意**：这个模式下，ollama 和 外部编排容器运行的是冲突的， 建议 ollama 自己管理自己的容器编排，不要和外部掺和，就是这么设定的，阿门
+
+- open-webui 文档
+	- open-webui 快速安装文档[https://docs.openwebui.com/getting-started/quick-start/](https://docs.openwebui.com/getting-started/quick-start/)
+	- open-webui 环境变量配置[https://docs.openwebui.com/getting-started/env-configuration/](https://docs.openwebui.com/getting-started/env-configuration/)
+
 > **注意**： ollama 是一组后台服务， 使用 `大模型` 的 `交互前端` 需要另外的部署，这里演示的是 open-webui
 
 - docker-compose
@@ -310,6 +321,15 @@ services:
       driver: json-file
       options:
         max-size: 2m
+```
+
+- 运行执行编排
+
+```bash
+# 启动编排，并常驻后台并
+docker-compose up -d --remove-orphans
+# 移除编排内所有容器
+docker-compose down
 ```
 
 #### 使用 本地 open-webui
