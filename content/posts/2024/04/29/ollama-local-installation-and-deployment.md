@@ -38,7 +38,7 @@ windows 建议配置 环境变量
 
 - `OLLAMA_KEEP_ALIVE` 改为 `30m` 或者 `60m` 这样不用频繁载入模型
 - `OLLAMA_MODELS` 改为一个 大号的 SSD 固态盘，建议读写快的，路径为 `C:\data\ollama-models`
-- `OLLAMA_ORIGINS`  改为 `http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.*:*` 这样可以远程访问
+- `OLLAMA_ORIGINS`  改为 `http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.*` 这样可以远程访问
 
 - `OLLAMA_HOST`  可选，可以修改为 `0.0.0.0:11434`
 
@@ -74,7 +74,7 @@ launchctl setenv OLLAMA_KEEP_ALIVE "30m"
 launchctl setenv OLLAMA_ORIGINS "http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*"
 
 # 可选项设置跨域
-launchctl setenv OLLAMA_ORIGINS "http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.*:*"
+launchctl setenv OLLAMA_ORIGINS "http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.*"
 ```
 
 修改后，重启 ollama 服务，方法是 在状态栏点击退出，重新打开即可
@@ -150,7 +150,7 @@ $env:OLLAMA_KEEP_ALIVE="30m"
 $env:OLLAMA_ORIGINS=""
 ## 如果需要远程访问，需要配置跨域
 # https://github.com/ollama/ollama/issues/300 有详细讨论
-$env:OLLAMA_ORIGINS="http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.*:*"
+$env:OLLAMA_ORIGINS="http://127.0.0.1:*,http://localhost:*,http://172.17.0.1:*,http://host.docker.internal:*,http://192.168.*"
 
 # ollama 启动！！！
 ollama serve
