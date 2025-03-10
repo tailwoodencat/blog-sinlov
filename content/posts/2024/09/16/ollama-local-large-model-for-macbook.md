@@ -93,6 +93,7 @@ ollama pull deepseek-r1:14b
 ollama pull deepseek-r1:32b
 ollama pull qwen2.5:7b
 ollama pull qwen2.5:14b
+ollama pull qwen2.5:32b
 ollama pull qwen2:7b
 ollama pull qwen:14b
 ollama pull qwen:32b
@@ -107,6 +108,9 @@ ollama pull llama3:70b
 # 总结 commit
 ollama pull mistral:7b
 # 代码提示
+ollama pull qwen2.5-coder:7b
+ollama pull qwen2.5-coder:14b
+ollama pull qwen2.5-coder:32b
 ollama pull codeqwen:7b
 ollama pull codellama:7b
 ollama pull codellama:13b
@@ -117,6 +121,35 @@ ollama pull deepseek-coder:33b
 ollama pull starcoder2:3b
 ollama pull starcoder2:7b
 ollama pull starcoder2:15b
+```
+
+### ollama 拉取模型使用镜像
+
+- 本地代理拉取
+
+```bash
+# ps
+$env:HTTP_PROXY="http://"
+$env:HTTPS_PROXY="http://"
+$env:NO_PROXY="localhost,127.0.0.1,192.168.,localaddress,.localdomain.com"
+```
+
+- 原镜像 [https://huggingface.co](https://huggingface.co)
+- 代理镜像 [https://hf-mirror.com/](https://hf-mirror.com/)
+
+```bash
+# 原镜像
+ollama pull hf.co/{username}/{reponame}:latest
+# 代理方式拉 https://hf-mirror.com
+ollama pull hf-mirror.com/{username}/{reponame}:latest
+
+# 比如 https://hf-mirror.com/Qwen/Qwen2.5-14B
+ollama pull hf-mirror.com/Qwen/Qwen2.5-14B
+ollama show --modelfile hf-mirror.com/Qwen/Qwen2.5-14B
+
+# 比如 https://hf-mirror.com/Qwen/Qwen2.5-1.5B-Instruct-GGUF
+ollama pull hf-mirror.com/Qwen/Qwen2.5-1.5B-Instruct-GGUF
+ollama show --modelfile hf-mirror.com/Qwen/Qwen2.5-1.5B-Instruct-GGUF
 ```
 
 ## 设置 ollama 服务
@@ -301,6 +334,7 @@ ollama pull llama3.2:3b
 # 也可以拉其他模型
 ollama pull llama3:8b
 ollama pull mistral:7b
+ollama pull lucianotonet/llamaclaude
 
 # 报错  Ollama provider error: Invalid URL
 oco config set OCO_API_URL='http://127.0.0.1:11434/api/chat'
