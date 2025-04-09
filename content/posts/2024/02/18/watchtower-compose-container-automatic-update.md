@@ -22,9 +22,11 @@ comment:
 
 [watchtower](https://containrrr.dev/watchtower/) 是一个可以自动更新 Docker 容器的应用程序（轮询）。它监视运行中的容器，并在`检测到容器镜像有更新时，自动拉取新镜像`并 `使用相同的参数重新启动容器`
 
-当然，GitOps 是一种更现代的方法，它通过 Git 仓库作为单一事实来源来管理基础设施和应用部署。比如使用 ArgoCD 或 Flux 这样的工具，可以实现更复杂的部署策略，但是对于小型项目，GitOps 可能有点 `杀鸡用牛刀`
+当然，GitOps 是一种更现代的方法，它通过 Git 仓库作为单一事实来源来管理基础设施和应用部署。比如使用 [ArgoCD](https://argo-cd.readthedocs.io/) 或 [Flux](https://fluxcd.io/) 这样的工具，可以实现更复杂的部署策略，但是对于小型项目，GitOps 可能有点 `杀鸡用牛刀`，因为部署一套 k8s 甚至 k3s 其实蛮费力的。
 
-Watchtower 提供了一个简单有效的解决方案，它和 Docker 无缝集成，几乎不需要额外配置，特别适合个人项目。
+Watchtower 提供了一个简单有效的解决方案，它和 Docker 无缝集成，几乎不需要额外配置，特别适合简单项目
+
+存在缺点:
 
 - 公共仓库，没有docker认证
 - 缺乏一些企业级功能（如高级部署策略和自动回滚），但对于大多数小型项目来说，这些限制并不是问题
@@ -50,6 +52,17 @@ Watchtower 提供了一个简单有效的解决方案，它和 Docker 无缝集�
 - watchtower 的更新检查类型
 	- 可以排出已经退出的容器
 	- 可以标记只检查，不拉取（用于本地构建的容器）
+
+- [watchtower 更新通知](https://containrrr.dev/watchtower/notifications/)
+	- [shoutrrr](https://github.com/containrrr/shoutrrr) 通知，支持类型非常多
+		- [Bark](https://containrrr.dev/shoutrrr/v0.8/services/bark/)
+		- [Gotify](https://containrrr.dev/shoutrrr/v0.8/services/gotify/)
+		- [Slack](https://containrrr.dev/shoutrrr/v0.8/services/slack/)
+	- [传统通知](https://containrrr.dev/watchtower/notifications/#legacy_notifications)
+		- 发送 通过电子邮件 的通知
+		- 通过 Slack webhook 发送通知
+		- 通过 MSTeams webhook 发送通知
+		- 通过 Gotify 发送通知
 
 ## 配置自动更新
 
