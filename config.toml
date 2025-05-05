@@ -73,13 +73,21 @@ enableEmoji = true
         title = ""
         weight = 6
       [[languages.zh-cn.menu.main]]
+        identifier = "game"
+        pre = ""
+        post = ""
+        name = "game"
+        url = "/categories/game/"
+        title = ""
+        weight = 10
+      [[languages.zh-cn.menu.main]]
         identifier = "unity"
         pre = ""
         post = ""
         name = "unity"
         url = "/categories/unity/"
         title = ""
-        weight = 7
+        weight = 11
       [[languages.zh-cn.menu.main]]
         identifier = "golang"
         pre = ""
@@ -87,7 +95,7 @@ enableEmoji = true
         name = "golang"
         url = "/categories/golang/"
         title = ""
-        weight = 8
+        weight = 21
       [[languages.zh-cn.menu.main]]
         identifier = "python"
         pre = ""
@@ -95,7 +103,7 @@ enableEmoji = true
         name = "python"
         url = "/categories/python/"
         title = ""
-        weight = 9
+        weight = 22
       [[languages.zh-cn.menu.main]]
         identifier = "Android"
         pre = ""
@@ -103,7 +111,7 @@ enableEmoji = true
         name = "Android"
         url = "/categories/android/"
         title = ""
-        weight = 10
+        weight = 30
       [[languages.zh-cn.menu.main]]
         identifier = "basics"
         pre = ""
@@ -111,7 +119,7 @@ enableEmoji = true
         name = "basics"
         url = "/categories/basics/"
         title = ""
-        weight = 11
+        weight = 100
       [[languages.zh-cn.menu.main]]
         identifier = "about"
         pre = ""
@@ -119,7 +127,7 @@ enableEmoji = true
         name = "关于"
         url = "/about/"
         title = ""
-        weight = 20
+        weight = 998
       [[languages.zh-cn.menu.main]]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
@@ -127,7 +135,7 @@ enableEmoji = true
         name = ""
         url = "https://github.com/sinlov"
         title = "GitHub"
-        weight = 21
+        weight = 999
     [languages.zh-cn.params]
       description = "life is short just do it!"
       keywords = ["Github" ,"Linux","HUGO","Tutorial","Technology"]

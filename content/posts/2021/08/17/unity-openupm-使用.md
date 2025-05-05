@@ -4,7 +4,7 @@ date: 2021-08-17T19:30:00+00:00
 description: "desc unity openupm 使用"
 draft: false
 categories: ['unity']
-tags: ['unity']
+tags: ['unity', 'game']
 toc:
   enable: true
   auto: false

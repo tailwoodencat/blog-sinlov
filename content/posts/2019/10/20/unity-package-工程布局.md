@@ -4,7 +4,7 @@ date: 2019-10-20T20:01:00+00:00
 description: "unity package 工程布局 介绍和 upm 规范介绍"
 draft: false
 categories: ['unity']
-tags: ['unity']
+tags: ['unity', 'game']
 toc:
   enable: true
   auto: false

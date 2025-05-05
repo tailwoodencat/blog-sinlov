@@ -4,7 +4,7 @@ date: 2022-09-10T21:30:00+00:00
 description: "Unity 手动编译 Reload Domain 插件 使用说明"
 draft: false
 categories: ['unity']
-tags: ['unity']
+tags: ['unity', 'game']
 toc:
   enable: true
   auto: false
