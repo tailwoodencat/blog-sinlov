@@ -7,11 +7,18 @@ ENV_HUGO_GEN_RESOURCES    ?=resources
 
 .PHONY: clean.hugo.dest
 clean.hugo.dest:
-	-@RM -r ${ENV_HUGO_DESTINATION_PATH}
+	@$(RM) -r ${ENV_HUGO_DESTINATION_PATH}
+
+.PHONY: clean.build
+clean.build:
+	@$(RM) -r ${ENV_HUGO_DESTINATION_PATH}
+	$(info clean.build at path: ${ENV_HUGO_DESTINATION_PATH})
+	@$(RM) .hugo_build.lock
+	$(info clean.build at path: .hugo_build.lock)
 
 .PHONY: clean.hugo.gen
 clean.hugo.gen:
-	-@RM -r ${ENV_HUGO_GEN_RESOURCES}
+	@$(RM) -r ${ENV_HUGO_GEN_RESOURCES}
 
 .PHONY: clean.hugo
 clean.hugo: clean.hugo.dest clean.hugo.gen
@@ -29,7 +36,7 @@ utils:
 printInfo:
 	@echo "=> Script Info version $(ENV_VERSION)"
 	@echo ""
-	@echo "theme use LoveIt https://github.com/dillonzq/LoveIt"
+	@echo "theme use LoveIt https://github.com/HEIGE-PCloud/DoIt"
 	@echo ""
 
 .PHONY: init
@@ -51,17 +58,26 @@ up:
 upRemote:
 	git submodule update --remote --merge
 
+
 .PHONY: debug
-debug:
-	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT}
+debug: clean.build
+	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT} --noHTTPCache --printPathWarnings --enableGitInfo
 
 .PHONY: ci
-ci:
+ci: clean.build
 	hugo serve --disableFastRender --buildDrafts --port ${ENV_HUGO_PORT} -e production
 
 .PHONY: build
 build: clean.hugo
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} -b ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
+
+.PHONY: build.install
+build.install:
+	pnpm install
+
+.PHONY: build.run
+build.run:
+	pnpm start
 
 .PHONY: buildRepo
 buildRepo: up

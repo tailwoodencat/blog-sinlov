@@ -49,19 +49,19 @@ enableEmoji = true
         title = ""
         weight = 3
       [[languages.zh-cn.menu.main]]
-        identifier = "AI"
+        identifier = "ai"
         pre = ""
         post = ""
         name = "AI"
-        url = "/categories/AI/"
+        url = "/categories/ai/"
         title = ""
         weight = 4
       [[languages.zh-cn.menu.main]]
-        identifier = "CI"
+        identifier = "ci"
         pre = ""
         post = ""
         name = "CI"
-        url = "/categories/CI/"
+        url = "/categories/ci/"
         title = ""
         weight = 5
       [[languages.zh-cn.menu.main]]
@@ -84,7 +84,7 @@ enableEmoji = true
         identifier = "unity"
         pre = ""
         post = ""
-        name = "unity"
+        name = "Unity"
         url = "/categories/unity/"
         title = ""
         weight = 11
@@ -105,7 +105,7 @@ enableEmoji = true
         title = ""
         weight = 22
       [[languages.zh-cn.menu.main]]
-        identifier = "Android"
+        identifier = "android"
         pre = ""
         post = ""
         name = "Android"
@@ -615,7 +615,8 @@ enableEmoji = true
 
 # Permalinks 配置
 [Permalinks]
-  posts = "/posts/:year/:month/:day/:filename"
+  posts = "/posts/:year/:month/:day/:contentbasename"
+  # posts = "/posts/:year/:month/:day/:filename"
   # posts = ":filename"
   # posts = "/posts/:filename"
 

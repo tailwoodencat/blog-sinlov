@@ -9,10 +9,19 @@
 now theme [https://github.com/HEIGE-PCloud/DoIt](https://github.com/HEIGE-PCloud/DoIt)
 config file [https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/#site-configuration](https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/#site-configuration)
 
+### know issue
+
+#### categories and tags lists not working
+
+- [categories and tags lists not working](https://github.com/HEIGE-PCloud/DoIt/issues/1482)
+
+Currently there is a workaround mentioned at [#1478](https://github.com/HEIGE-PCloud/DoIt/issues/1478)
+
+or use Hugo version < 0.146.0
+
 ### old theme
 
 - LoveIt [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/LoveIt)
-
 
 ## CI
 
