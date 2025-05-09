@@ -54,10 +54,26 @@ up:
 	git pull
 	git submodule update
 
-.PHONY: upRemote
-upRemote:
+.PHONY: up.env
+up.env:
+	git submodule foreach git log --oneline -n 1
+
+.PHONY: up.diff
+up.diff:
+	@git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
+	@git submodule foreach git log --oneline -n 1
+
+.PHONY: up.remote.env
+up.remote.env:
+	git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
+
+.PHONY: up.remote
+up.remote:
 	git submodule update --remote --merge
 
+.PHONY: up.remote.force
+up.remote.force:
+	git submodule update --remote --merge --force
 
 .PHONY: debug
 debug: clean.build
@@ -96,12 +112,13 @@ uglifyjs:
 .PHONY: help
 help: printInfo
 	@echo "Help of task"
-	@echo "make init           ~> init check"
-	@echo "make utils          ~> install utils of this"
-	@echo "make up             ~> update this project submodule"
-	@echo "make upRemote       ~>	update this project submodule from remote"
-	@echo "make debug          ~> run at http://0.0.0.0:${ENV_HUGO_PORT}/"
-	@echo "make destination    ~> build hugo destination at path: ${ENV_HUGO_DESTINATION_PATH}"
+	@echo "make init                        ~> init check"
+	@echo "make utils                       ~> install utils of this"
+	@echo "make up                          ~> update this project submodule"
+	@echo "make up.remote                   ~>	update this project submodule from remote"
+	@echo "make up.remote.force             ~>	update this project submodule from remote to main latest"
+	@echo "make debug                       ~> run at http://0.0.0.0:${ENV_HUGO_PORT}/"
+	@echo "make destination                 ~> build hugo destination at path: ${ENV_HUGO_DESTINATION_PATH}"
 	@echo ""
 	@echo "=> new file as"
 	@echo "rake posts title='article name'"
