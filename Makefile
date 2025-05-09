@@ -60,13 +60,11 @@ up.env:
 
 .PHONY: up.submodule.diff
 up.diff:
-	@git submodule update
 	@git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
 	@git submodule foreach git log --oneline -n 1
 
 .PHONY: up.submodule.remote.env
 up.remote.env:
-	@git submodule update
 	git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
 
 .PHONY: up.remote
