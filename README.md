@@ -13,6 +13,8 @@ config file [https://hugodoit.pages.dev/zh-cn/theme-documentation-basics/#site-c
 
 #### categories and tags lists not working
 
+> fix at `themes/DoIt` c60c8674 (HEAD, tag: v0.4.2)
+
 - [categories and tags lists not working](https://github.com/HEIGE-PCloud/DoIt/issues/1482)
 
 Currently there is a workaround mentioned at [#1478](https://github.com/HEIGE-PCloud/DoIt/issues/1478)
