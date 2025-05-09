@@ -58,13 +58,15 @@ up:
 up.env:
 	git submodule foreach git log --oneline -n 1
 
-.PHONY: up.diff
+.PHONY: up.submodule.diff
 up.diff:
+	@git submodule update
 	@git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
 	@git submodule foreach git log --oneline -n 1
 
-.PHONY: up.remote.env
+.PHONY: up.submodule.remote.env
 up.remote.env:
+	@git submodule update
 	git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
 
 .PHONY: up.remote
@@ -115,8 +117,9 @@ help: printInfo
 	@echo "make init                        ~> init check"
 	@echo "make utils                       ~> install utils of this"
 	@echo "make up                          ~> update this project submodule"
-	@echo "make up.remote                   ~>	update this project submodule from remote"
-	@echo "make up.remote.force             ~>	update this project submodule from remote to main latest"
+	@echo "make up.submodule.diff           ~> show diff of this project submodule"
+	@echo "make up.remote                   ~> update this project submodule from remote"
+	@echo "make up.remote.force             ~> update this project submodule from remote to main latest"
 	@echo "make debug                       ~> run at http://0.0.0.0:${ENV_HUGO_PORT}/"
 	@echo "make destination                 ~> build hugo destination at path: ${ENV_HUGO_DESTINATION_PATH}"
 	@echo ""
