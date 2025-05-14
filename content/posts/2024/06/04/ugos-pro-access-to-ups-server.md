@@ -26,16 +26,16 @@ comment:
 
 ```mermaid
 ---
-title: 简易连接图
+title: 简易网络连接图
 ---
 graph TD;
-    上游路由器---交换机;
-    交换机---主NAS;
-    主NAS---|USB 连接|UPS;
-    交换机---Web服务器;
-    交换机---下载服务器;
-    交换机---AppleTV;
-    交换机---Nas-备份;
+    上游路由器---SWITCH(交换机);
+    SWITCH---MainNAS(主NAS);
+    MainNAS---|USB 连接|UPS;
+    SWITCH---WebSer(Web服务器);
+    SWITCH---DowloadSer(下载服务器);
+    SWITCH---AppleTV;
+    SWITCH---NAS-BAK(NAS 备份);
 ```
 
 - 使用 [nut](https://networkupstools.org/) 是 C/S 架构的软件，来作为集群 UPS 管理
@@ -51,6 +51,23 @@ graph TD;
 
 - 断电时候 `网络UPS服务器` 节点可以通过网络通知 `受控设备` 节点关机
 
+```mermaid
+---
+title: UPS C/S 通知图
+---
+graph TD;
+    SWITCH(交换机)---MainNAS(主NAS);
+	MainNAS---|USB 连接|UPS;
+	MainNAS---|部署|NUTServer(网络NUT服务器);
+    SWITCH---DowloadSer(下载服务器);
+	DowloadSer---|配置|NutClient(NUT客户端)
+    SWITCH---NAS-BAK(NAS 备份);
+	NAS-BAK---|配置|NutClient(NUT客户端)
+	SWITCH---AppleTV(AppleTV【不接入】);
+
+	NUTServer-.通知.-NutClient
+```
+
 > tips: `网络UPS服务器` 占用端口 `3493` 也就是 [nut](https://networkupstools.org/) 服务端端口
 
 **缺点**
@@ -58,6 +75,8 @@ graph TD;
 - 来电后，所有节点启动时，要先等 `网络UPS服务器` 节点启动 ，然后再在 `网络UPS服务器` 节点上
 
 > 使用 `wake-on-lan` 唤醒其他节点，这个后面通过 docker 配置一套开机服务即可解决
+
+## 已知问题
 
 ### UGOS Pro 系统存在问题
 
@@ -86,7 +105,7 @@ apcaccess status
 ```bash
 # 先查看是否已经安装 nut
 systemctl status nut-driver.service
-systemctl status nut-server.service
+systemctl status NUTServerver.service
 
 # 安装 nut 服务，非必要不需要安装
 sudo apt install -y nut
@@ -158,7 +177,7 @@ OL
 
 # 查看服务状态
 $ sudo systemctl status nut-driver.service
-$ sudo systemctl status nut-server.service
+$ sudo systemctl status NUTServerver.service
 
 # 查看 nut 服务主机网络可达性
 $ nc -zv 0.0.0.0 3493
@@ -293,7 +312,7 @@ $ ipconfig /All
 # 比如 48-21-0B-12-34-56 改为 48.21.0b.12.34.56
 ```
 
-配置唤醒其他设备，需要 docker 和 docker-compse
+- 在主控 `网络NUT服务器` (一般是主NAS兼职做这个) 配置唤醒其他设备，需要 主NAS 支持 docker 和 docker-compose
 
 - docker-compse 配置例子
 
