@@ -29,24 +29,35 @@ comment:
 title: 简易连接图
 ---
 graph TD;
-    Router---Switch;
-    Switch---Nas-Main;
-    Nas-Main---|USB link|UPS;
-    Switch---Nas-web;
-    Switch---Nas-backup;
+    上游路由器---交换机;
+    交换机---主NAS;
+    主NAS---|USB 连接|UPS;
+    交换机---Web服务器;
+    交换机---下载服务器;
+    交换机---AppleTV;
+    交换机---Nas-备份;
 ```
 
 - 使用 [nut](https://networkupstools.org/) 是 C/S 架构的软件，来作为集群 UPS 管理
 - 这个时候，`Nas-Main` 主 nas ，就作为 `网络UPS服务器` 来使用
 - 其他设备，连接上`网络UPS服务器` 来接收 `断电安全关机操作`，作为 `受控设备`
 
-> 它的优点在于省成本，不用买很贵的带网络管理卡的 UPS，只需要一个 master 节点能和 UPS 通信就足够
+**优点**
 
-断电时候 `网络UPS服务器` 节点可以通过网络通知 `受控设备` 节点关机
+- 在于省成本，不用买很贵的带网络管理卡的 UPS，只需要一个 main 节点能 和 UPS 各种客户端通信就足够
+- 可以覆盖绝大多数消费级设备
+
+> 注意: 要 UPS 生效，`链路经过的路由器或者交换机` 电源也得接入 UPS
+
+- 断电时候 `网络UPS服务器` 节点可以通过网络通知 `受控设备` 节点关机
 
 > tips: `网络UPS服务器` 占用端口 `3493` 也就是 [nut](https://networkupstools.org/) 服务端端口
 
-但缺点是，来电后，所有节点启动时，要先等 `网络UPS服务器` 节点启动 ，然后再在 `网络UPS服务器` 节点上使用 `wake-on-lan` 唤醒其他节点，这个后面通过 docker 配置一套开机服务即可解决
+**缺点**
+
+- 来电后，所有节点启动时，要先等 `网络UPS服务器` 节点启动 ，然后再在 `网络UPS服务器` 节点上
+
+> 使用 `wake-on-lan` 唤醒其他节点，这个后面通过 docker 配置一套开机服务即可解决
 
 ### UGOS Pro 系统存在问题
 
@@ -56,14 +67,15 @@ UPS 使用 `SNMP不断电系统` 支持的 SNMP 版本为 `v1` 或者 `v2c` 不�
 
 ## 配置 网络UPS服务器
 
-### apcupsd + nut 服务端
+### nut  服务端
 
-apcupsd 具体配置过程不在这里讲，有需要见用户手册
+apcupsd 停止支持，请迁移到 nut
 
 - [http://www.apcupsd.com/](http://www.apcupsd.com/)
-- 用户手册 [http://www.apcupsd.org/manual/manual.html#basic-user-s-guide](http://www.apcupsd.org/manual/manual.html#basic-user-s-guide)
+	- [https://sourceforge.net/projects/apcupsd/](https://sourceforge.net/projects/apcupsd/)
+	- 用户手册 已废弃 [http://www.apcupsd.org/manual/manual.html#basic-user-s-guide](http://www.apcupsd.org/manual/manual.html#basic-user-s-guide)
 
-要求执行，下面的命令，返回的 UPS 信息正常，打开 apcupsd 服务，端口为 3551
+如果是 apcupsd 执行下面的命令，返回的 UPS 信息正常，打开 apcupsd 服务，端口为 3551
 
 ```bash
 apcaccess status
@@ -72,7 +84,11 @@ apcaccess status
 主要是配置 nut 服务端
 
 ```bash
-# 安装 nut 服务
+# 先查看是否已经安装 nut
+systemctl status nut-driver.service
+systemctl status nut-server.service
+
+# 安装 nut 服务，非必要不需要安装
 sudo apt install -y nut
 ```
 
@@ -82,7 +98,7 @@ sudo apt install -y nut
 MODE=netserver
 ```
 
-修改 `/etc/nut/upsd.conf`，去掉注释或写入以下内容以绑定本地 IP 和端口
+修改 `/etc/nut/upsd.conf`，去掉注释或写入以下内容以绑定本地 IP 和端口，默认 `0.0.0.0 3493`
 
 ```conf
 LISTEN 0.0.0.0 3493
@@ -112,6 +128,43 @@ LISTEN 0.0.0.0 3493
 
 > 如果需要给 群晖作为受控机，按照上面的设置 password 和 upsmon 即可
 
+UPS电源检查
+
+```bash
+# 查看 UPS 电源 全部状态
+$ upsc ups@localhost
+# 查看 UPS 电源当前状态
+$ upsc ups@localhost ups.status
+Init SSL without certificate database
+OL
+# 这些状态可能同时出现，例如当市电断电时，状态可能是 OB 和 DISCHRG，如果同时电池电量低，可能还会有 LB
+# 因此，ups.status的值可能是多个状态组合，用空格分隔
+# 可能状态有
+# OL：在线（On Line），表示UPS正在市电供电下正常工作，电池充满或正在充电
+# OFF：UPS处于关闭状态
+# ALARM：UPS有报警状态，可能有多种原因，需要进一步检查
+# RB：需要更换电池（Replace Battery），电池可能老化需要更换
+# OB：在电池上（On Battery），市电断电，UPS正在使用电池供电
+# FSD：强制关机（Forced Shutdown），UPS即将关闭，通常由低电池触发
+# OVER：过载（Overload），连接的负载超过UPS的容量，UPS可能无法维持供电
+# LB：低电池（Low Battery），电池电量低，可能即将耗尽
+# HB：高电池（High Battery），电池电量充足，可能正在充电或已充满
+# CHRG：充电中（Charging），电池正在充电
+# DISCHRG：放电中（Discharging），电池正在放电，为负载供电
+# BYPASS：旁路模式，UPS处于旁路状态，可能因为内部故障或维护
+# CAL：校准模式，UPS正在进行自我校准
+# TRIM：市电电压调整模式，UPS正在调整输入电压（升压）
+# BOOST：与TRIM类似，可能指电压调整
+
+# 查看服务状态
+$ sudo systemctl status nut-driver.service
+$ sudo systemctl status nut-server.service
+
+# 查看 nut 服务主机网络可达性
+$ nc -zv 0.0.0.0 3493
+Connection to 0.0.0.0 3493 port [tcp/nut] succeeded!
+```
+
 ### 群晖作为 网络UPS服务器
 
 在`控制面板`的 `不断电系统`中
@@ -121,7 +174,7 @@ LISTEN 0.0.0.0 3493
 
 ![ugos-pro-access-to-ups-server-qunhui-SqUaGM](https://cdn.jsdelivr.net/gh/tailwoodencat/CDN@main/uPic/2024/06/04/ugos-pro-access-to-ups-server-qunhui-SqUaGM.png)
 
-在 `允许的 Synology NAS 设备` 中，点击后添加 `受控设备` 的 ip，保存即可
+在 `允许的 Synology NAS 设备` 中，点击后添加 `受控设备` 的 ip，保存即可，注意群晖支持的 客户端数量很少
 
 如果没添加到 `允许的 Synology NAS 设备` 并`保存设置`，后面验证时，会报错
 
@@ -199,13 +252,45 @@ $ sudo systemctl restart nut-client
 - 点击应用，稍等一会即可看到保存成功的提示，并出现一个按钮 `设备信息`
 - 点开之前没有出现的 `设备信息` 你将可以看到 UPS 的当前状态
 
+### windows 作为 受控端
+
+支持 UPS 的软件不少
+
+- [nutdotnet/WinNUT-Client](https://github.com/nutdotnet/WinNUT-Client)
+- [gawindx/WinNUT-Client](https://github.com/gawindx/WinNUT-Client)
+- [apcupsd](http://www.apcupsd.org/)
+- [PowerChute 个人版](https://www.apc.com/cn/zh/product-range/61934-powerchute-%E4%B8%AA%E4%BA%BA%E7%89%88/)
+
+这里选择 [nutdotnet/WinNUT-Client](https://github.com/nutdotnet/WinNUT-Client) 版本 `Release v2.2.8719`，注意该软件需要自己设置开机启动
+
+> 如果作为 windows nut 服务端 需要安装 `NUT-for-Windows-2.6.5-6` form [https://networkupstools.org/download.html](https://networkupstools.org/download.html)
+
+- 如果您的 NUT 服务器托管在Synology NAS 上，请务必提供以下连接信息（默认）
+
+UPS Name: ups
+Login: upsmon
+Password: secret
+
+- 如果您的 NUT 服务器托管在 QNAP NAS 上，请务必提供以下连接信息（默认）
+
+UPS Name: ups
+Login: 留空不需要
+Password: 留空不需要
+
 ## 网络UPS服务器 配置来电唤醒其他设备
 
 - 配置前需要找到 受控端支持 网络唤醒的网卡 mac 地址，获取方式为
 
 ```bash
-$ ifconfig enp2s0
+## linux mac
+$ ifconfig <具体网卡>
 # ether 后面跟着就是
+
+## windows
+$ ipconfig /All
+# 物理地址 就是
+# 使用需要 去掉 - 改为.
+# 比如 48-21-0B-12-34-56 改为 48.21.0b.12.34.56
 ```
 
 配置唤醒其他设备，需要 docker 和 docker-compse
@@ -214,7 +299,6 @@ $ ifconfig enp2s0
 
 ```yml
 # more info see https://docs.docker.com/compose/compose-file/
-#version: '3.8' # https://docs.docker.com/compose/compose-file/compose-versioning/
 services:
   wakeonlan-foo-server:
     container_name: wakeonlan-foo-server
@@ -222,7 +306,16 @@ services:
     network_mode: "host"
     environment:
       - TZ=Asia/Shanghai
-    command: wake <mac addr>
+    command: wake <foo mac addr>
+    restart: on-failure # https://docs.docker.com/compose/compose-file/#restart
+
+  wakeonlan-bar-server:
+    container_name: wakeonlan-bar-server
+    image: fopina/wakeonlan:v1.1.2-1 # https://hub.docker.com/r/fopina/wakeonlan/tags
+    network_mode: "host"
+    environment:
+      - TZ=Asia/Shanghai
+    command: wake <bar mac addr>
     restart: on-failure # https://docs.docker.com/compose/compose-file/#restart
 ```
 
@@ -236,4 +329,3 @@ docker-compose up -d --remove-orphans
 ```
 
 > 这个容器编排，会在 下一次重启的时候，因为 `restart: on-failure` 而做到开机启用
-
