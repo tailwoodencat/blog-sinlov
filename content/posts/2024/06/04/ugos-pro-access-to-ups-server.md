@@ -210,7 +210,7 @@ Error: Access denied
 
 在配置 受控端前，需要在 `网络UPS服务器` 中配置好受控端信息，否则连接失败
 
-### nut clent 作为受控端
+### nut client 作为受控端
 
 ```bash
 sudo apt install -y nut
@@ -286,15 +286,19 @@ $ sudo systemctl restart nut-client
 
 - 如果您的 NUT 服务器托管在Synology NAS 上，请务必提供以下连接信息（默认）
 
+```
 UPS Name: ups
 Login: upsmon
 Password: secret
+```
 
 - 如果您的 NUT 服务器托管在 QNAP NAS 上，请务必提供以下连接信息（默认）
 
+```
 UPS Name: ups
 Login: 留空不需要
 Password: 留空不需要
+```
 
 ## 网络UPS服务器 配置来电唤醒其他设备
 
