@@ -26,12 +26,12 @@ comment:
 	- since `1.1.0`
 	- 指向 issues 或者 PR 讨论贴，对应的用法也在 讨论贴中
 
-### rustup-components-history
+### rustup components
 
-- [https://rust-lang.github.io/rustup/concepts/toolchains.html](https://rust-lang.github.io/rustup/concepts/toolchains.html)
-- [https://rust-lang.github.io/rustup-components-history/](https://rust-lang.github.io/rustup-components-history/)
-
-记录了 toolchain 最新支持的 Tier 和 信息，用于交叉编译查询
+- 组件列表 [https://rust-lang.github.io/rustup/concepts/components.html](https://rust-lang.github.io/rustup/concepts/components.html)
+- 维护的组件历史 [https://rust-lang.github.io/rustup-components-history/](https://rust-lang.github.io/rustup-components-history/)
+	- 记录了 toolchain 最新支持的 Tier 和 信息，用于交叉编译查询
+- 组件使用说明 [https://rust-lang.github.io/rustup/concepts/toolchains.html](https://rust-lang.github.io/rustup/concepts/toolchains.html)
 
 ## nightly
 
