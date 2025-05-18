@@ -21,6 +21,7 @@ comment:
 ## release
 
 - 官方发布博客 release blog [https://blog.rust-lang.org/releases/](https://blog.rust-lang.org/releases/)
+- 版本发布日志 [https://static.rust-lang.org/manifests.txt](https://static.rust-lang.org/manifests.txt)
 - 三方统计，Rust Changelogs [https://releases.rs/](https://releases.rs/)
 	- since `1.1.0`
 	- 指向 issues 或者 PR 讨论贴，对应的用法也在 讨论贴中
@@ -37,6 +38,9 @@ comment:
 - nightly 功能 索引在 [https://doc.rust-lang.org/unstable-book/the-unstable-book.html](https://doc.rust-lang.org/unstable-book/the-unstable-book.html)
 	- 这些功能绝大多数，指向 issues 或者 PR 讨论贴，对应的用法也在 讨论贴中
 	- 当编译器告诉您某个不稳定的功能不存在时，[请咨询该功能的跟踪问题](https://github.com/rust-lang/rust/issues?q=label%3AC-tracking-issue)，并弄清楚它是否早于或晚于您正在尝试的夜间版本，并考虑该信息以供您的下一个版本尝试
+
+- nightly 版本是以 时间作为记录的，会在 发布日志 [https://static.rust-lang.org/manifests.txt](https://static.rust-lang.org/manifests.txt) 中，记录具体的 `channel-rust-nightly.toml` 文件
+- 这个文件内容记录具体的 hash ,通过提交反查则知道具体改动
 
 ### unstablerust.dev
 
