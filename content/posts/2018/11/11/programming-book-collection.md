@@ -4,7 +4,7 @@ date: 2018-11-11T18:01:00+00:00
 description: "各种编程书籍收集"
 draft: false
 categories: ['basics']
-tags: ['basics']
+tags: ['basics', 'rust', 'golang']
 toc:
   enable: true
   auto: false
