@@ -18,6 +18,22 @@ comment:
   enable: true
 ---
 
+### 机械硬盘的工作温度正常范围
+
+常规范围
+
+- 机械硬盘在 `30℃-50℃` 之间运行正常，此温度区间可确保硬盘性能稳定且寿命不受影响
+
+极限温度
+
+- 安全阈值 ：超过 `55℃` 需加强散热，否则可能缩短寿命或导致数据丢失
+- 极端情况 ：部分高性能硬盘在满载时温度可达 `60℃-80℃` ，但需注意散热措施
+
+温度过高风险
+
+- 长期处于高温环境（如超过55℃）会导致硬盘内部机械部件磨损加速，增加故障概率
+- 温度过高还可能触发数据丢失风险，尤其在突然断电或高温高湿环境下
+
 ## 本教程前提条件
 
 - `插件设置` 安装插件
@@ -88,52 +104,36 @@ fan4:         982 RPM  (min =   -1 RPM)  ALARM
 - 脚本 `fan_control.sh` 内容为
 
 ```bash
-##!/bin/bash
+#!/bin/bash
 
 # 设置存储日志路径
 LOG_FILE="/var/log/FAN_CONTROL_BY_HDD.log"
 
 # log debug enable 1 open 0 close
-LOG_DEBUG_ENABLE=1
+LOG_DEBUG_ENABLE=0
 # log color enable 1 open 0 close
-LOG_COLOR_ENABLE=1
+LOG_COLOR_ENABLE=0
 
 # 是否开启 CPU 温度参与风扇控制
 CPU_TEMP_CONTROL_ENABLE=1
 # CPU 温度开始参与风扇控制 温度
 CPU_TEMP_CONTROL_START=60
 
-# 风扇控制设备路径，根据实际驱动安装位置修改
-FAN_CONTROL_ROOT="/sys/devices/platform/it87.2608/hwmon/hwmon4"
-# pwm2 为背板 风扇 fan2
-FAN_CONTROL_2="${FAN_CONTROL_ROOT}/pwm2"
-FAN_CONTROL_ENABLE_2="${FAN_CONTROL_ROOT}/pwm3_enable"
-# pwm3 为背板 风扇 fan3
-FAN_CONTROL_3="${FAN_CONTROL_ROOT}/pwm3"
-FAN_CONTROL_ENABLE_3="${FAN_CONTROL_ROOT}/pwm4_enable"
-
-# 初始化 HDD 设备状态数组 这里准备了 8 个硬盘
-devices=(x x x x x x x x x)
-# 初始化设备映射 这里准备了 8 个硬盘
-map=(cpu disk1 disk2 disk3 disk4 disk5 disk6 disk7 disk8)
-# 将 sataX 映射到硬件设备
-declare -A hwmap
-
-# 硬盘温度范围
+# 硬盘温度范围 35 - 50
 HDD_MAX_TEMP=50
 HDD_MID_TEMP=45
 HDD_LOW_TEMP=35
 
-## 风扇调整范围
-# 保守风量，也是默认风量
+## 风扇调整范围 0-255
+# 保守风量，也是默认风量 51
 GUARD_PWM=51
-# 最小风量
+# 最小风量 21
 MIN_PWM=21
-# 安静风量
-QUIT_PWM=60
-# 中间风量
+# 安静风量 61
+QUIT_PWM=61
+# 中间风量 141
 MID_PWM=141
-# 最大风量
+# 最大风量 255
 MAX_PWM=255
 
 # 全局平滑过渡 PWM 存储变量 默认调整 从 105 开始
@@ -150,6 +150,22 @@ HIGH_TEMP_INTERVAL=5
 
 # 温度调整 判断条件 摄氏度
 TEMP_THRESHOLD=45
+
+# 风扇控制设备路径，根据实际驱动安装位置修改
+FAN_CONTROL_ROOT="/sys/devices/platform/it87.2608/hwmon/hwmon4"
+# pwm2 为背板 风扇 fan2
+FAN_CONTROL_2="${FAN_CONTROL_ROOT}/pwm2"
+FAN_CONTROL_ENABLE_2="${FAN_CONTROL_ROOT}/pwm3_enable"
+# pwm3 为背板 风扇 fan3
+FAN_CONTROL_3="${FAN_CONTROL_ROOT}/pwm3"
+FAN_CONTROL_ENABLE_3="${FAN_CONTROL_ROOT}/pwm4_enable"
+
+# 初始化 HDD 设备状态数组 这里准备了 8 个硬盘
+devices=(x x x x x x x x x)
+# 初始化设备映射 这里准备了 8 个硬盘
+map=(cpu disk1 disk2 disk3 disk4 disk5 disk6 disk7 disk8)
+# 将 sataX 映射到硬件设备
+declare -A hwmap
 
 pV(){
   if [[ 0 -ne ${LOG_COLOR_ENABLE} ]]; then
@@ -241,7 +257,7 @@ enableFanControl() {
 }
 
 # 设置风扇转速函数
-# 参数1：PWM值
+# 参数1：PWM值 0-255
 set_fan_speed() {
     local pwm=$1
 
@@ -290,7 +306,7 @@ get_cpu_temp() {
 # cpu 参与温度控制设置参数为
 # CPU_TEMP_CONTROL_ENABLE 1 开启
 # CPU_TEMP_CONTROL_START 开始参与控制温度 比如 60
-# 硬盘温度控制参数为
+# 硬盘温度控制参数 可调整为
 # HDD_MAX_TEMP 50 最高温度
 # HDD_MID_TEMP 45 中间温度
 # HDD_LOW_TEMP 35 最低温度
@@ -473,8 +489,20 @@ done
 # 管理员下
 $ sudo -i
 
-# 直接执行
+# 脚本放置目录
+$ cd /volume1/homes/${User}/opt/drivers
+
+# 查看 CPU 温度
+$ sensors | awk '/Core 0/ {print$3}' | cut -c2- | cut -d'.' -f1
+# 查看硬盘温度
+$ cat /run/synostorage/disks/sata3/temperature
+$ cat /run/synostorage/disks/sata4/temperature
+
+# 直接执行风扇控制
 $ bash ./fan_control.sh
+
+# 查看日志
+$ tail -f /var/log/FAN_CONTROL_BY_HDD.log
 ```
 
 - 确认执行没问题 关闭调试日志
@@ -498,6 +526,6 @@ LOG_COLOR_ENABLE=0
 `任务设置` 中填写
 
 ```
-cd ${改为脚本存放位置}
+cd ${改为脚本存放目录}
 bash ./fan_control.sh
 ```
