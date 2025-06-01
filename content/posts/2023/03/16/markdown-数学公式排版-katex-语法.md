@@ -180,6 +180,18 @@ $$ \vec{a} \cdot \vec{b}=0 $$
 
 $$ \vec{a} \cdot \vec{b}=0 $$
 
+向量 大小 或者 范数符号
+
+例子：
+
+```tex
+$$ \vert \vec{a} \vert or \lVert \vec{b} \rVert $$
+```
+
+显示：
+
+$$ \vert \vec{a} \vert or \lVert \vec{b} \rVert $$
+
 例子：
 
 ```tex
@@ -321,11 +333,42 @@ $$ \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad 
 
 #### 三角运算符
 
-| 输入 | 显示	| 输入 | 显示 | 输入 | 显示 |
-|------|-----|-----|------|-----|-----|
-| \backsim | $\backsim$ | \cong | $\cong$ | \angle A | $\angle A$ |
-| \sin | $\sin$ | \cos | $\cos$ | \tan | $\tan$ |
-| \csc | $\csc$ | \sec | $\sec$ | \cot | $\cot$ |
+| 输入 | 显示	| 输入 | 显示 |
+|------|-----|-----|------|
+| \backsim | $\backsim$ | \cong | $\cong$ |
+| \angle A | $\angle A$ |
+| \sin | $\sin$ | \cos | $\cos$ |
+| \tan | $\tan$ | \csc | $\csc$ |
+|\sec | $\sec$ | \cot | $\cot$ |
+
+#### 反三角函数
+
+| 输入 | 显示	| 输入 | 显示 |
+|------|-----|-----|------|
+| \sin^{-1} x | $\sin^{-1} x$ | \cos^{-1} x | $\cos^{-1} x$ |
+| \tan^{-1} x | $\tan^{-1} x$ | \cot^{-1} x | $\cot^{-1} x$ |
+| \sec^{-1} x | $\sec^{-1} x$ | \csc^{-1} x | $\csc^{-1} x$ |
+| \arcsin x | $\arcsin x$ | \arccos x | $\arccos x$ |
+| \arctan x | $\arctan x$ | \operatorname{arccot} x | $\operatorname{arccot} x$ |
+| \operatorname{arcsec} x | $\operatorname{arcsec} x$ | \operatorname{arccsc} x | $\operatorname{arccsc} x$ |
+
+#### 双曲函数和反双曲函数
+
+双曲函数
+
+| 输入 | 显示	| 输入 | 显示 |
+|------|-----|-----|------|
+| \sinh x | $\sinh x$ | \cosh x | $\cosh x$ |
+| \tanh x | $\tanh x$ | \coth x | $\coth x$ |
+| \operatorname{sech} x | $\operatorname{sech} x$ | \operatorname{csch} x | $\operatorname{csch} x$ |
+
+反双曲函数
+
+| 输入 | 显示	| 输入 | 显示 |
+|------|-----|-----|------|
+| \sinh^{-1} | $\sinh^{-1}$ | \cosh^{-1} | $\cosh^{-1}$ |
+| \tanh^{-1} | $\tanh^{-1}$ | \coth^{-1} | $\coth^{-1}$ |
+| \operatorname{sech}^{-1} | $\operatorname{sech}^{-1}$ | \operatorname{csch}^{-1} | $\operatorname{csch}^{-1}$ |
 
 #### 微积分运算符
 
