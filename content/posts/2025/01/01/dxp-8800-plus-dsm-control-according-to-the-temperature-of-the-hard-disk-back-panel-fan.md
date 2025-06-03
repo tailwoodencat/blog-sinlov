@@ -18,7 +18,7 @@ comment:
   enable: true
 ---
 
-### 机械硬盘的工作温度正常范围
+## 机械硬盘的工作温度正常范围
 
 常规范围
 
@@ -68,7 +68,7 @@ insmod it87.ko force_id=0x8620
 cd /sys/devices/platform/it87.2608/hwmon/hwmon4/
 
 # 开启控制 fan2 号风扇
-echo 1 > pw2_enable
+echo 1 > pwm2_enable
 # 100是调节风扇转速的参数，参数范围为0~255
 echo 100 > pwm2
 
@@ -132,7 +132,7 @@ MIN_PWM=21
 # 安静风量 61
 QUIT_PWM=61
 # 中间风量 141
-MID_PWM=141
+MID_PWM=159
 # 最大风量 255
 MAX_PWM=255
 
@@ -155,10 +155,10 @@ TEMP_THRESHOLD=45
 FAN_CONTROL_ROOT="/sys/devices/platform/it87.2608/hwmon/hwmon4"
 # pwm2 为背板 风扇 fan2
 FAN_CONTROL_2="${FAN_CONTROL_ROOT}/pwm2"
-FAN_CONTROL_ENABLE_2="${FAN_CONTROL_ROOT}/pwm3_enable"
+FAN_CONTROL_ENABLE_2="${FAN_CONTROL_ROOT}/pwm2_enable"
 # pwm3 为背板 风扇 fan3
 FAN_CONTROL_3="${FAN_CONTROL_ROOT}/pwm3"
-FAN_CONTROL_ENABLE_3="${FAN_CONTROL_ROOT}/pwm4_enable"
+FAN_CONTROL_ENABLE_3="${FAN_CONTROL_ROOT}/pwm3_enable"
 
 # 初始化 HDD 设备状态数组 这里准备了 8 个硬盘
 devices=(x x x x x x x x x)
@@ -213,8 +213,7 @@ pE(){
 checkFilePathAndPermissions() {
     local check_file=$1
     if [ ! -w "$check_file" ]; then
-      echo "Error: Unable to write to file: $check_file"
-      exit 1
+      pE "Unable to write to file: $check_file"
     fi
 }
 
@@ -495,6 +494,8 @@ $ cd /volume1/homes/${User}/opt/drivers
 # 查看 CPU 温度
 $ sensors | awk '/Core 0/ {print$3}' | cut -c2- | cut -d'.' -f1
 # 查看硬盘温度
+$ cat /run/synostorage/disks/sata1/temperature
+$ cat /run/synostorage/disks/sata2/temperature
 $ cat /run/synostorage/disks/sata3/temperature
 $ cat /run/synostorage/disks/sata4/temperature
 
