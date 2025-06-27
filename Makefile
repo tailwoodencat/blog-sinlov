@@ -46,7 +46,7 @@ init:
 	hugo version
 	$(info or use git clone --recurse-submodules)
 	git submodule init
-	git submodule update
+	git submodule update --init
 
 .PHONY: up
 up:
