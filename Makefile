@@ -1,7 +1,7 @@
 .PHONY: dist test build
 ENV_VERSION =1.0.0
 ENV_HUGO_BASE_URL ?= https://blog.sinlov.cn/
-ENV_HUGO_PORT     ?= 51310
+ENV_HUGO_PORT     ?= 41310
 ENV_HUGO_DESTINATION_PATH ?=public
 ENV_HUGO_GEN_RESOURCES    ?=resources
 
@@ -29,8 +29,14 @@ clean.all: clean.hugo
 .PHONY: utils
 utils:
 	@echo "install hugo see documentation: https://gohugo.io/getting-started/installing/"
-	npm install generate-manifest -g
-	npm install uglifyjs-folder -g
+ifeq ($(OS),Windows_NT)
+	$(info windows install by: scoop install main/hugo-extended)
+else
+	$(info macos install by: brew install hugo)
+endif
+	$(info and node kit)
+	$(info npx generate-manifest)
+	$(info npx uglifyjs-folder)
 
 .PHONY: printInfo
 printInfo:
@@ -102,11 +108,11 @@ buildRepo: up
 destination: clean.hugo up
 	hugo -d ${ENV_HUGO_DESTINATION_PATH} -b ${ENV_HUGO_BASE_URL} --gc --cleanDestinationDir --minify
 	cp static/favicon.ico ${ENV_HUGO_DESTINATION_PATH}
-	cd public && generate-manifest --url=${ENV_HUGO_BASE_URL}
+	cd public && npx generate-manifest --url=${ENV_HUGO_BASE_URL}
 
 .PHONY: uglifyjs
 uglifyjs:
-	uglifyjs-folder dev/js/ -o assets/js/index.min.js
+	npx uglifyjs-folder dev/js/ -o assets/js/index.min.js
 
 .PHONY: help
 help: printInfo
