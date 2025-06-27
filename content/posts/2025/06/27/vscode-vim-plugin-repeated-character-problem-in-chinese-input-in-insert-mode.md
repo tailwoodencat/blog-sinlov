@@ -58,7 +58,7 @@ OS: Microsoft Windows 11 专业版 24H2
 - VSCode version: 1.101.2
 - Extension (VsCodeVim) version: 1.30.1
 
-```
+```log
 OS: Microsoft Windows 11
 10.0.26100
 
