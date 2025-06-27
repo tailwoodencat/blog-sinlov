@@ -45,8 +45,7 @@ init:
 	@echo "-> if not install just see https://gohugo.io/getting-started/"
 	hugo version
 	$(info or use git clone --recurse-submodules)
-	git submodule init
-	git submodule update --init
+	git submodule update --init --recursive
 
 .PHONY: up
 up:
