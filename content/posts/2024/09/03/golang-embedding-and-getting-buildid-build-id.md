@@ -2,7 +2,7 @@
 title: "golang 预埋和获取 buildID 构建标识"
 date: 2024-09-03T18:04:43+08:00
 description: "Golang embedding and getting buildID build ID"
-draft: true
+draft: false
 categories: ['golang']
 tags: ['golang']
 toc:
