@@ -1,7 +1,7 @@
 ---
-title: "startship 使用"
+title: "startship 命令行皮肤插件使用"
 date: 2020-04-11T12:56:11+03:10
-description: "startship usage"
+description: "Startship command line skin plug-in use"
 draft: false
 categories: ['basics']
 tags: ['basics', 'dev-kits']
