@@ -103,6 +103,22 @@ $ sudo yum install git-lfs
 $ sudo scoop install git-lfs
 ```
 
+### git lfs 内网加速
+
+- 默认情况下 lfs 是 https/http 协议实现的，不过不少远程仓库支持 ssh 协议，开启 ssh 支持后性能会好很多，也可以通过 ssh 切换 内网端口的方式绕过 http
+- 不少 git 仓库其实是内网部署的，这样比公网速度快很多，但是直接使用 lfs 是走公网的故需要增加内网配置
+
+```bash
+# 设置跳过 https 验证
+git config --global http.sslVerify false
+
+## 不一定有效 设置内网 http://192.168.50.10:3000/ 代替 https://gitea.foo.com/
+git config --global "lfs.url"."http://192.168.50.10:3000/".insteadOf "https://gitea.foo.com/"
+
+# 仓库设置
+git config lfs.url "http://192.168.50.10:3000/"
+```
+
 ### 安装后配置技巧
 
 `git-lfs` 和 git 别名 `git lfs` 是等效的
