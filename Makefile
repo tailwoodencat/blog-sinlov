@@ -128,7 +128,7 @@ help: printInfo
 	@echo "make utils                       ~> install utils of this project"
 	@echo ""
 	@echo "make up                          ~> update this project submodule"
-	@echo "make up.submodule.diff           ~> show diff of this project submodule"
+	@echo "make up.diff                     ~> show diff of this project submodule"
 	@echo "make up.remote                   ~> update this project submodule from remote"
 	@echo "make up.remote.force             ~> update this project submodule from remote to main latest"
 	@echo "make theme.change.version        ~> change theme version from ${ENV_THEME_VERSION}"
