@@ -6,14 +6,16 @@ draft: false
 categories: ['python']
 tags: ['python']
 toc:
-enable: true
-auto: false
+  enable: true
+  auto: false
+math:
+  enable: true
 mapbox:
-accessToken: ""
+  accessToken: ""
 share:
-enable: true
+  enable: true
 comment:
-enable: true
+  enable: true
 ---
 
 ## pipenv 安装

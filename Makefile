@@ -72,12 +72,12 @@ up.env:
 
 .PHONY: up.submodule.diff
 up.diff:
-	@git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
-	@git submodule foreach git log --oneline -n 1
+	-git submodule foreach git log --remotes --oneline -n 1
+	-git submodule foreach git log --oneline -n 1
 
 .PHONY: up.submodule.remote.env
 up.remote.env:
-	git submodule foreach git log ORIG_HEAD --remotes --oneline -n 1
+	git submodule foreach git log --remotes --oneline -n 1
 
 .PHONY: up.remote
 up.remote:
@@ -132,6 +132,7 @@ help: printInfo
 	@echo "make up.remote                   ~> update this project submodule from remote"
 	@echo "make up.remote.force             ~> update this project submodule from remote to main latest"
 	@echo "make theme.change.version        ~> change theme version from ${ENV_THEME_VERSION}"
+	@echo ""
 	@echo "make debug                       ~> run at http://0.0.0.0:${ENV_HUGO_PORT}/"
 	@echo "make destination                 ~> build hugo destination at path: ${ENV_HUGO_DESTINATION_PATH}"
 	@echo ""
