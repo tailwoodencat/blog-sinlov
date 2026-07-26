@@ -45,7 +45,6 @@ comment:
 | item | omp | opencode | claude code | codex cli |
 | --- | --- | --- | --- | --- |
 | 开源  | MIT | MIT | ❌   | Apache 2.0 |
-| 技术栈 | rust + ts | go  | ts  | ts  |
 | 内置工具 | ~32 | ~12 | ~15 | ~10 |
 | LSP 集成 | 14 opt | 基础诊断 | 有限  | 插件  |
 | 调试器 | DAP(28 ops) | N/A | N/A | N/A |
