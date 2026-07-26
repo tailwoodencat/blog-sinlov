@@ -97,7 +97,9 @@ eval "$(omp completions zsh)"
 ### 开启 omp 常用功能
 
 ```bash
+# 开启 顾问模型
 omp config set advisor.enabled true
+# 开启 Hindsight 记忆系统
 omp config set memory.backend hindsight
 ```
 
