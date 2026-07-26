@@ -157,6 +157,9 @@ providers:
 - 配置后确认
 
 ```bash
+# 刷新 models 配置
+omp models refresh
+
 # 列出当前所有可用模型
 omp models list
 
