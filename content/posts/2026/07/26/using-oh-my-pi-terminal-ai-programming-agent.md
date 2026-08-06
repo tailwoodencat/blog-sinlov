@@ -22,7 +22,7 @@ comment:
 
 [Oh My Pi（简称 omp）是一个终端 AI 编程代理](https://omp.sh/), 由 [Can Bölük 重写为编码优先的工具](https://github.com/can1357/oh-my-pi)
 
-同 OpenCode Claude Code、Codex CLI 是竞品
+同 OpenCode、Claude Code、Codex CLI 是竞品，可以同时存在
 
 - [oh-ny-pi 官方文档](https://omp.sh/docs)
 - [oh-my-pi Discord](https://discord.com/invite/oh-my-pi)
@@ -39,6 +39,10 @@ comment:
 - 浏览器驱动：puppeteer 控制 chromium 或 electron 应用
 - MCP 支持：标准化外部工具接入
 - 25 个搜索后端：auto 模式自动链式查找
+- 支持多人合作会话
+- LSP 深度操作
+- 内置记忆系统(需开启)
+- 顾问模型(需开启)
 
 ### omp 和竞品对比
 
@@ -70,7 +74,7 @@ brew install can1357/tap/omp
 irm https://omp.sh/install.ps1 | iex
 ```
 
-WSL 用户推荐用 bun 安装（避免权限问题，安装到 `~/.bun/bin`
+WSL 用户推荐用 bun 安装（避免权限问题），安装到 `~/.bun/bin`
 
 > 别装在 /mnt/c 等 Windows 挂载盘上，I/O 慢， wsl 本质时虚拟机，跨系统 IO 非常烂
 
@@ -84,14 +88,14 @@ hash -r; omp --version
 
 配置 平台命令自动补全, 目前只支持 zsh bash fish
 
-- macos zsh
-
-添加到 ~/.zshrc
+- 使用  zsh 作为基础的 添加到 ~/.zshrc
 
 ```bash
 # omp https://github.com/can1357/oh-my-pi
 eval "$(omp completions zsh)"
 ```
+
+bash fish 请参考官方文档配置
 
 ### 开启 omp 常用功能
 
@@ -119,7 +123,24 @@ omp config set memory.backend hindsight
 omp config path
 
 # 编辑配置文件
-open $(omp config path)/config.yml
+vim $(omp config path)/config.yml
+
+code $(omp config path)/config.yml
+```
+
+配置文件可以为
+
+```yml
+advisor:
+  enabled: true
+memory:
+  backend: hindsight
+modelRoles:
+  default: deepseek/deepseek-v4-flash
+symbolPreset: nerd
+theme:
+  dark: titanium
+setupVersion: 1
 ```
 
 ### 配置 模型 接入
@@ -127,7 +148,9 @@ open $(omp config path)/config.yml
 omp 通过 `~/.omp/agent/models.yml` 配置自定义模型 provider
 
 ```bash
-open $(omp config path)/models.yml
+vim $(omp config path)/models.yml
+
+code $(omp config path)/models.yml
 ```
 
 #### deepseek 接入 omp
@@ -174,8 +197,12 @@ omp --model deepseek-v4-flash -p "你好，介绍一下自己，包括当前 模
 ### 启动 omp
 
 ```bash
-## 交互模式（默认模式）
+# omp 以目录为记忆单位，不要随意开启 omp
+# 建议先到某个目录后开启
 cd foo-folder
+
+## 交互模式（默认模式）
+# 如果没有做任何设置，omp 会引导你执行一次配置
 omp
 
 # 单次命令
@@ -184,7 +211,7 @@ omp -p "你好"
 # 指定模型
 omp --model deepseek-v4-flash -p "你好，介绍一下自己，包括当前 模型provider 系统环境等信息"
 
-# 继续上次会话
+# 继续上次会话，非常常用
 omp -c
 
 # 选择历史会话
